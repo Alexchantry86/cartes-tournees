@@ -17,7 +17,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_fdbccdedd8712e50c2b0ea8a7048145d {
+                #map_83d8ddec221750af9c963c32662d6bc5 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -61,24 +61,73 @@
         Maxime PIOVAN &nbsp;·&nbsp; S20 &nbsp;·&nbsp; Zone E
     </div>
     
-    <style>#leg-body{display:block}@media(max-width:768px){#leg-panel{width:calc(100vw - 32px)!important;max-width:300px}#leg-body{display:none}#leg-panel.ouvert #leg-body{display:block}}</style><div id="leg-panel" style="position:fixed;top:16px;right:16px;z-index:1000;background:white;padding:10px 14px;border-radius:7px;box-shadow:0 2px 12px rgba(0,0,0,.18);font-family:Arial,sans-serif;width:260px;max-height:90vh;overflow-y:auto;"><div onclick="(function(){var p=document.getElementById('leg-panel');p.classList.toggle('ouvert');document.getElementById('leg-tog').textContent=p.classList.contains('ouvert')?'▲':'▼';})()" style="display:flex;justify-content:space-between;align-items:center;cursor:pointer;user-select:none;border-bottom:2px solid #1a3a6b;padding-bottom:4px;"><span style="font-weight:700;font-size:11px;color:#0b1f3f;">Maxime · S20 · Zone E</span><span id="leg-tog" style="font-size:10px;color:#6b7280;margin-left:6px;">▼</span></div><div id="leg-body">
+    <style>
+      /* ── Bouton toggle (toujours visible) ── */
+      #leg-btn {
+        position:fixed;top:16px;right:16px;z-index:1001;
+        background:#0b1f3f;color:white;border:none;border-radius:6px;
+        padding:7px 12px;font-size:11px;font-weight:700;font-family:Arial,sans-serif;
+        cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.25);
+        white-space:nowrap;
+      }
+      /* ── Panneau légende ── */
+      #leg-panel {
+        position:fixed;top:50px;right:16px;z-index:1000;
+        background:white;border-radius:7px;
+        box-shadow:0 2px 12px rgba(0,0,0,.18);
+        font-family:Arial,sans-serif;
+        width:500px;max-height:80vh;overflow-y:auto;
+        padding:10px 14px;
+        display:none;   /* masqué par défaut */
+      }
+      #leg-panel.ouvert { display:block; }
+      /* ── Mobile : panneau pleine largeur ── */
+      @media (max-width:768px) {
+        #leg-panel {
+          width:calc(100vw - 32px);
+          max-width:360px;
+          top:54px;
+          max-height:70vh;
+        }
+      }
+    </style>
+
+    <!-- Bouton toggle -->
+    <button id="leg-btn"
+            onclick="(function(){
+              var p=document.getElementById('leg-panel');
+              var b=document.getElementById('leg-btn');
+              p.classList.toggle('ouvert');
+              b.textContent = p.classList.contains('ouvert') ? '✕ Fermer' : '☰ Maxime · S20';
+            })()">
+      ☰ Maxime · S20
+    </button>
+
+    <!-- Panneau -->
+    <div id="leg-panel">
+      <div style="font-weight:700;font-size:11px;color:#0b1f3f;
+                  border-bottom:2px solid #1a3a6b;padding-bottom:4px;margin-bottom:8px;">
+        Maxime · S20 · Zone E
+      </div>
       <div style="font-size:8px;font-weight:700;text-transform:uppercase;
-          letter-spacing:.4px;color:#6b7280;margin-bottom:4px;">
+                  letter-spacing:.4px;color:#6b7280;margin-bottom:4px;">
         Tournée — tag M020
       </div>
       <div style="display:flex;gap:10px;"><div style="flex:1;"><div style="display:flex;align-items:center;margin:2px 0;"><span style="display:inline-flex;align-items:center;justify-content:center;background:#2563eb;color:white;border-radius:50%;width:17px;height:17px;font-size:9px;font-weight:700;border:1.5px solid white;flex-shrink:0;margin-right:5px;">1</span><span style="font-size:10px;color:#1a3a6b;font-weight:600;">AX SYSTEM</span><span style="font-size:9px;color:#64748b;margin-left:4px;white-space:nowrap;">BAILLEUL</span></div><div style="display:flex;align-items:center;margin:2px 0;"><span style="display:inline-flex;align-items:center;justify-content:center;background:#2563eb;color:white;border-radius:50%;width:17px;height:17px;font-size:9px;font-weight:700;border:1.5px solid white;flex-shrink:0;margin-right:5px;">2</span><span style="font-size:10px;color:#1a3a6b;font-weight:600;">BIEHLER</span><span style="font-size:9px;color:#64748b;margin-left:4px;white-space:nowrap;">NEUVILLE-EN-FERRAIN</span></div><div style="display:flex;align-items:center;margin:2px 0;"><span style="display:inline-flex;align-items:center;justify-content:center;background:#f59e0b;color:white;border-radius:50%;width:17px;height:17px;font-size:9px;font-weight:700;border:1.5px solid white;flex-shrink:0;margin-right:5px;">3</span><span style="font-size:10px;color:#1a3a6b;font-weight:600;">SEIDO SYSTEMES</span><span style="font-size:9px;color:#64748b;margin-left:4px;white-space:nowrap;">LILLE</span></div><div style="display:flex;align-items:center;margin:2px 0;"><span style="display:inline-flex;align-items:center;justify-content:center;background:#f59e0b;color:white;border-radius:50%;width:17px;height:17px;font-size:9px;font-weight:700;border:1.5px solid white;flex-shrink:0;margin-right:5px;">4</span><span style="font-size:10px;color:#1a3a6b;font-weight:600;">BECK CRESPEL</span><span style="font-size:9px;color:#64748b;margin-left:4px;white-space:nowrap;">ARMENTIERES</span></div><div style="display:flex;align-items:center;margin:2px 0;"><span style="display:inline-flex;align-items:center;justify-content:center;background:#94a3b8;color:white;border-radius:50%;width:17px;height:17px;font-size:9px;font-weight:700;border:1.5px solid white;flex-shrink:0;margin-right:5px;">5</span><span style="font-size:10px;color:#1a3a6b;font-weight:600;">CASTEL CT</span><span style="font-size:9px;color:#64748b;margin-left:4px;white-space:nowrap;">ROUBAIX</span></div><div style="display:flex;align-items:center;margin:2px 0;"><span style="display:inline-flex;align-items:center;justify-content:center;background:#94a3b8;color:white;border-radius:50%;width:17px;height:17px;font-size:9px;font-weight:700;border:1.5px solid white;flex-shrink:0;margin-right:5px;">6</span><span style="font-size:10px;color:#1a3a6b;font-weight:600;">RHINO MACHINES</span><span style="font-size:9px;color:#64748b;margin-left:4px;white-space:nowrap;">ARMENTIERES</span></div><div style="display:flex;align-items:center;margin:2px 0;"><span style="display:inline-flex;align-items:center;justify-content:center;background:#94a3b8;color:white;border-radius:50%;width:17px;height:17px;font-size:9px;font-weight:700;border:1.5px solid white;flex-shrink:0;margin-right:5px;">7</span><span style="font-size:10px;color:#1a3a6b;font-weight:600;">TECHPROD SERVICE & DISTR</span><span style="font-size:9px;color:#64748b;margin-left:4px;white-space:nowrap;">ARMENTIERES</span></div><div style="display:flex;align-items:center;margin:2px 0;"><span style="display:inline-flex;align-items:center;justify-content:center;background:#94a3b8;color:white;border-radius:50%;width:17px;height:17px;font-size:9px;font-weight:700;border:1.5px solid white;flex-shrink:0;margin-right:5px;">8</span><span style="font-size:10px;color:#1a3a6b;font-weight:600;">TEXDECOR</span><span style="font-size:9px;color:#64748b;margin-left:4px;white-space:nowrap;">WILLEMS</span></div><div style="display:flex;align-items:center;margin:2px 0;"><span style="display:inline-flex;align-items:center;justify-content:center;background:#94a3b8;color:white;border-radius:50%;width:17px;height:17px;font-size:9px;font-weight:700;border:1.5px solid white;flex-shrink:0;margin-right:5px;">9</span><span style="font-size:10px;color:#1a3a6b;font-weight:600;">VERDI</span><span style="font-size:9px;color:#64748b;margin-left:4px;white-space:nowrap;">WASQUEHAL</span></div><div style="display:flex;align-items:center;margin:2px 0;"><span style="display:inline-flex;align-items:center;justify-content:center;background:#94a3b8;color:white;border-radius:50%;width:17px;height:17px;font-size:9px;font-weight:700;border:1.5px solid white;flex-shrink:0;margin-right:5px;">10</span><span style="font-size:10px;color:#1a3a6b;font-weight:600;">Soc De Distribution D Au</span><span style="font-size:9px;color:#64748b;margin-left:4px;white-space:nowrap;">Fretin</span></div><div style="display:flex;align-items:center;margin:2px 0;"><span style="display:inline-flex;align-items:center;justify-content:center;background:#94a3b8;color:white;border-radius:50%;width:17px;height:17px;font-size:9px;font-weight:700;border:1.5px solid white;flex-shrink:0;margin-right:5px;">11</span><span style="font-size:10px;color:#1a3a6b;font-weight:600;">PROVOST DISTRIBUTION</span><span style="font-size:9px;color:#64748b;margin-left:4px;white-space:nowrap;">NEUVILLE-EN-FERRAIN</span></div><div style="display:flex;align-items:center;margin:2px 0;"><span style="display:inline-flex;align-items:center;justify-content:center;background:#94a3b8;color:white;border-radius:50%;width:17px;height:17px;font-size:9px;font-weight:700;border:1.5px solid white;flex-shrink:0;margin-right:5px;">12</span><span style="font-size:10px;color:#1a3a6b;font-weight:600;">COMROD FRANCE</span><span style="font-size:9px;color:#64748b;margin-left:4px;white-space:nowrap;">Saint-Amand-les-Eaux</span></div></div><div style="flex:1;border-left:1px solid #f1f5f9;padding-left:10px;"><div style="display:flex;align-items:center;margin:2px 0;"><span style="display:inline-flex;align-items:center;justify-content:center;background:#94a3b8;color:white;border-radius:50%;width:17px;height:17px;font-size:9px;font-weight:700;border:1.5px solid white;flex-shrink:0;margin-right:5px;">13</span><span style="font-size:10px;color:#1a3a6b;font-weight:600;">BIOLUME</span><span style="font-size:9px;color:#64748b;margin-left:4px;white-space:nowrap;">LOOS</span></div><div style="display:flex;align-items:center;margin:2px 0;opacity:0.5;"><span style="display:inline-flex;align-items:center;justify-content:center;background:#94a3b8;color:white;border-radius:50%;width:17px;height:17px;font-size:9px;font-weight:700;border:1.5px solid white;flex-shrink:0;margin-right:5px;">14</span><span style="font-size:10px;color:#1a3a6b;font-weight:600;">HACO</span><span style="font-size:9px;color:#64748b;margin-left:4px;white-space:nowrap;">?</span></div><div style="border-top:1px solid #e5e7eb;margin:3px 0 2px;"></div><div style="font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:#94a3b8;margin-bottom:2px;">Complémentaires</div><div style="display:flex;align-items:center;margin:2px 0;"><span style="display:inline-flex;align-items:center;justify-content:center;background:#1a3a6b;color:white;width:15px;height:15px;font-size:9px;font-weight:700;transform:rotate(45deg);border:1.5px solid white;flex-shrink:0;margin-right:6px;margin-left:1px;"><span style="transform:rotate(-45deg)">15</span></span><span style="font-size:10px;color:#1a3a6b;font-weight:600;">SOLARONICS SAS</span><span style="font-size:9px;color:#64748b;margin-left:4px;white-space:nowrap;">ARMENTIERES</span></div><div style="display:flex;align-items:center;margin:2px 0;"><span style="display:inline-flex;align-items:center;justify-content:center;background:#1a3a6b;color:white;width:15px;height:15px;font-size:9px;font-weight:700;transform:rotate(45deg);border:1.5px solid white;flex-shrink:0;margin-right:6px;margin-left:1px;"><span style="transform:rotate(-45deg)">16</span></span><span style="font-size:10px;color:#1a3a6b;font-weight:600;">MUSTHANE</span><span style="font-size:9px;color:#64748b;margin-left:4px;white-space:nowrap;">WILLEMS</span></div><div style="display:flex;align-items:center;margin:2px 0;"><span style="display:inline-flex;align-items:center;justify-content:center;background:#1a3a6b;color:white;width:15px;height:15px;font-size:9px;font-weight:700;transform:rotate(45deg);border:1.5px solid white;flex-shrink:0;margin-right:6px;margin-left:1px;"><span style="transform:rotate(-45deg)">17</span></span><span style="font-size:10px;color:#1a3a6b;font-weight:600;">STANDARD INDUSTRIE INTER</span><span style="font-size:9px;color:#64748b;margin-left:4px;white-space:nowrap;">ROUBAIX</span></div><div style="display:flex;align-items:center;margin:2px 0;"><span style="display:inline-flex;align-items:center;justify-content:center;background:#1a3a6b;color:white;width:15px;height:15px;font-size:9px;font-weight:700;transform:rotate(45deg);border:1.5px solid white;flex-shrink:0;margin-right:6px;margin-left:1px;"><span style="transform:rotate(-45deg)">18</span></span><span style="font-size:10px;color:#1a3a6b;font-weight:600;">VELEC SYSTEMS</span><span style="font-size:9px;color:#64748b;margin-left:4px;white-space:nowrap;">WATTRELOS</span></div><div style="display:flex;align-items:center;margin:2px 0;"><span style="display:inline-flex;align-items:center;justify-content:center;background:#1a3a6b;color:white;width:15px;height:15px;font-size:9px;font-weight:700;transform:rotate(45deg);border:1.5px solid white;flex-shrink:0;margin-right:6px;margin-left:1px;"><span style="transform:rotate(-45deg)">19</span></span><span style="font-size:10px;color:#1a3a6b;font-weight:600;">BOVIS FLANDRES ARTOIS</span><span style="font-size:9px;color:#64748b;margin-left:4px;white-space:nowrap;">LESQUIN</span></div><div style="display:flex;align-items:center;margin:2px 0;"><span style="display:inline-flex;align-items:center;justify-content:center;background:#1a3a6b;color:white;width:15px;height:15px;font-size:9px;font-weight:700;transform:rotate(45deg);border:1.5px solid white;flex-shrink:0;margin-right:6px;margin-left:1px;"><span style="transform:rotate(-45deg)">20</span></span><span style="font-size:10px;color:#1a3a6b;font-weight:600;">MILLESCAMPS MODELAGE</span><span style="font-size:9px;color:#64748b;margin-left:4px;white-space:nowrap;">TOURCOING</span></div><div style="display:flex;align-items:center;margin:2px 0;"><span style="display:inline-flex;align-items:center;justify-content:center;background:#1a3a6b;color:white;width:15px;height:15px;font-size:9px;font-weight:700;transform:rotate(45deg);border:1.5px solid white;flex-shrink:0;margin-right:6px;margin-left:1px;"><span style="transform:rotate(-45deg)">21</span></span><span style="font-size:10px;color:#1a3a6b;font-weight:600;">FRANCE EVAPORATION</span><span style="font-size:9px;color:#64748b;margin-left:4px;white-space:nowrap;">NOYELLES-LES-SECLIN</span></div><div style="display:flex;align-items:center;margin:2px 0;"><span style="display:inline-flex;align-items:center;justify-content:center;background:#1a3a6b;color:white;width:15px;height:15px;font-size:9px;font-weight:700;transform:rotate(45deg);border:1.5px solid white;flex-shrink:0;margin-right:6px;margin-left:1px;"><span style="transform:rotate(-45deg)">22</span></span><span style="font-size:10px;color:#1a3a6b;font-weight:600;">SULZER</span><span style="font-size:9px;color:#64748b;margin-left:4px;white-space:nowrap;">WAMBRECHIES</span></div><div style="display:flex;align-items:center;margin:2px 0;"><span style="display:inline-flex;align-items:center;justify-content:center;background:#2563eb;color:white;width:15px;height:15px;font-size:9px;font-weight:700;transform:rotate(45deg);border:1.5px solid white;flex-shrink:0;margin-right:6px;margin-left:1px;"><span style="transform:rotate(-45deg)">23</span></span><span style="font-size:10px;color:#1a3a6b;font-weight:600;">CLASQUIN</span><span style="font-size:9px;color:#64748b;margin-left:4px;white-space:nowrap;">FRETIN</span></div><div style="display:flex;align-items:center;margin:2px 0;"><span style="display:inline-flex;align-items:center;justify-content:center;background:#2563eb;color:white;width:15px;height:15px;font-size:9px;font-weight:700;transform:rotate(45deg);border:1.5px solid white;flex-shrink:0;margin-right:6px;margin-left:1px;"><span style="transform:rotate(-45deg)">24</span></span><span style="font-size:10px;color:#1a3a6b;font-weight:600;">COGLIANDRO</span><span style="font-size:9px;color:#64748b;margin-left:4px;white-space:nowrap;">TOURCOING</span></div></div></div>
-      <div style="border-top:1px solid #e5e7eb;margin:5px 0 4px;"></div>
-      <div style="display:flex;flex-wrap:wrap;"><span style="display:inline-flex;align-items:center;gap:2px;margin-right:8px;font-size:9px;color:#374151;"><span style="display:inline-block;width:8px;height:8px;background:#1a3a6b;border-radius:1px;"></span>Très élevée</span><span style="display:inline-flex;align-items:center;gap:2px;margin-right:8px;font-size:9px;color:#374151;"><span style="display:inline-block;width:8px;height:8px;background:#2563eb;border-radius:1px;"></span>Haute</span><span style="display:inline-flex;align-items:center;gap:2px;margin-right:8px;font-size:9px;color:#374151;"><span style="display:inline-block;width:8px;height:8px;background:#f59e0b;border-radius:1px;"></span>Moyenne</span><span style="display:inline-flex;align-items:center;gap:2px;margin-right:8px;font-size:9px;color:#374151;"><span style="display:inline-block;width:8px;height:8px;background:#94a3b8;border-radius:1px;"></span>Basse</span></div>
-    </div></div>
+      <div style="border-top:1px solid #e5e7eb;margin:6px 0 4px;"></div>
+      <div style="font-size:8px;font-weight:700;text-transform:uppercase;
+                  letter-spacing:.4px;color:#6b7280;margin-bottom:3px;">Priorité</div>
+      <div style="display:flex;align-items:center;gap:5px;margin:2px 0;font-size:9px;color:#374151;"><span style="display:inline-block;width:9px;height:9px;background:#1a3a6b;border-radius:2px;flex-shrink:0;"></span>Très élevée</div><div style="display:flex;align-items:center;gap:5px;margin:2px 0;font-size:9px;color:#374151;"><span style="display:inline-block;width:9px;height:9px;background:#2563eb;border-radius:2px;flex-shrink:0;"></span>Haute</div><div style="display:flex;align-items:center;gap:5px;margin:2px 0;font-size:9px;color:#374151;"><span style="display:inline-block;width:9px;height:9px;background:#f59e0b;border-radius:2px;flex-shrink:0;"></span>Moyenne</div><div style="display:flex;align-items:center;gap:5px;margin:2px 0;font-size:9px;color:#374151;"><span style="display:inline-block;width:9px;height:9px;background:#94a3b8;border-radius:2px;flex-shrink:0;"></span>Basse</div>
+    </div>
     
-            <div class="folium-map" id="map_fdbccdedd8712e50c2b0ea8a7048145d" ></div>
+            <div class="folium-map" id="map_83d8ddec221750af9c963c32662d6bc5" ></div>
         
 </body>
 <script>
     
     
-            var map_fdbccdedd8712e50c2b0ea8a7048145d = L.map(
-                "map_fdbccdedd8712e50c2b0ea8a7048145d",
+            var map_83d8ddec221750af9c963c32662d6bc5 = L.map(
+                "map_83d8ddec221750af9c963c32662d6bc5",
                 {
                     center: [50.652330434782606, 3.087752173913043],
                     crs: L.CRS.EPSG3857,
@@ -90,13 +139,13 @@
 
                 }
             );
-            L.control.scale().addTo(map_fdbccdedd8712e50c2b0ea8a7048145d);
+            L.control.scale().addTo(map_83d8ddec221750af9c963c32662d6bc5);
 
             
 
         
     
-            var tile_layer_edcdd6654df95a4a0b151e20a85ba367 = L.tileLayer(
+            var tile_layer_bab086ad17180b52b2f05a45309f89ff = L.tileLayer(
                 "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
                 {
   "minZoom": 0,
@@ -113,17 +162,17 @@
             );
         
     
-            tile_layer_edcdd6654df95a4a0b151e20a85ba367.addTo(map_fdbccdedd8712e50c2b0ea8a7048145d);
+            tile_layer_bab086ad17180b52b2f05a45309f89ff.addTo(map_83d8ddec221750af9c963c32662d6bc5);
         
     
-            var marker_1337a14fd1100f65b79d0a4cf4102a2f = L.marker(
+            var marker_bda510b1591712483fb40e4dda0e04bc = L.marker(
                 [50.7376, 2.7349],
                 {
 }
-            ).addTo(map_fdbccdedd8712e50c2b0ea8a7048145d);
+            ).addTo(map_83d8ddec221750af9c963c32662d6bc5);
         
     
-            var div_icon_e0ee3baa6c2cc4cd027c7ad5bf2ecec3 = L.divIcon({
+            var div_icon_26a1b1e49588163ac2b3e10dab3a303e = L.divIcon({
   "html": "\u003cdiv style=\"background:#2563eb;color:white;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:11px;border:2px solid white;box-shadow:0 2px 5px rgba(0,0,0,.4);\"\u003e1\u003c/div\u003e",
   "iconSize": [22, 22],
   "iconAnchor": [11, 11],
@@ -131,24 +180,24 @@
 });
         
     
-        var popup_821a83bb90ca4a17d038f0a7f65b8c03 = L.popup({
+        var popup_5a76cfb76586184f3d81b74a334c1cbc = L.popup({
   "maxWidth": 220,
 });
 
         
             
-                var html_4411c1e016d0f772e233036ae6ad62ce = $(`<div id="html_4411c1e016d0f772e233036ae6ad62ce" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:180px;"><div style="background:#2563eb;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">1. AX SYSTEM</div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 BAILLEUL<br>🎯 Haute<br>📋 1.Leads<br>📞 -</div></div></div>`)[0];
-                popup_821a83bb90ca4a17d038f0a7f65b8c03.setContent(html_4411c1e016d0f772e233036ae6ad62ce);
+                var html_36c345bdcb0616b3cb422f27287dea1b = $(`<div id="html_36c345bdcb0616b3cb422f27287dea1b" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:180px;"><div style="background:#2563eb;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">1. AX SYSTEM</div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 BAILLEUL<br>🎯 Haute<br>📋 1.Leads<br>📞 -</div></div></div>`)[0];
+                popup_5a76cfb76586184f3d81b74a334c1cbc.setContent(html_36c345bdcb0616b3cb422f27287dea1b);
             
         
 
-        marker_1337a14fd1100f65b79d0a4cf4102a2f.bindPopup(popup_821a83bb90ca4a17d038f0a7f65b8c03)
+        marker_bda510b1591712483fb40e4dda0e04bc.bindPopup(popup_5a76cfb76586184f3d81b74a334c1cbc)
         ;
 
         
     
     
-            marker_1337a14fd1100f65b79d0a4cf4102a2f.bindTooltip(
+            marker_bda510b1591712483fb40e4dda0e04bc.bindTooltip(
                 `<div>
                      1. AX SYSTEM — BAILLEUL
                  </div>`,
@@ -158,17 +207,17 @@
             );
         
     
-                marker_1337a14fd1100f65b79d0a4cf4102a2f.setIcon(div_icon_e0ee3baa6c2cc4cd027c7ad5bf2ecec3);
+                marker_bda510b1591712483fb40e4dda0e04bc.setIcon(div_icon_26a1b1e49588163ac2b3e10dab3a303e);
             
     
-            var marker_81021d8f1c6bd004a2bbb88c0cbabba2 = L.marker(
+            var marker_53fda2297d39bf9323036ca2629bcae2 = L.marker(
                 [50.7614, 3.156423598415031],
                 {
 }
-            ).addTo(map_fdbccdedd8712e50c2b0ea8a7048145d);
+            ).addTo(map_83d8ddec221750af9c963c32662d6bc5);
         
     
-            var div_icon_c2ad25e83c3af9f79048e2ee12112d48 = L.divIcon({
+            var div_icon_c6fb1ebe127d4769c80fa95ffa05467d = L.divIcon({
   "html": "\u003cdiv style=\"background:#2563eb;color:white;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:11px;border:2px solid white;box-shadow:0 2px 5px rgba(0,0,0,.4);\"\u003e2\u003c/div\u003e",
   "iconSize": [22, 22],
   "iconAnchor": [11, 11],
@@ -176,24 +225,24 @@
 });
         
     
-        var popup_eb1fbcc5b68814e467b9c6111b693823 = L.popup({
+        var popup_c900b955b10e8237bbf4b2ac2a0119e3 = L.popup({
   "maxWidth": 220,
 });
 
         
             
-                var html_16dc9d2c8cf6eca95394ac85caf4e405 = $(`<div id="html_16dc9d2c8cf6eca95394ac85caf4e405" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:180px;"><div style="background:#2563eb;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">2. BIEHLER</div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 NEUVILLE-EN-FERRAIN<br>🎯 Haute<br>📋 2.Consomme  / doit nous consulter / plaquette envoyée<br>📞 -</div></div></div>`)[0];
-                popup_eb1fbcc5b68814e467b9c6111b693823.setContent(html_16dc9d2c8cf6eca95394ac85caf4e405);
+                var html_0fbb9959dcf5737858c7e22fc5b574c7 = $(`<div id="html_0fbb9959dcf5737858c7e22fc5b574c7" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:180px;"><div style="background:#2563eb;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">2. BIEHLER</div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 NEUVILLE-EN-FERRAIN<br>🎯 Haute<br>📋 2.Consomme  / doit nous consulter / plaquette envoyée<br>📞 -</div></div></div>`)[0];
+                popup_c900b955b10e8237bbf4b2ac2a0119e3.setContent(html_0fbb9959dcf5737858c7e22fc5b574c7);
             
         
 
-        marker_81021d8f1c6bd004a2bbb88c0cbabba2.bindPopup(popup_eb1fbcc5b68814e467b9c6111b693823)
+        marker_53fda2297d39bf9323036ca2629bcae2.bindPopup(popup_c900b955b10e8237bbf4b2ac2a0119e3)
         ;
 
         
     
     
-            marker_81021d8f1c6bd004a2bbb88c0cbabba2.bindTooltip(
+            marker_53fda2297d39bf9323036ca2629bcae2.bindTooltip(
                 `<div>
                      2. BIEHLER — NEUVILLE-EN-FERRAIN
                  </div>`,
@@ -203,17 +252,17 @@
             );
         
     
-                marker_81021d8f1c6bd004a2bbb88c0cbabba2.setIcon(div_icon_c2ad25e83c3af9f79048e2ee12112d48);
+                marker_53fda2297d39bf9323036ca2629bcae2.setIcon(div_icon_c6fb1ebe127d4769c80fa95ffa05467d);
             
     
-            var marker_f46076ec43912ea95a720f4bac4fdb31 = L.marker(
+            var marker_0eba6542382130442acd0d0e5a5fab2b = L.marker(
                 [50.7614, 3.143776401584969],
                 {
 }
-            ).addTo(map_fdbccdedd8712e50c2b0ea8a7048145d);
+            ).addTo(map_83d8ddec221750af9c963c32662d6bc5);
         
     
-            var div_icon_4d825cb99ba3c2065d59617f61527e72 = L.divIcon({
+            var div_icon_d2c0285d42f43cdc944bd4c4df04dcf3 = L.divIcon({
   "html": "\u003cdiv style=\"background:#94a3b8;color:white;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:11px;border:2px solid white;box-shadow:0 2px 5px rgba(0,0,0,.4);\"\u003e11\u003c/div\u003e",
   "iconSize": [22, 22],
   "iconAnchor": [11, 11],
@@ -221,24 +270,24 @@
 });
         
     
-        var popup_b518d1c9c641b1ca05619c23044f931d = L.popup({
+        var popup_bcb8d1450a571d972e52f24d4652b7f7 = L.popup({
   "maxWidth": 220,
 });
 
         
             
-                var html_221c9f141d6451a5ab4e48c3d67110c9 = $(`<div id="html_221c9f141d6451a5ab4e48c3d67110c9" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:180px;"><div style="background:#94a3b8;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">11. PROVOST DISTRIBUTION</div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 NEUVILLE-EN-FERRAIN<br>🎯 Basse<br>📋 1.Leads<br>📞 03 20 11 53 53</div></div></div>`)[0];
-                popup_b518d1c9c641b1ca05619c23044f931d.setContent(html_221c9f141d6451a5ab4e48c3d67110c9);
+                var html_e3175029d3a9ae82be095c08aa948018 = $(`<div id="html_e3175029d3a9ae82be095c08aa948018" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:180px;"><div style="background:#94a3b8;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">11. PROVOST DISTRIBUTION</div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 NEUVILLE-EN-FERRAIN<br>🎯 Basse<br>📋 1.Leads<br>📞 03 20 11 53 53</div></div></div>`)[0];
+                popup_bcb8d1450a571d972e52f24d4652b7f7.setContent(html_e3175029d3a9ae82be095c08aa948018);
             
         
 
-        marker_f46076ec43912ea95a720f4bac4fdb31.bindPopup(popup_b518d1c9c641b1ca05619c23044f931d)
+        marker_0eba6542382130442acd0d0e5a5fab2b.bindPopup(popup_bcb8d1450a571d972e52f24d4652b7f7)
         ;
 
         
     
     
-            marker_f46076ec43912ea95a720f4bac4fdb31.bindTooltip(
+            marker_0eba6542382130442acd0d0e5a5fab2b.bindTooltip(
                 `<div>
                      11. PROVOST DISTRIBUTION — NEUVILLE-EN-FERRAIN
                  </div>`,
@@ -248,17 +297,17 @@
             );
         
     
-                marker_f46076ec43912ea95a720f4bac4fdb31.setIcon(div_icon_4d825cb99ba3c2065d59617f61527e72);
+                marker_0eba6542382130442acd0d0e5a5fab2b.setIcon(div_icon_d2c0285d42f43cdc944bd4c4df04dcf3);
             
     
-            var marker_e8351e8f5b7053e5dc1f68534659a0c2 = L.marker(
+            var marker_01454655d6a21e3f3a5ace435bea53c3 = L.marker(
                 [50.6292, 3.0573],
                 {
 }
-            ).addTo(map_fdbccdedd8712e50c2b0ea8a7048145d);
+            ).addTo(map_83d8ddec221750af9c963c32662d6bc5);
         
     
-            var div_icon_2d54525c2306e3ddfa046553a04de025 = L.divIcon({
+            var div_icon_079ae6315f40fab04b628f90d76170bb = L.divIcon({
   "html": "\u003cdiv style=\"background:#f59e0b;color:white;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:11px;border:2px solid white;box-shadow:0 2px 5px rgba(0,0,0,.4);\"\u003e3\u003c/div\u003e",
   "iconSize": [22, 22],
   "iconAnchor": [11, 11],
@@ -266,24 +315,24 @@
 });
         
     
-        var popup_615912a0e70c5728ec23a3c9ac2b86b2 = L.popup({
+        var popup_c065b92d7e7527e3d0356b85048033ec = L.popup({
   "maxWidth": 220,
 });
 
         
             
-                var html_017745cffb37d75e8ad8c47d477072f0 = $(`<div id="html_017745cffb37d75e8ad8c47d477072f0" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:180px;"><div style="background:#f59e0b;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">3. SEIDO SYSTEMES</div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 LILLE<br>🎯 Médium<br>📋 1.Leads<br>📞 +33 3 53 32 00 59</div></div></div>`)[0];
-                popup_615912a0e70c5728ec23a3c9ac2b86b2.setContent(html_017745cffb37d75e8ad8c47d477072f0);
+                var html_22aee80acb4f58c25f37728d0ff1a4d1 = $(`<div id="html_22aee80acb4f58c25f37728d0ff1a4d1" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:180px;"><div style="background:#f59e0b;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">3. SEIDO SYSTEMES</div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 LILLE<br>🎯 Médium<br>📋 1.Leads<br>📞 +33 3 53 32 00 59</div></div></div>`)[0];
+                popup_c065b92d7e7527e3d0356b85048033ec.setContent(html_22aee80acb4f58c25f37728d0ff1a4d1);
             
         
 
-        marker_e8351e8f5b7053e5dc1f68534659a0c2.bindPopup(popup_615912a0e70c5728ec23a3c9ac2b86b2)
+        marker_01454655d6a21e3f3a5ace435bea53c3.bindPopup(popup_c065b92d7e7527e3d0356b85048033ec)
         ;
 
         
     
     
-            marker_e8351e8f5b7053e5dc1f68534659a0c2.bindTooltip(
+            marker_01454655d6a21e3f3a5ace435bea53c3.bindTooltip(
                 `<div>
                      3. SEIDO SYSTEMES — LILLE
                  </div>`,
@@ -293,17 +342,17 @@
             );
         
     
-                marker_e8351e8f5b7053e5dc1f68534659a0c2.setIcon(div_icon_2d54525c2306e3ddfa046553a04de025);
+                marker_01454655d6a21e3f3a5ace435bea53c3.setIcon(div_icon_079ae6315f40fab04b628f90d76170bb);
             
     
-            var marker_7643b2ebd63d4445847fab006e5ec957 = L.marker(
+            var marker_1086933e55d3caee4d9a450422bc8eda = L.marker(
                 [50.6891, 2.8895138480264198],
                 {
 }
-            ).addTo(map_fdbccdedd8712e50c2b0ea8a7048145d);
+            ).addTo(map_83d8ddec221750af9c963c32662d6bc5);
         
     
-            var div_icon_079baa61c4942b505913737d4e9ddf90 = L.divIcon({
+            var div_icon_792049549d6cec6b9f645f43cf941131 = L.divIcon({
   "html": "\u003cdiv style=\"background:#f59e0b;color:white;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:11px;border:2px solid white;box-shadow:0 2px 5px rgba(0,0,0,.4);\"\u003e4\u003c/div\u003e",
   "iconSize": [22, 22],
   "iconAnchor": [11, 11],
@@ -311,24 +360,24 @@
 });
         
     
-        var popup_5f88b27e4c0665dd11190156ab0c05ec = L.popup({
+        var popup_754836e35481c394f12ace87013a8bf5 = L.popup({
   "maxWidth": 220,
 });
 
         
             
-                var html_a85e11dbeeded1044f4e7eef2500717b = $(`<div id="html_a85e11dbeeded1044f4e7eef2500717b" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:180px;"><div style="background:#f59e0b;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">4. BECK CRESPEL</div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 ARMENTIERES<br>🎯 Médium<br>📋 2.Consomme  / doit nous consulter / plaquette envoyée<br>📞 -</div></div></div>`)[0];
-                popup_5f88b27e4c0665dd11190156ab0c05ec.setContent(html_a85e11dbeeded1044f4e7eef2500717b);
+                var html_3bb134ecb16111d447619ceb413a75fe = $(`<div id="html_3bb134ecb16111d447619ceb413a75fe" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:180px;"><div style="background:#f59e0b;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">4. BECK CRESPEL</div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 ARMENTIERES<br>🎯 Médium<br>📋 2.Consomme  / doit nous consulter / plaquette envoyée<br>📞 -</div></div></div>`)[0];
+                popup_754836e35481c394f12ace87013a8bf5.setContent(html_3bb134ecb16111d447619ceb413a75fe);
             
         
 
-        marker_7643b2ebd63d4445847fab006e5ec957.bindPopup(popup_5f88b27e4c0665dd11190156ab0c05ec)
+        marker_1086933e55d3caee4d9a450422bc8eda.bindPopup(popup_754836e35481c394f12ace87013a8bf5)
         ;
 
         
     
     
-            marker_7643b2ebd63d4445847fab006e5ec957.bindTooltip(
+            marker_1086933e55d3caee4d9a450422bc8eda.bindTooltip(
                 `<div>
                      4. BECK CRESPEL — ARMENTIERES
                  </div>`,
@@ -338,17 +387,17 @@
             );
         
     
-                marker_7643b2ebd63d4445847fab006e5ec957.setIcon(div_icon_079baa61c4942b505913737d4e9ddf90);
+                marker_1086933e55d3caee4d9a450422bc8eda.setIcon(div_icon_792049549d6cec6b9f645f43cf941131);
             
     
-            var marker_4966306ae4bc14dbdf78c85b235ae4da = L.marker(
+            var marker_ab6754ea5032549dba154d5ffe2eab53 = L.marker(
                 [50.69256410161514, 2.8800430759867903],
                 {
 }
-            ).addTo(map_fdbccdedd8712e50c2b0ea8a7048145d);
+            ).addTo(map_83d8ddec221750af9c963c32662d6bc5);
         
     
-            var div_icon_f89f925bddf6987edd728ad7efd9c640 = L.divIcon({
+            var div_icon_0af7e687bacb3ec4a15c3aea70626815 = L.divIcon({
   "html": "\u003cdiv style=\"background:#94a3b8;color:white;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:11px;border:2px solid white;box-shadow:0 2px 5px rgba(0,0,0,.4);\"\u003e6\u003c/div\u003e",
   "iconSize": [22, 22],
   "iconAnchor": [11, 11],
@@ -356,24 +405,24 @@
 });
         
     
-        var popup_50839bdfeba249ae406fd4a12d232f4c = L.popup({
+        var popup_9bf0d5f6c5af88db98f12529e92de4ca = L.popup({
   "maxWidth": 220,
 });
 
         
             
-                var html_870755b54a0fad43ee5a35061831d478 = $(`<div id="html_870755b54a0fad43ee5a35061831d478" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:180px;"><div style="background:#94a3b8;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">6. RHINO MACHINES</div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 ARMENTIERES<br>🎯 Basse<br>📋 2.Consomme  / doit nous consulter / plaquette envoyée<br>📞 +33 6 19 89 72 27</div></div></div>`)[0];
-                popup_50839bdfeba249ae406fd4a12d232f4c.setContent(html_870755b54a0fad43ee5a35061831d478);
+                var html_cd810f78c7d68cdee45bfcb56368268e = $(`<div id="html_cd810f78c7d68cdee45bfcb56368268e" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:180px;"><div style="background:#94a3b8;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">6. RHINO MACHINES</div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 ARMENTIERES<br>🎯 Basse<br>📋 2.Consomme  / doit nous consulter / plaquette envoyée<br>📞 +33 6 19 89 72 27</div></div></div>`)[0];
+                popup_9bf0d5f6c5af88db98f12529e92de4ca.setContent(html_cd810f78c7d68cdee45bfcb56368268e);
             
         
 
-        marker_4966306ae4bc14dbdf78c85b235ae4da.bindPopup(popup_50839bdfeba249ae406fd4a12d232f4c)
+        marker_ab6754ea5032549dba154d5ffe2eab53.bindPopup(popup_9bf0d5f6c5af88db98f12529e92de4ca)
         ;
 
         
     
     
-            marker_4966306ae4bc14dbdf78c85b235ae4da.bindTooltip(
+            marker_ab6754ea5032549dba154d5ffe2eab53.bindTooltip(
                 `<div>
                      6. RHINO MACHINES — ARMENTIERES
                  </div>`,
@@ -383,17 +432,17 @@
             );
         
     
-                marker_4966306ae4bc14dbdf78c85b235ae4da.setIcon(div_icon_f89f925bddf6987edd728ad7efd9c640);
+                marker_ab6754ea5032549dba154d5ffe2eab53.setIcon(div_icon_0af7e687bacb3ec4a15c3aea70626815);
             
     
-            var marker_d8077032275eb1c92123f699c5843000 = L.marker(
+            var marker_f5a2fa74b9a998ca3610e46f8d2899a1 = L.marker(
                 [50.68563589838487, 2.8800430759867903],
                 {
 }
-            ).addTo(map_fdbccdedd8712e50c2b0ea8a7048145d);
+            ).addTo(map_83d8ddec221750af9c963c32662d6bc5);
         
     
-            var div_icon_9bcd3ef24acb200178541ebd76dc075c = L.divIcon({
+            var div_icon_f7ceaa93578a018cb95feadf798b0cda = L.divIcon({
   "html": "\u003cdiv style=\"background:#94a3b8;color:white;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:11px;border:2px solid white;box-shadow:0 2px 5px rgba(0,0,0,.4);\"\u003e7\u003c/div\u003e",
   "iconSize": [22, 22],
   "iconAnchor": [11, 11],
@@ -401,24 +450,24 @@
 });
         
     
-        var popup_82f00db204d27e3dd282c1e24bd48b0e = L.popup({
+        var popup_442b00f3477d764579a7acff8c4c9ed4 = L.popup({
   "maxWidth": 220,
 });
 
         
             
-                var html_b01b916e94431e4d09d02fa3a6a20037 = $(`<div id="html_b01b916e94431e4d09d02fa3a6a20037" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:180px;"><div style="background:#94a3b8;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">7. TECHPROD SERVICE & DISTRIBUTION</div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 ARMENTIERES<br>🎯 Basse<br>📋 1.Leads<br>📞 -</div></div></div>`)[0];
-                popup_82f00db204d27e3dd282c1e24bd48b0e.setContent(html_b01b916e94431e4d09d02fa3a6a20037);
+                var html_e29e310544d87b507448c6eb87365297 = $(`<div id="html_e29e310544d87b507448c6eb87365297" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:180px;"><div style="background:#94a3b8;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">7. TECHPROD SERVICE & DISTRIBUTION</div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 ARMENTIERES<br>🎯 Basse<br>📋 1.Leads<br>📞 -</div></div></div>`)[0];
+                popup_442b00f3477d764579a7acff8c4c9ed4.setContent(html_e29e310544d87b507448c6eb87365297);
             
         
 
-        marker_d8077032275eb1c92123f699c5843000.bindPopup(popup_82f00db204d27e3dd282c1e24bd48b0e)
+        marker_f5a2fa74b9a998ca3610e46f8d2899a1.bindPopup(popup_442b00f3477d764579a7acff8c4c9ed4)
         ;
 
         
     
     
-            marker_d8077032275eb1c92123f699c5843000.bindTooltip(
+            marker_f5a2fa74b9a998ca3610e46f8d2899a1.bindTooltip(
                 `<div>
                      7. TECHPROD SERVICE & DISTRIBUTION — ARMENTIERES
                  </div>`,
@@ -428,17 +477,17 @@
             );
         
     
-                marker_d8077032275eb1c92123f699c5843000.setIcon(div_icon_9bcd3ef24acb200178541ebd76dc075c);
+                marker_f5a2fa74b9a998ca3610e46f8d2899a1.setIcon(div_icon_f7ceaa93578a018cb95feadf798b0cda);
             
     
-            var marker_c120f382aa269cadcec941105c4d0e68 = L.marker(
+            var marker_ee9091f2a54d3155c3d10e36ea69eef9 = L.marker(
                 [50.6942, 3.1746],
                 {
 }
-            ).addTo(map_fdbccdedd8712e50c2b0ea8a7048145d);
+            ).addTo(map_83d8ddec221750af9c963c32662d6bc5);
         
     
-            var div_icon_99c9ed4cf0862e70634758ad56daeb12 = L.divIcon({
+            var div_icon_64ef215499a09fcfc86a2e0c68f2520c = L.divIcon({
   "html": "\u003cdiv style=\"background:#94a3b8;color:white;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:11px;border:2px solid white;box-shadow:0 2px 5px rgba(0,0,0,.4);\"\u003e5\u003c/div\u003e",
   "iconSize": [22, 22],
   "iconAnchor": [11, 11],
@@ -446,24 +495,24 @@
 });
         
     
-        var popup_0f8e3670d20a94e26bab148a4c3212da = L.popup({
+        var popup_74de64ca84e8cd3c2f822be16aeb70b0 = L.popup({
   "maxWidth": 220,
 });
 
         
             
-                var html_817b2ce722c4d52a169ce1e915623091 = $(`<div id="html_817b2ce722c4d52a169ce1e915623091" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:180px;"><div style="background:#94a3b8;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">5. CASTEL CT</div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 ROUBAIX<br>🎯 Basse<br>📋 4.Prestation réalisée / client à sécuriser<br>📞 -</div></div></div>`)[0];
-                popup_0f8e3670d20a94e26bab148a4c3212da.setContent(html_817b2ce722c4d52a169ce1e915623091);
+                var html_0fc0f09171c03febd46c1258d8008358 = $(`<div id="html_0fc0f09171c03febd46c1258d8008358" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:180px;"><div style="background:#94a3b8;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">5. CASTEL CT</div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 ROUBAIX<br>🎯 Basse<br>📋 4.Prestation réalisée / client à sécuriser<br>📞 -</div></div></div>`)[0];
+                popup_74de64ca84e8cd3c2f822be16aeb70b0.setContent(html_0fc0f09171c03febd46c1258d8008358);
             
         
 
-        marker_c120f382aa269cadcec941105c4d0e68.bindPopup(popup_0f8e3670d20a94e26bab148a4c3212da)
+        marker_ee9091f2a54d3155c3d10e36ea69eef9.bindPopup(popup_74de64ca84e8cd3c2f822be16aeb70b0)
         ;
 
         
     
     
-            marker_c120f382aa269cadcec941105c4d0e68.bindTooltip(
+            marker_ee9091f2a54d3155c3d10e36ea69eef9.bindTooltip(
                 `<div>
                      5. CASTEL CT — ROUBAIX
                  </div>`,
@@ -473,17 +522,17 @@
             );
         
     
-                marker_c120f382aa269cadcec941105c4d0e68.setIcon(div_icon_99c9ed4cf0862e70634758ad56daeb12);
+                marker_ee9091f2a54d3155c3d10e36ea69eef9.setIcon(div_icon_64ef215499a09fcfc86a2e0c68f2520c);
             
     
-            var marker_703d603f5ece11472e7e66f10005f98c = L.marker(
+            var marker_9479290eb589c580103e8e067e09fde5 = L.marker(
                 [50.5963, 3.2104],
                 {
 }
-            ).addTo(map_fdbccdedd8712e50c2b0ea8a7048145d);
+            ).addTo(map_83d8ddec221750af9c963c32662d6bc5);
         
     
-            var div_icon_de93cda1807b7df9e7651a52b76beb21 = L.divIcon({
+            var div_icon_2930a5063fef7d157fabdd5e30ea5af3 = L.divIcon({
   "html": "\u003cdiv style=\"background:#94a3b8;color:white;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:11px;border:2px solid white;box-shadow:0 2px 5px rgba(0,0,0,.4);\"\u003e8\u003c/div\u003e",
   "iconSize": [22, 22],
   "iconAnchor": [11, 11],
@@ -491,24 +540,24 @@
 });
         
     
-        var popup_68021e6a3b999d695f1b85bc7b36501e = L.popup({
+        var popup_e7217313fbb8b95cdbe7259573ca5c72 = L.popup({
   "maxWidth": 220,
 });
 
         
             
-                var html_ea02745d2bd063c00fe0eab991a59094 = $(`<div id="html_ea02745d2bd063c00fe0eab991a59094" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:180px;"><div style="background:#94a3b8;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">8. TEXDECOR</div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 WILLEMS<br>🎯 Basse<br>📋 1.Leads<br>📞 +33 3 20 61 77 17</div></div></div>`)[0];
-                popup_68021e6a3b999d695f1b85bc7b36501e.setContent(html_ea02745d2bd063c00fe0eab991a59094);
+                var html_5ea22abeed550736504f6cebd55e55da = $(`<div id="html_5ea22abeed550736504f6cebd55e55da" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:180px;"><div style="background:#94a3b8;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">8. TEXDECOR</div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 WILLEMS<br>🎯 Basse<br>📋 1.Leads<br>📞 +33 3 20 61 77 17</div></div></div>`)[0];
+                popup_e7217313fbb8b95cdbe7259573ca5c72.setContent(html_5ea22abeed550736504f6cebd55e55da);
             
         
 
-        marker_703d603f5ece11472e7e66f10005f98c.bindPopup(popup_68021e6a3b999d695f1b85bc7b36501e)
+        marker_9479290eb589c580103e8e067e09fde5.bindPopup(popup_e7217313fbb8b95cdbe7259573ca5c72)
         ;
 
         
     
     
-            marker_703d603f5ece11472e7e66f10005f98c.bindTooltip(
+            marker_9479290eb589c580103e8e067e09fde5.bindTooltip(
                 `<div>
                      8. TEXDECOR — WILLEMS
                  </div>`,
@@ -518,17 +567,17 @@
             );
         
     
-                marker_703d603f5ece11472e7e66f10005f98c.setIcon(div_icon_de93cda1807b7df9e7651a52b76beb21);
+                marker_9479290eb589c580103e8e067e09fde5.setIcon(div_icon_2930a5063fef7d157fabdd5e30ea5af3);
             
     
-            var marker_e0e431d247adf930d9a66b9ccbd9e9e0 = L.marker(
+            var marker_14917a4cedb5a84e32baef8febd38c98 = L.marker(
                 [50.6814, 3.1441],
                 {
 }
-            ).addTo(map_fdbccdedd8712e50c2b0ea8a7048145d);
+            ).addTo(map_83d8ddec221750af9c963c32662d6bc5);
         
     
-            var div_icon_f8a9cc90151787f9e99cf5bb73399b3d = L.divIcon({
+            var div_icon_407804570deac187c007090eafd45625 = L.divIcon({
   "html": "\u003cdiv style=\"background:#94a3b8;color:white;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:11px;border:2px solid white;box-shadow:0 2px 5px rgba(0,0,0,.4);\"\u003e9\u003c/div\u003e",
   "iconSize": [22, 22],
   "iconAnchor": [11, 11],
@@ -536,24 +585,24 @@
 });
         
     
-        var popup_2a4f41ad01e852b5a066877ebb84b34f = L.popup({
+        var popup_d229c8505f38a5c0944ecf1512952006 = L.popup({
   "maxWidth": 220,
 });
 
         
             
-                var html_ecf7af3db85587b260680c2d3f426cb5 = $(`<div id="html_ecf7af3db85587b260680c2d3f426cb5" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:180px;"><div style="background:#94a3b8;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">9. VERDI</div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 WASQUEHAL<br>🎯 Basse<br>📋 1.Leads<br>📞 03 28 09 92 00</div></div></div>`)[0];
-                popup_2a4f41ad01e852b5a066877ebb84b34f.setContent(html_ecf7af3db85587b260680c2d3f426cb5);
+                var html_17b1f89dcd1af52a00a3a91b9a3b0907 = $(`<div id="html_17b1f89dcd1af52a00a3a91b9a3b0907" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:180px;"><div style="background:#94a3b8;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">9. VERDI</div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 WASQUEHAL<br>🎯 Basse<br>📋 1.Leads<br>📞 03 28 09 92 00</div></div></div>`)[0];
+                popup_d229c8505f38a5c0944ecf1512952006.setContent(html_17b1f89dcd1af52a00a3a91b9a3b0907);
             
         
 
-        marker_e0e431d247adf930d9a66b9ccbd9e9e0.bindPopup(popup_2a4f41ad01e852b5a066877ebb84b34f)
+        marker_14917a4cedb5a84e32baef8febd38c98.bindPopup(popup_d229c8505f38a5c0944ecf1512952006)
         ;
 
         
     
     
-            marker_e0e431d247adf930d9a66b9ccbd9e9e0.bindTooltip(
+            marker_14917a4cedb5a84e32baef8febd38c98.bindTooltip(
                 `<div>
                      9. VERDI — WASQUEHAL
                  </div>`,
@@ -563,17 +612,17 @@
             );
         
     
-                marker_e0e431d247adf930d9a66b9ccbd9e9e0.setIcon(div_icon_f8a9cc90151787f9e99cf5bb73399b3d);
+                marker_14917a4cedb5a84e32baef8febd38c98.setIcon(div_icon_407804570deac187c007090eafd45625);
             
     
-            var marker_9c46ab0a81b92c84d6c495a984d27f84 = L.marker(
+            var marker_836e0a3c62e3236e920b86f82ecb2788 = L.marker(
                 [50.5491, 3.1388],
                 {
 }
-            ).addTo(map_fdbccdedd8712e50c2b0ea8a7048145d);
+            ).addTo(map_83d8ddec221750af9c963c32662d6bc5);
         
     
-            var div_icon_a2ab3b464b5e58be9efb1806778b029e = L.divIcon({
+            var div_icon_7d4eb622d882f9be23bab5df34f8d22e = L.divIcon({
   "html": "\u003cdiv style=\"background:#94a3b8;color:white;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:11px;border:2px solid white;box-shadow:0 2px 5px rgba(0,0,0,.4);\"\u003e10\u003c/div\u003e",
   "iconSize": [22, 22],
   "iconAnchor": [11, 11],
@@ -581,24 +630,24 @@
 });
         
     
-        var popup_565eaef7e1b56da82e42c8783bc82dc8 = L.popup({
+        var popup_6a78f94decdc57ae17d0c12ad6c19d6f = L.popup({
   "maxWidth": 220,
 });
 
         
             
-                var html_4f3938459a1575eeddc014f180feed33 = $(`<div id="html_4f3938459a1575eeddc014f180feed33" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:180px;"><div style="background:#94a3b8;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">10. Soc De Distribution D Automatismes</div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 Fretin<br>🎯 Basse<br>📋 1.Leads<br>📞 -</div></div></div>`)[0];
-                popup_565eaef7e1b56da82e42c8783bc82dc8.setContent(html_4f3938459a1575eeddc014f180feed33);
+                var html_559a8205ee67a51ddc274f5e5c72a06a = $(`<div id="html_559a8205ee67a51ddc274f5e5c72a06a" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:180px;"><div style="background:#94a3b8;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">10. Soc De Distribution D Automatismes</div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 Fretin<br>🎯 Basse<br>📋 1.Leads<br>📞 -</div></div></div>`)[0];
+                popup_6a78f94decdc57ae17d0c12ad6c19d6f.setContent(html_559a8205ee67a51ddc274f5e5c72a06a);
             
         
 
-        marker_9c46ab0a81b92c84d6c495a984d27f84.bindPopup(popup_565eaef7e1b56da82e42c8783bc82dc8)
+        marker_836e0a3c62e3236e920b86f82ecb2788.bindPopup(popup_6a78f94decdc57ae17d0c12ad6c19d6f)
         ;
 
         
     
     
-            marker_9c46ab0a81b92c84d6c495a984d27f84.bindTooltip(
+            marker_836e0a3c62e3236e920b86f82ecb2788.bindTooltip(
                 `<div>
                      10. Soc De Distribution D Automatismes — Fretin
                  </div>`,
@@ -608,17 +657,17 @@
             );
         
     
-                marker_9c46ab0a81b92c84d6c495a984d27f84.setIcon(div_icon_a2ab3b464b5e58be9efb1806778b029e);
+                marker_836e0a3c62e3236e920b86f82ecb2788.setIcon(div_icon_7d4eb622d882f9be23bab5df34f8d22e);
             
     
-            var marker_bf7ab7c8a73de4198077716ac3585d3f = L.marker(
+            var marker_984af6f364a582d78af22ba108bf02ab = L.marker(
                 [50.4449, 3.4315],
                 {
 }
-            ).addTo(map_fdbccdedd8712e50c2b0ea8a7048145d);
+            ).addTo(map_83d8ddec221750af9c963c32662d6bc5);
         
     
-            var div_icon_b088a65da43a32fa99eaf37d0015a249 = L.divIcon({
+            var div_icon_764d8287467b75ed7fd384a15c9e9827 = L.divIcon({
   "html": "\u003cdiv style=\"background:#94a3b8;color:white;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:11px;border:2px solid white;box-shadow:0 2px 5px rgba(0,0,0,.4);\"\u003e12\u003c/div\u003e",
   "iconSize": [22, 22],
   "iconAnchor": [11, 11],
@@ -626,24 +675,24 @@
 });
         
     
-        var popup_35a871a8ff12afe2bd7000651a130c77 = L.popup({
+        var popup_10607b7720eb3f4eae70153b69a9ab82 = L.popup({
   "maxWidth": 220,
 });
 
         
             
-                var html_08e379a07b52d9bc37ab165ffdd22797 = $(`<div id="html_08e379a07b52d9bc37ab165ffdd22797" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:180px;"><div style="background:#94a3b8;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">12. COMROD FRANCE</div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 Saint-Amand-les-Eaux<br>🎯 Basse<br>📋 1.Leads<br>📞 03 27 22 85 00</div></div></div>`)[0];
-                popup_35a871a8ff12afe2bd7000651a130c77.setContent(html_08e379a07b52d9bc37ab165ffdd22797);
+                var html_a6cd2dab29f609a08e792fcf2c5005c7 = $(`<div id="html_a6cd2dab29f609a08e792fcf2c5005c7" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:180px;"><div style="background:#94a3b8;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">12. COMROD FRANCE</div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 Saint-Amand-les-Eaux<br>🎯 Basse<br>📋 1.Leads<br>📞 03 27 22 85 00</div></div></div>`)[0];
+                popup_10607b7720eb3f4eae70153b69a9ab82.setContent(html_a6cd2dab29f609a08e792fcf2c5005c7);
             
         
 
-        marker_bf7ab7c8a73de4198077716ac3585d3f.bindPopup(popup_35a871a8ff12afe2bd7000651a130c77)
+        marker_984af6f364a582d78af22ba108bf02ab.bindPopup(popup_10607b7720eb3f4eae70153b69a9ab82)
         ;
 
         
     
     
-            marker_bf7ab7c8a73de4198077716ac3585d3f.bindTooltip(
+            marker_984af6f364a582d78af22ba108bf02ab.bindTooltip(
                 `<div>
                      12. COMROD FRANCE — Saint-Amand-les-Eaux
                  </div>`,
@@ -653,17 +702,17 @@
             );
         
     
-                marker_bf7ab7c8a73de4198077716ac3585d3f.setIcon(div_icon_b088a65da43a32fa99eaf37d0015a249);
+                marker_984af6f364a582d78af22ba108bf02ab.setIcon(div_icon_764d8287467b75ed7fd384a15c9e9827);
             
     
-            var marker_94ba53e663f279d50587b4f9838afbad = L.marker(
+            var marker_7b47806d9096ed7f84bf5e724e6d18bc = L.marker(
                 [50.6102, 3.0189],
                 {
 }
-            ).addTo(map_fdbccdedd8712e50c2b0ea8a7048145d);
+            ).addTo(map_83d8ddec221750af9c963c32662d6bc5);
         
     
-            var div_icon_47cff2998848a3ae19a07358e9447134 = L.divIcon({
+            var div_icon_8be17e1f3beb6c6b0f6460b4aa2a855c = L.divIcon({
   "html": "\u003cdiv style=\"background:#94a3b8;color:white;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:11px;border:2px solid white;box-shadow:0 2px 5px rgba(0,0,0,.4);\"\u003e13\u003c/div\u003e",
   "iconSize": [22, 22],
   "iconAnchor": [11, 11],
@@ -671,24 +720,24 @@
 });
         
     
-        var popup_237a2e5186c1d9f3ab306b5326254204 = L.popup({
+        var popup_0d22e1d32357961b975176e2d8362a1c = L.popup({
   "maxWidth": 220,
 });
 
         
             
-                var html_2d895d8f30581532f64d8bf31cd90851 = $(`<div id="html_2d895d8f30581532f64d8bf31cd90851" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:180px;"><div style="background:#94a3b8;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">13. BIOLUME</div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 LOOS<br>🎯 Basse<br>📋 2.Consomme  / doit nous consulter / plaquette envoyée<br>📞 -</div></div></div>`)[0];
-                popup_237a2e5186c1d9f3ab306b5326254204.setContent(html_2d895d8f30581532f64d8bf31cd90851);
+                var html_160c2f7254c5bbd9b8bd7255888f7345 = $(`<div id="html_160c2f7254c5bbd9b8bd7255888f7345" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:180px;"><div style="background:#94a3b8;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">13. BIOLUME</div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 LOOS<br>🎯 Basse<br>📋 2.Consomme  / doit nous consulter / plaquette envoyée<br>📞 -</div></div></div>`)[0];
+                popup_0d22e1d32357961b975176e2d8362a1c.setContent(html_160c2f7254c5bbd9b8bd7255888f7345);
             
         
 
-        marker_94ba53e663f279d50587b4f9838afbad.bindPopup(popup_237a2e5186c1d9f3ab306b5326254204)
+        marker_7b47806d9096ed7f84bf5e724e6d18bc.bindPopup(popup_0d22e1d32357961b975176e2d8362a1c)
         ;
 
         
     
     
-            marker_94ba53e663f279d50587b4f9838afbad.bindTooltip(
+            marker_7b47806d9096ed7f84bf5e724e6d18bc.bindTooltip(
                 `<div>
                      13. BIOLUME — LOOS
                  </div>`,
@@ -698,17 +747,17 @@
             );
         
     
-                marker_94ba53e663f279d50587b4f9838afbad.setIcon(div_icon_47cff2998848a3ae19a07358e9447134);
+                marker_7b47806d9096ed7f84bf5e724e6d18bc.setIcon(div_icon_8be17e1f3beb6c6b0f6460b4aa2a855c);
             
     
-            var marker_5e46578303df59ab7851c7b85240d859 = L.marker(
+            var marker_42dda800b9cbecf6bf68697906b67b06 = L.marker(
                 [50.6891, 2.8832],
                 {
 }
-            ).addTo(map_fdbccdedd8712e50c2b0ea8a7048145d);
+            ).addTo(map_83d8ddec221750af9c963c32662d6bc5);
         
     
-            var div_icon_2584baa49872d962e4325770bfd47eaa = L.divIcon({
+            var div_icon_c20beb5157fb68ccc318a69020f3d8c4 = L.divIcon({
   "html": "\u003cdiv style=\"width:18px;height:18px;background:#1a3a6b;color:white;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:10px;border:2px solid white;transform:rotate(45deg);box-shadow:0 2px 5px rgba(0,0,0,.35);\"\u003e\u003cspan style=\"transform:rotate(-45deg)\"\u003e15\u003c/span\u003e\u003c/div\u003e",
   "iconSize": [18, 18],
   "iconAnchor": [9, 9],
@@ -716,24 +765,24 @@
 });
         
     
-        var popup_b61656fe33f6e09176200d72b3c7c00f = L.popup({
+        var popup_a138c7c846b08286958c860b8fccb327 = L.popup({
   "maxWidth": 240,
 });
 
         
             
-                var html_e843101a6af69a578afd2003ac30b768 = $(`<div id="html_e843101a6af69a578afd2003ac30b768" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:200px;"><div style="background:#1a3a6b;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">15. SOLARONICS SAS<span style="font-weight:normal;font-size:10px;"> (recommandé)</span></div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 ARMENTIERES<br>🎯 Très élevé<br>📋 5. Clients stratégiques<br>💡 Client stratégique • à ~0 km<br>📞 +33 7 66 32 09 77</div></div></div>`)[0];
-                popup_b61656fe33f6e09176200d72b3c7c00f.setContent(html_e843101a6af69a578afd2003ac30b768);
+                var html_2b76a3f271a1cee7ff1752ea3612e8f6 = $(`<div id="html_2b76a3f271a1cee7ff1752ea3612e8f6" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:200px;"><div style="background:#1a3a6b;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">15. SOLARONICS SAS<span style="font-weight:normal;font-size:10px;"> (recommandé)</span></div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 ARMENTIERES<br>🎯 Très élevé<br>📋 5. Clients stratégiques<br>💡 Client stratégique • à ~0 km<br>📞 +33 7 66 32 09 77</div></div></div>`)[0];
+                popup_a138c7c846b08286958c860b8fccb327.setContent(html_2b76a3f271a1cee7ff1752ea3612e8f6);
             
         
 
-        marker_5e46578303df59ab7851c7b85240d859.bindPopup(popup_b61656fe33f6e09176200d72b3c7c00f)
+        marker_42dda800b9cbecf6bf68697906b67b06.bindPopup(popup_a138c7c846b08286958c860b8fccb327)
         ;
 
         
     
     
-            marker_5e46578303df59ab7851c7b85240d859.bindTooltip(
+            marker_42dda800b9cbecf6bf68697906b67b06.bindTooltip(
                 `<div>
                      15. SOLARONICS SAS — ARMENTIERES
                  </div>`,
@@ -743,17 +792,17 @@
             );
         
     
-                marker_5e46578303df59ab7851c7b85240d859.setIcon(div_icon_2584baa49872d962e4325770bfd47eaa);
+                marker_42dda800b9cbecf6bf68697906b67b06.setIcon(div_icon_c20beb5157fb68ccc318a69020f3d8c4);
             
     
-            var marker_360385336dc830799c06ab23260ef01d = L.marker(
+            var marker_8e83a267386aeff2072324a6a93ef185 = L.marker(
                 [50.5963, 3.2104],
                 {
 }
-            ).addTo(map_fdbccdedd8712e50c2b0ea8a7048145d);
+            ).addTo(map_83d8ddec221750af9c963c32662d6bc5);
         
     
-            var div_icon_f71d390ddd5682dd998e0c395368adbd = L.divIcon({
+            var div_icon_a5fd28af4a00039e4dd19ceca7d6b0fd = L.divIcon({
   "html": "\u003cdiv style=\"width:18px;height:18px;background:#1a3a6b;color:white;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:10px;border:2px solid white;transform:rotate(45deg);box-shadow:0 2px 5px rgba(0,0,0,.35);\"\u003e\u003cspan style=\"transform:rotate(-45deg)\"\u003e16\u003c/span\u003e\u003c/div\u003e",
   "iconSize": [18, 18],
   "iconAnchor": [9, 9],
@@ -761,24 +810,24 @@
 });
         
     
-        var popup_b7e7a7dd7b68a50c7f113ac352e898d0 = L.popup({
+        var popup_0588c1f3c130f02eba51017b3e83be69 = L.popup({
   "maxWidth": 240,
 });
 
         
             
-                var html_e6d32194146a90629e0f48941475f740 = $(`<div id="html_e6d32194146a90629e0f48941475f740" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:200px;"><div style="background:#1a3a6b;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">16. MUSTHANE<span style="font-weight:normal;font-size:10px;"> (recommandé)</span></div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 WILLEMS<br>🎯 Très élevé<br>📋 4.Prestation réalisée / client à sécuriser<br>💡 Opportunité dans votre zone • à ~0 km<br>📞 -</div></div></div>`)[0];
-                popup_b7e7a7dd7b68a50c7f113ac352e898d0.setContent(html_e6d32194146a90629e0f48941475f740);
+                var html_a2151ac00c76dfdfdb7ae7c27a066b2d = $(`<div id="html_a2151ac00c76dfdfdb7ae7c27a066b2d" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:200px;"><div style="background:#1a3a6b;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">16. MUSTHANE<span style="font-weight:normal;font-size:10px;"> (recommandé)</span></div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 WILLEMS<br>🎯 Très élevé<br>📋 4.Prestation réalisée / client à sécuriser<br>💡 Opportunité dans votre zone • à ~0 km<br>📞 -</div></div></div>`)[0];
+                popup_0588c1f3c130f02eba51017b3e83be69.setContent(html_a2151ac00c76dfdfdb7ae7c27a066b2d);
             
         
 
-        marker_360385336dc830799c06ab23260ef01d.bindPopup(popup_b7e7a7dd7b68a50c7f113ac352e898d0)
+        marker_8e83a267386aeff2072324a6a93ef185.bindPopup(popup_0588c1f3c130f02eba51017b3e83be69)
         ;
 
         
     
     
-            marker_360385336dc830799c06ab23260ef01d.bindTooltip(
+            marker_8e83a267386aeff2072324a6a93ef185.bindTooltip(
                 `<div>
                      16. MUSTHANE — WILLEMS
                  </div>`,
@@ -788,17 +837,17 @@
             );
         
     
-                marker_360385336dc830799c06ab23260ef01d.setIcon(div_icon_f71d390ddd5682dd998e0c395368adbd);
+                marker_8e83a267386aeff2072324a6a93ef185.setIcon(div_icon_a5fd28af4a00039e4dd19ceca7d6b0fd);
             
     
-            var marker_d1128aac11da502082b721205beeada1 = L.marker(
+            var marker_24476271947689fe5432ef5078984889 = L.marker(
                 [50.6942, 3.1746],
                 {
 }
-            ).addTo(map_fdbccdedd8712e50c2b0ea8a7048145d);
+            ).addTo(map_83d8ddec221750af9c963c32662d6bc5);
         
     
-            var div_icon_947071b978cb431763fff004abd0b88e = L.divIcon({
+            var div_icon_413b1dbfcf8a047786bafc49bfacc108 = L.divIcon({
   "html": "\u003cdiv style=\"width:18px;height:18px;background:#1a3a6b;color:white;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:10px;border:2px solid white;transform:rotate(45deg);box-shadow:0 2px 5px rgba(0,0,0,.35);\"\u003e\u003cspan style=\"transform:rotate(-45deg)\"\u003e17\u003c/span\u003e\u003c/div\u003e",
   "iconSize": [18, 18],
   "iconAnchor": [9, 9],
@@ -806,24 +855,24 @@
 });
         
     
-        var popup_b5d8dd9b9419a36945fe0cc530224714 = L.popup({
+        var popup_5f10ca5572ed5586ae732369c3df9994 = L.popup({
   "maxWidth": 240,
 });
 
         
             
-                var html_19ce66db8fe53f13f5242f1c5cf2539a = $(`<div id="html_19ce66db8fe53f13f5242f1c5cf2539a" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:200px;"><div style="background:#1a3a6b;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">17. STANDARD INDUSTRIE INTERNATIONAL<span style="font-weight:normal;font-size:10px;"> (recommandé)</span></div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 ROUBAIX<br>🎯 Très élevé<br>📋 3.Devis en cours<br>💡 Devis en cours • à ~0 km<br>📞 +33 3 20 28 32 25</div></div></div>`)[0];
-                popup_b5d8dd9b9419a36945fe0cc530224714.setContent(html_19ce66db8fe53f13f5242f1c5cf2539a);
+                var html_42651625debe98d37fcf3d22be2c65c6 = $(`<div id="html_42651625debe98d37fcf3d22be2c65c6" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:200px;"><div style="background:#1a3a6b;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">17. STANDARD INDUSTRIE INTERNATIONAL<span style="font-weight:normal;font-size:10px;"> (recommandé)</span></div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 ROUBAIX<br>🎯 Très élevé<br>📋 3.Devis en cours<br>💡 Devis en cours • à ~0 km<br>📞 +33 3 20 28 32 25</div></div></div>`)[0];
+                popup_5f10ca5572ed5586ae732369c3df9994.setContent(html_42651625debe98d37fcf3d22be2c65c6);
             
         
 
-        marker_d1128aac11da502082b721205beeada1.bindPopup(popup_b5d8dd9b9419a36945fe0cc530224714)
+        marker_24476271947689fe5432ef5078984889.bindPopup(popup_5f10ca5572ed5586ae732369c3df9994)
         ;
 
         
     
     
-            marker_d1128aac11da502082b721205beeada1.bindTooltip(
+            marker_24476271947689fe5432ef5078984889.bindTooltip(
                 `<div>
                      17. STANDARD INDUSTRIE INTERNATIONAL — ROUBAIX
                  </div>`,
@@ -833,17 +882,17 @@
             );
         
     
-                marker_d1128aac11da502082b721205beeada1.setIcon(div_icon_947071b978cb431763fff004abd0b88e);
+                marker_24476271947689fe5432ef5078984889.setIcon(div_icon_413b1dbfcf8a047786bafc49bfacc108);
             
     
-            var marker_0c8f0caee45903ba4912e2c630eb8baf = L.marker(
+            var marker_3a54994b7c9597969233cd8cb1666f5b = L.marker(
                 [50.7025, 3.2089],
                 {
 }
-            ).addTo(map_fdbccdedd8712e50c2b0ea8a7048145d);
+            ).addTo(map_83d8ddec221750af9c963c32662d6bc5);
         
     
-            var div_icon_d02a975cd18476c24d5db91505951e94 = L.divIcon({
+            var div_icon_db29b86c743e3adabf353ac0f36235c2 = L.divIcon({
   "html": "\u003cdiv style=\"width:18px;height:18px;background:#1a3a6b;color:white;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:10px;border:2px solid white;transform:rotate(45deg);box-shadow:0 2px 5px rgba(0,0,0,.35);\"\u003e\u003cspan style=\"transform:rotate(-45deg)\"\u003e18\u003c/span\u003e\u003c/div\u003e",
   "iconSize": [18, 18],
   "iconAnchor": [9, 9],
@@ -851,24 +900,24 @@
 });
         
     
-        var popup_f5d830b06e203676aa52b3c03a41d5da = L.popup({
+        var popup_823855c1aa8a1a64433d4b3d1848bf4d = L.popup({
   "maxWidth": 240,
 });
 
         
             
-                var html_dc9016d41f5e013e92b82cb006ae2afe = $(`<div id="html_dc9016d41f5e013e92b82cb006ae2afe" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:200px;"><div style="background:#1a3a6b;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">18. VELEC SYSTEMS<span style="font-weight:normal;font-size:10px;"> (recommandé)</span></div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 WATTRELOS<br>🎯 Très élevé<br>📋 5. Clients stratégiques<br>💡 Client stratégique • à ~2 km<br>📞 +33 3 20 75 44 98</div></div></div>`)[0];
-                popup_f5d830b06e203676aa52b3c03a41d5da.setContent(html_dc9016d41f5e013e92b82cb006ae2afe);
+                var html_66d0cc4c02630a33b3a387281d706f0c = $(`<div id="html_66d0cc4c02630a33b3a387281d706f0c" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:200px;"><div style="background:#1a3a6b;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">18. VELEC SYSTEMS<span style="font-weight:normal;font-size:10px;"> (recommandé)</span></div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 WATTRELOS<br>🎯 Très élevé<br>📋 5. Clients stratégiques<br>💡 Client stratégique • à ~2 km<br>📞 +33 3 20 75 44 98</div></div></div>`)[0];
+                popup_823855c1aa8a1a64433d4b3d1848bf4d.setContent(html_66d0cc4c02630a33b3a387281d706f0c);
             
         
 
-        marker_0c8f0caee45903ba4912e2c630eb8baf.bindPopup(popup_f5d830b06e203676aa52b3c03a41d5da)
+        marker_3a54994b7c9597969233cd8cb1666f5b.bindPopup(popup_823855c1aa8a1a64433d4b3d1848bf4d)
         ;
 
         
     
     
-            marker_0c8f0caee45903ba4912e2c630eb8baf.bindTooltip(
+            marker_3a54994b7c9597969233cd8cb1666f5b.bindTooltip(
                 `<div>
                      18. VELEC SYSTEMS — WATTRELOS
                  </div>`,
@@ -878,17 +927,17 @@
             );
         
     
-                marker_0c8f0caee45903ba4912e2c630eb8baf.setIcon(div_icon_d02a975cd18476c24d5db91505951e94);
+                marker_3a54994b7c9597969233cd8cb1666f5b.setIcon(div_icon_db29b86c743e3adabf353ac0f36235c2);
             
     
-            var marker_94853488a9c6e7c466369c1833c2a06c = L.marker(
+            var marker_77050fc4053041078577739af378bd99 = L.marker(
                 [50.5698, 3.1127],
                 {
 }
-            ).addTo(map_fdbccdedd8712e50c2b0ea8a7048145d);
+            ).addTo(map_83d8ddec221750af9c963c32662d6bc5);
         
     
-            var div_icon_e8d86d20681c5e9e0c203e0aaa523b80 = L.divIcon({
+            var div_icon_957bd7d03d54a280ffc3b69b45821b8f = L.divIcon({
   "html": "\u003cdiv style=\"width:18px;height:18px;background:#1a3a6b;color:white;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:10px;border:2px solid white;transform:rotate(45deg);box-shadow:0 2px 5px rgba(0,0,0,.35);\"\u003e\u003cspan style=\"transform:rotate(-45deg)\"\u003e19\u003c/span\u003e\u003c/div\u003e",
   "iconSize": [18, 18],
   "iconAnchor": [9, 9],
@@ -896,24 +945,24 @@
 });
         
     
-        var popup_3def0243922ba68ad62410be1368fe77 = L.popup({
+        var popup_068f43f1a833fd20c97cab24801b76e6 = L.popup({
   "maxWidth": 240,
 });
 
         
             
-                var html_4be69c34e570659bf1ad77a2d7034bbf = $(`<div id="html_4be69c34e570659bf1ad77a2d7034bbf" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:200px;"><div style="background:#1a3a6b;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">19. BOVIS FLANDRES ARTOIS<span style="font-weight:normal;font-size:10px;"> (recommandé)</span></div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 LESQUIN<br>🎯 Très élevé<br>📋 5. Clients stratégiques<br>💡 Client stratégique • à ~2 km<br>📞 -</div></div></div>`)[0];
-                popup_3def0243922ba68ad62410be1368fe77.setContent(html_4be69c34e570659bf1ad77a2d7034bbf);
+                var html_489cc28e30cd9ad1a2103938001425a4 = $(`<div id="html_489cc28e30cd9ad1a2103938001425a4" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:200px;"><div style="background:#1a3a6b;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">19. BOVIS FLANDRES ARTOIS<span style="font-weight:normal;font-size:10px;"> (recommandé)</span></div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 LESQUIN<br>🎯 Très élevé<br>📋 5. Clients stratégiques<br>💡 Client stratégique • à ~2 km<br>📞 -</div></div></div>`)[0];
+                popup_068f43f1a833fd20c97cab24801b76e6.setContent(html_489cc28e30cd9ad1a2103938001425a4);
             
         
 
-        marker_94853488a9c6e7c466369c1833c2a06c.bindPopup(popup_3def0243922ba68ad62410be1368fe77)
+        marker_77050fc4053041078577739af378bd99.bindPopup(popup_068f43f1a833fd20c97cab24801b76e6)
         ;
 
         
     
     
-            marker_94853488a9c6e7c466369c1833c2a06c.bindTooltip(
+            marker_77050fc4053041078577739af378bd99.bindTooltip(
                 `<div>
                      19. BOVIS FLANDRES ARTOIS — LESQUIN
                  </div>`,
@@ -923,17 +972,17 @@
             );
         
     
-                marker_94853488a9c6e7c466369c1833c2a06c.setIcon(div_icon_e8d86d20681c5e9e0c203e0aaa523b80);
+                marker_77050fc4053041078577739af378bd99.setIcon(div_icon_957bd7d03d54a280ffc3b69b45821b8f);
             
     
-            var marker_9e62059b70317bfa6db2cc56d3afd7b3 = L.marker(
+            var marker_566867ac844cebedeea0df704f2a1a3e = L.marker(
                 [50.7237, 3.1676185091777946],
                 {
 }
-            ).addTo(map_fdbccdedd8712e50c2b0ea8a7048145d);
+            ).addTo(map_83d8ddec221750af9c963c32662d6bc5);
         
     
-            var div_icon_759e6c25ea715147f7e79eab85b693d7 = L.divIcon({
+            var div_icon_f471ae8bbcf96fe1a2f7fba36fb21b7b = L.divIcon({
   "html": "\u003cdiv style=\"width:18px;height:18px;background:#1a3a6b;color:white;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:10px;border:2px solid white;transform:rotate(45deg);box-shadow:0 2px 5px rgba(0,0,0,.35);\"\u003e\u003cspan style=\"transform:rotate(-45deg)\"\u003e20\u003c/span\u003e\u003c/div\u003e",
   "iconSize": [18, 18],
   "iconAnchor": [9, 9],
@@ -941,24 +990,24 @@
 });
         
     
-        var popup_e9349364de9ee4e3b64b11885069bd30 = L.popup({
+        var popup_38ca46bcd5ba308c29929d8102c20a33 = L.popup({
   "maxWidth": 240,
 });
 
         
             
-                var html_e28218aa8e18e19ab1dc3dc7b140cadc = $(`<div id="html_e28218aa8e18e19ab1dc3dc7b140cadc" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:200px;"><div style="background:#1a3a6b;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">20. MILLESCAMPS MODELAGE<span style="font-weight:normal;font-size:10px;"> (recommandé)</span></div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 TOURCOING<br>🎯 Très élevé<br>📋 3.Devis en cours<br>💡 Devis en cours • à ~3 km<br>📞 -</div></div></div>`)[0];
-                popup_e9349364de9ee4e3b64b11885069bd30.setContent(html_e28218aa8e18e19ab1dc3dc7b140cadc);
+                var html_68961f460ee413703ae47f1760316216 = $(`<div id="html_68961f460ee413703ae47f1760316216" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:200px;"><div style="background:#1a3a6b;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">20. MILLESCAMPS MODELAGE<span style="font-weight:normal;font-size:10px;"> (recommandé)</span></div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 TOURCOING<br>🎯 Très élevé<br>📋 3.Devis en cours<br>💡 Devis en cours • à ~3 km<br>📞 -</div></div></div>`)[0];
+                popup_38ca46bcd5ba308c29929d8102c20a33.setContent(html_68961f460ee413703ae47f1760316216);
             
         
 
-        marker_9e62059b70317bfa6db2cc56d3afd7b3.bindPopup(popup_e9349364de9ee4e3b64b11885069bd30)
+        marker_566867ac844cebedeea0df704f2a1a3e.bindPopup(popup_38ca46bcd5ba308c29929d8102c20a33)
         ;
 
         
     
     
-            marker_9e62059b70317bfa6db2cc56d3afd7b3.bindTooltip(
+            marker_566867ac844cebedeea0df704f2a1a3e.bindTooltip(
                 `<div>
                      20. MILLESCAMPS MODELAGE — TOURCOING
                  </div>`,
@@ -968,17 +1017,17 @@
             );
         
     
-                marker_9e62059b70317bfa6db2cc56d3afd7b3.setIcon(div_icon_759e6c25ea715147f7e79eab85b693d7);
+                marker_566867ac844cebedeea0df704f2a1a3e.setIcon(div_icon_f471ae8bbcf96fe1a2f7fba36fb21b7b);
             
     
-            var marker_11e177336c56220e324a0fd6980fe84b = L.marker(
+            var marker_73f59e9756d35752cdbb6d2c997e2a2c = L.marker(
                 [50.7237, 3.154981490822206],
                 {
 }
-            ).addTo(map_fdbccdedd8712e50c2b0ea8a7048145d);
+            ).addTo(map_83d8ddec221750af9c963c32662d6bc5);
         
     
-            var div_icon_026227db4a310ccb47ad7b8376af1b62 = L.divIcon({
+            var div_icon_dfb16b77b533959294a6763318cc1783 = L.divIcon({
   "html": "\u003cdiv style=\"width:18px;height:18px;background:#2563eb;color:white;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:10px;border:2px solid white;transform:rotate(45deg);box-shadow:0 2px 5px rgba(0,0,0,.35);\"\u003e\u003cspan style=\"transform:rotate(-45deg)\"\u003e24\u003c/span\u003e\u003c/div\u003e",
   "iconSize": [18, 18],
   "iconAnchor": [9, 9],
@@ -986,24 +1035,24 @@
 });
         
     
-        var popup_08b6280d5bba715757c5227dd5ec06cf = L.popup({
+        var popup_9515bab170bde01d821c8b3d8874d471 = L.popup({
   "maxWidth": 240,
 });
 
         
             
-                var html_b717a2f0e4e26665bbfacafcce3751fa = $(`<div id="html_b717a2f0e4e26665bbfacafcce3751fa" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:200px;"><div style="background:#2563eb;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">24. COGLIANDRO<span style="font-weight:normal;font-size:10px;"> (recommandé)</span></div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 TOURCOING<br>🎯 Haute<br>📋 2.Consomme  / doit nous consulter / plaquette envoyée<br>💡 Client existant • Priorité haute • à ~3 km<br>📞 06 03 97 99 23</div></div></div>`)[0];
-                popup_08b6280d5bba715757c5227dd5ec06cf.setContent(html_b717a2f0e4e26665bbfacafcce3751fa);
+                var html_32cc14dc0d76959b0a51124cedaf78cc = $(`<div id="html_32cc14dc0d76959b0a51124cedaf78cc" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:200px;"><div style="background:#2563eb;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">24. COGLIANDRO<span style="font-weight:normal;font-size:10px;"> (recommandé)</span></div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 TOURCOING<br>🎯 Haute<br>📋 2.Consomme  / doit nous consulter / plaquette envoyée<br>💡 Client existant • Priorité haute • à ~3 km<br>📞 06 03 97 99 23</div></div></div>`)[0];
+                popup_9515bab170bde01d821c8b3d8874d471.setContent(html_32cc14dc0d76959b0a51124cedaf78cc);
             
         
 
-        marker_11e177336c56220e324a0fd6980fe84b.bindPopup(popup_08b6280d5bba715757c5227dd5ec06cf)
+        marker_73f59e9756d35752cdbb6d2c997e2a2c.bindPopup(popup_9515bab170bde01d821c8b3d8874d471)
         ;
 
         
     
     
-            marker_11e177336c56220e324a0fd6980fe84b.bindTooltip(
+            marker_73f59e9756d35752cdbb6d2c997e2a2c.bindTooltip(
                 `<div>
                      24. COGLIANDRO — TOURCOING
                  </div>`,
@@ -1013,17 +1062,17 @@
             );
         
     
-                marker_11e177336c56220e324a0fd6980fe84b.setIcon(div_icon_026227db4a310ccb47ad7b8376af1b62);
+                marker_73f59e9756d35752cdbb6d2c997e2a2c.setIcon(div_icon_dfb16b77b533959294a6763318cc1783);
             
     
-            var marker_10cf7e60888b06474d7a002143f7fc2a = L.marker(
+            var marker_c9fb6b066d1095a6e676a8fce466247c = L.marker(
                 [50.5218, 3.0641],
                 {
 }
-            ).addTo(map_fdbccdedd8712e50c2b0ea8a7048145d);
+            ).addTo(map_83d8ddec221750af9c963c32662d6bc5);
         
     
-            var div_icon_735b79aedd9e82e24259484caef3d7a4 = L.divIcon({
+            var div_icon_a56783d83856ed9f30b9937440c18103 = L.divIcon({
   "html": "\u003cdiv style=\"width:18px;height:18px;background:#1a3a6b;color:white;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:10px;border:2px solid white;transform:rotate(45deg);box-shadow:0 2px 5px rgba(0,0,0,.35);\"\u003e\u003cspan style=\"transform:rotate(-45deg)\"\u003e21\u003c/span\u003e\u003c/div\u003e",
   "iconSize": [18, 18],
   "iconAnchor": [9, 9],
@@ -1031,24 +1080,24 @@
 });
         
     
-        var popup_f608d41e9433ea8acf71a9a9f1e51ac1 = L.popup({
+        var popup_6d036e9924accd0ab01a85b0043d1410 = L.popup({
   "maxWidth": 240,
 });
 
         
             
-                var html_0f9f0a683a902143d62e034919711624 = $(`<div id="html_0f9f0a683a902143d62e034919711624" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:200px;"><div style="background:#1a3a6b;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">21. FRANCE EVAPORATION<span style="font-weight:normal;font-size:10px;"> (recommandé)</span></div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 NOYELLES-LES-SECLIN<br>🎯 Très élevé<br>📋 5. Clients stratégiques<br>💡 Client stratégique • à ~6 km<br>📞 -</div></div></div>`)[0];
-                popup_f608d41e9433ea8acf71a9a9f1e51ac1.setContent(html_0f9f0a683a902143d62e034919711624);
+                var html_ee7a61ef11a80ba5a8be7886e7360420 = $(`<div id="html_ee7a61ef11a80ba5a8be7886e7360420" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:200px;"><div style="background:#1a3a6b;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">21. FRANCE EVAPORATION<span style="font-weight:normal;font-size:10px;"> (recommandé)</span></div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 NOYELLES-LES-SECLIN<br>🎯 Très élevé<br>📋 5. Clients stratégiques<br>💡 Client stratégique • à ~6 km<br>📞 -</div></div></div>`)[0];
+                popup_6d036e9924accd0ab01a85b0043d1410.setContent(html_ee7a61ef11a80ba5a8be7886e7360420);
             
         
 
-        marker_10cf7e60888b06474d7a002143f7fc2a.bindPopup(popup_f608d41e9433ea8acf71a9a9f1e51ac1)
+        marker_c9fb6b066d1095a6e676a8fce466247c.bindPopup(popup_6d036e9924accd0ab01a85b0043d1410)
         ;
 
         
     
     
-            marker_10cf7e60888b06474d7a002143f7fc2a.bindTooltip(
+            marker_c9fb6b066d1095a6e676a8fce466247c.bindTooltip(
                 `<div>
                      21. FRANCE EVAPORATION — NOYELLES-LES-SECLIN
                  </div>`,
@@ -1058,17 +1107,17 @@
             );
         
     
-                marker_10cf7e60888b06474d7a002143f7fc2a.setIcon(div_icon_735b79aedd9e82e24259484caef3d7a4);
+                marker_c9fb6b066d1095a6e676a8fce466247c.setIcon(div_icon_a56783d83856ed9f30b9937440c18103);
             
     
-            var marker_0fe6c11c38f4b0c96c97e413f9f8253f = L.marker(
+            var marker_264db954351cb27e1088dd4fbe6b52d7 = L.marker(
                 [50.7004, 3.0427],
                 {
 }
-            ).addTo(map_fdbccdedd8712e50c2b0ea8a7048145d);
+            ).addTo(map_83d8ddec221750af9c963c32662d6bc5);
         
     
-            var div_icon_3841f6db1d4f3213639db5b9dbf61a6b = L.divIcon({
+            var div_icon_9c3313c97cbabec49fcc4db81c86d2d4 = L.divIcon({
   "html": "\u003cdiv style=\"width:18px;height:18px;background:#1a3a6b;color:white;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:10px;border:2px solid white;transform:rotate(45deg);box-shadow:0 2px 5px rgba(0,0,0,.35);\"\u003e\u003cspan style=\"transform:rotate(-45deg)\"\u003e22\u003c/span\u003e\u003c/div\u003e",
   "iconSize": [18, 18],
   "iconAnchor": [9, 9],
@@ -1076,24 +1125,24 @@
 });
         
     
-        var popup_73e1c407ab2d8db0f91b09b6810d1302 = L.popup({
+        var popup_eb045fa7aefb095e257d81068c08448f = L.popup({
   "maxWidth": 240,
 });
 
         
             
-                var html_5c6fd5f2ab66627ea7fcb3e87067bbab = $(`<div id="html_5c6fd5f2ab66627ea7fcb3e87067bbab" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:200px;"><div style="background:#1a3a6b;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">22. SULZER<span style="font-weight:normal;font-size:10px;"> (recommandé)</span></div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 WAMBRECHIES<br>🎯 Très élevé<br>📋 2.Consomme  / doit nous consulter / plaquette envoyée<br>💡 Client existant • à ~7 km<br>📞 06 81 41 98 81</div></div></div>`)[0];
-                popup_73e1c407ab2d8db0f91b09b6810d1302.setContent(html_5c6fd5f2ab66627ea7fcb3e87067bbab);
+                var html_e590444f9c373e6987dbc0deae378f40 = $(`<div id="html_e590444f9c373e6987dbc0deae378f40" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:200px;"><div style="background:#1a3a6b;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">22. SULZER<span style="font-weight:normal;font-size:10px;"> (recommandé)</span></div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 WAMBRECHIES<br>🎯 Très élevé<br>📋 2.Consomme  / doit nous consulter / plaquette envoyée<br>💡 Client existant • à ~7 km<br>📞 06 81 41 98 81</div></div></div>`)[0];
+                popup_eb045fa7aefb095e257d81068c08448f.setContent(html_e590444f9c373e6987dbc0deae378f40);
             
         
 
-        marker_0fe6c11c38f4b0c96c97e413f9f8253f.bindPopup(popup_73e1c407ab2d8db0f91b09b6810d1302)
+        marker_264db954351cb27e1088dd4fbe6b52d7.bindPopup(popup_eb045fa7aefb095e257d81068c08448f)
         ;
 
         
     
     
-            marker_0fe6c11c38f4b0c96c97e413f9f8253f.bindTooltip(
+            marker_264db954351cb27e1088dd4fbe6b52d7.bindTooltip(
                 `<div>
                      22. SULZER — WAMBRECHIES
                  </div>`,
@@ -1103,17 +1152,17 @@
             );
         
     
-                marker_0fe6c11c38f4b0c96c97e413f9f8253f.setIcon(div_icon_3841f6db1d4f3213639db5b9dbf61a6b);
+                marker_264db954351cb27e1088dd4fbe6b52d7.setIcon(div_icon_9c3313c97cbabec49fcc4db81c86d2d4);
             
     
-            var marker_4572813278e3964456529bea847dc608 = L.marker(
+            var marker_ceae844e6351a4aeb3dfbe635cac2c99 = L.marker(
                 [50.5491, 3.1388],
                 {
 }
-            ).addTo(map_fdbccdedd8712e50c2b0ea8a7048145d);
+            ).addTo(map_83d8ddec221750af9c963c32662d6bc5);
         
     
-            var div_icon_2b54b8f8211029cbd9601127fdedca79 = L.divIcon({
+            var div_icon_af386855fadf42636a68aac864532b36 = L.divIcon({
   "html": "\u003cdiv style=\"width:18px;height:18px;background:#2563eb;color:white;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:10px;border:2px solid white;transform:rotate(45deg);box-shadow:0 2px 5px rgba(0,0,0,.35);\"\u003e\u003cspan style=\"transform:rotate(-45deg)\"\u003e23\u003c/span\u003e\u003c/div\u003e",
   "iconSize": [18, 18],
   "iconAnchor": [9, 9],
@@ -1121,24 +1170,24 @@
 });
         
     
-        var popup_6c165826e5ac8e0de2a3621ea36dd388 = L.popup({
+        var popup_2b553a1ddd25c2c41aea80e6f3d03856 = L.popup({
   "maxWidth": 240,
 });
 
         
             
-                var html_5f935ed13e156b276f110c54b8712774 = $(`<div id="html_5f935ed13e156b276f110c54b8712774" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:200px;"><div style="background:#2563eb;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">23. CLASQUIN<span style="font-weight:normal;font-size:10px;"> (recommandé)</span></div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 FRETIN<br>🎯 Haute<br>📋 4.Prestation réalisée / client à sécuriser<br>💡 Priorité haute • à ~0 km<br>📞 +33 3 20 90 54 70</div></div></div>`)[0];
-                popup_6c165826e5ac8e0de2a3621ea36dd388.setContent(html_5f935ed13e156b276f110c54b8712774);
+                var html_1e66c244c701451526a218df59eff603 = $(`<div id="html_1e66c244c701451526a218df59eff603" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:200px;"><div style="background:#2563eb;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">23. CLASQUIN<span style="font-weight:normal;font-size:10px;"> (recommandé)</span></div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 FRETIN<br>🎯 Haute<br>📋 4.Prestation réalisée / client à sécuriser<br>💡 Priorité haute • à ~0 km<br>📞 +33 3 20 90 54 70</div></div></div>`)[0];
+                popup_2b553a1ddd25c2c41aea80e6f3d03856.setContent(html_1e66c244c701451526a218df59eff603);
             
         
 
-        marker_4572813278e3964456529bea847dc608.bindPopup(popup_6c165826e5ac8e0de2a3621ea36dd388)
+        marker_ceae844e6351a4aeb3dfbe635cac2c99.bindPopup(popup_2b553a1ddd25c2c41aea80e6f3d03856)
         ;
 
         
     
     
-            marker_4572813278e3964456529bea847dc608.bindTooltip(
+            marker_ceae844e6351a4aeb3dfbe635cac2c99.bindTooltip(
                 `<div>
                      23. CLASQUIN — FRETIN
                  </div>`,
@@ -1148,7 +1197,7 @@
             );
         
     
-                marker_4572813278e3964456529bea847dc608.setIcon(div_icon_2b54b8f8211029cbd9601127fdedca79);
+                marker_ceae844e6351a4aeb3dfbe635cac2c99.setIcon(div_icon_af386855fadf42636a68aac864532b36);
             
 </script>
 </html>
