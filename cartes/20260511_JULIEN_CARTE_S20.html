@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_d78c9824f2dc999891018ad7387812c8 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+    <style>
+      /* ── Bouton toggle (toujours visible) ── */
+      #leg-btn {
+        position:fixed;top:16px;right:16px;z-index:1001;
+        background:#0b1f3f;color:white;border:none;border-radius:6px;
+        padding:7px 12px;font-size:11px;font-weight:700;font-family:Arial,sans-serif;
+        cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.25);
+        white-space:nowrap;
+      }
+      /* ── Panneau légende ── */
+      #leg-panel {
+        position:fixed;top:44px;right:16px;z-index:1000;
+        background:white;border-radius:5px;
+        box-shadow:0 2px 12px rgba(0,0,0,.18);
+        font-family:Arial,sans-serif;
+        width:260px;max-height:80vh;overflow-y:auto;
+        padding:6px 8px;
+        display:none;
+      }
+      #leg-panel.ouvert { display:block; }
+      /* ── Mobile : panneau pleine largeur ── */
+      @media (max-width:768px) {
+        #leg-panel {
+          width:calc(100vw - 32px);
+          max-width:300px;
+          top:44px;
+          max-height:65vh;
+        }
+      }
+    </style>
+
+    <!-- Bouton toggle -->
+    <button id="leg-btn"
+            onclick="(function(){
+              var p=document.getElementById('leg-panel');
+              var b=document.getElementById('leg-btn');
+              p.classList.toggle('ouvert');
+              b.textContent = p.classList.contains('ouvert') ? '✕ Fermer' : '☰ Julien · S20';
+            })()">
+      ☰ Julien · S20
+    </button>
+
+    <!-- Panneau -->
+    <div id="leg-panel">
+      <div style="font-weight:700;font-size:9px;color:#0b1f3f;
+                  border-bottom:1px solid #1a3a6b;padding-bottom:2px;margin-bottom:5px;">
+        Julien · S20 · Zone L
+      </div>
+      <div style="font-size:6px;font-weight:700;text-transform:uppercase;
+                  letter-spacing:.3px;color:#6b7280;margin-bottom:3px;">
+        Tournée — tag JU0020
+      </div>
+      <div style="display:flex;align-items:center;margin:0px 0;line-height:1.3;"><span style="display:inline-flex;align-items:center;justify-content:center;background:#f59e0b;color:white;border-radius:50%;width:10px;height:10px;font-size:6px;font-weight:700;border:1px solid white;flex-shrink:0;margin-right:3px;">1</span><span style="font-size:7px;color:#1a3a6b;font-weight:600;">SKID CONCEPT</span><span style="font-size:6px;color:#64748b;margin-left:2px;white-space:nowrap;">FEIGNIES</span></div><div style="display:flex;align-items:center;margin:0px 0;line-height:1.3;opacity:0.5;"><span style="display:inline-flex;align-items:center;justify-content:center;background:#f59e0b;color:white;border-radius:50%;width:10px;height:10px;font-size:6px;font-weight:700;border:1px solid white;flex-shrink:0;margin-right:3px;">2</span><span style="font-size:7px;color:#1a3a6b;font-weight:600;">PREFORMED LINE PRODUCTS (F</span><span style="font-size:6px;color:#64748b;margin-left:2px;white-space:nowrap;">Buchelay</span></div><div style="border-top:1px solid #e5e7eb;margin:2px 0 1px;"></div><div style="font-size:6px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:#94a3b8;margin-bottom:1px;">Complémentaires</div><div style="display:flex;align-items:center;margin:0px 0;line-height:1.3;"><span style="display:inline-flex;align-items:center;justify-content:center;background:#2563eb;color:white;width:9px;height:9px;font-size:6px;font-weight:700;transform:rotate(45deg);border:1px solid white;flex-shrink:0;margin-right:4px;margin-left:1px;"><span style="transform:rotate(-45deg)">3</span></span><span style="font-size:7px;color:#1a3a6b;font-weight:600;">BILSING AUTOMATION FRANCE</span><span style="font-size:6px;color:#64748b;margin-left:2px;white-space:nowrap;">FAMARS</span></div><div style="display:flex;align-items:center;margin:0px 0;line-height:1.3;"><span style="display:inline-flex;align-items:center;justify-content:center;background:#94a3b8;color:white;width:9px;height:9px;font-size:6px;font-weight:700;transform:rotate(45deg);border:1px solid white;flex-shrink:0;margin-right:4px;margin-left:1px;"><span style="transform:rotate(-45deg)">4</span></span><span style="font-size:7px;color:#1a3a6b;font-weight:600;">Milton ROY</span><span style="font-size:6px;color:#64748b;margin-left:2px;white-space:nowrap;">Pont st pierre</span></div><div style="display:flex;align-items:center;margin:0px 0;line-height:1.3;"><span style="display:inline-flex;align-items:center;justify-content:center;background:#94a3b8;color:white;width:9px;height:9px;font-size:6px;font-weight:700;transform:rotate(45deg);border:1px solid white;flex-shrink:0;margin-right:4px;margin-left:1px;"><span style="transform:rotate(-45deg)">5</span></span><span style="font-size:7px;color:#1a3a6b;font-weight:600;">Zehnder group internationa</span><span style="font-size:6px;color:#64748b;margin-left:2px;white-space:nowrap;">Vaux-andigny</span></div>
+      <div style="border-top:1px solid #e5e7eb;margin:4px 0 2px;"></div>
+      <div style="font-size:6px;font-weight:700;text-transform:uppercase;
+                  letter-spacing:.3px;color:#6b7280;margin-bottom:2px;">Priorité</div>
+      <div style="display:flex;align-items:center;gap:3px;margin:1px 0;font-size:7px;color:#374151;"><span style="display:inline-block;width:7px;height:7px;background:#1a3a6b;border-radius:1px;flex-shrink:0;"></span>Très élevée</div><div style="display:flex;align-items:center;gap:3px;margin:1px 0;font-size:7px;color:#374151;"><span style="display:inline-block;width:7px;height:7px;background:#2563eb;border-radius:1px;flex-shrink:0;"></span>Haute</div><div style="display:flex;align-items:center;gap:3px;margin:1px 0;font-size:7px;color:#374151;"><span style="display:inline-block;width:7px;height:7px;background:#f59e0b;border-radius:1px;flex-shrink:0;"></span>Moyenne</div><div style="display:flex;align-items:center;gap:3px;margin:1px 0;font-size:7px;color:#374151;"><span style="display:inline-block;width:7px;height:7px;background:#94a3b8;border-radius:1px;flex-shrink:0;"></span>Basse</div>
+    </div>
+    
+            <div class="folium-map" id="map_d78c9824f2dc999891018ad7387812c8" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_d78c9824f2dc999891018ad7387812c8 = L.map(
+                "map_d78c9824f2dc999891018ad7387812c8",
+                {
+                    center: [50.221199999999996, 3.759575],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 10,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+            L.control.scale().addTo(map_d78c9824f2dc999891018ad7387812c8);
+
+            
+
+        
+    
+            var tile_layer_68e52f76bdb7d9eb3abe076d72fd0c7b = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_68e52f76bdb7d9eb3abe076d72fd0c7b.addTo(map_d78c9824f2dc999891018ad7387812c8);
+        
+    
+            var marker_8f3b57619d866b0395e20359ff6f3dd5 = L.marker(
+                [50.2893, 3.9971],
+                {
+}
+            ).addTo(map_d78c9824f2dc999891018ad7387812c8);
+        
+    
+            var div_icon_051ae5695626e279afc48846a1b5341b = L.divIcon({
+  "html": "\u003cdiv style=\"background:#f59e0b;color:white;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:11px;border:2px solid white;box-shadow:0 2px 5px rgba(0,0,0,.4);\"\u003e1\u003c/div\u003e",
+  "iconSize": [22, 22],
+  "iconAnchor": [11, 11],
+  "className": "empty",
+});
+        
+    
+        var popup_29d8695b3da808da2e9e3f21c96d24f6 = L.popup({
+  "maxWidth": 240,
+});
+
+        
+            
+                var html_2b392a976e89dba3f553c9a8b474a5b2 = $(`<div id="html_2b392a976e89dba3f553c9a8b474a5b2" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:180px;"><div style="background:#f59e0b;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">1. SKID CONCEPT</div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 FEIGNIES<br>🎯 Médium<br>📋 2.Consomme / doit nous consulter<br>📞 -<br><a href="https://brame-dev.odoo.com/odoo/crm?search=SKID%20CONCEPT" target="_blank" style="display:inline-block;margin-top:6px;padding:3px 8px;background:#0b1f3f;color:white;border-radius:3px;font-size:10px;text-decoration:none;font-weight:600;">🔍 Rechercher dans Odoo</a></div></div></div>`)[0];
+                popup_29d8695b3da808da2e9e3f21c96d24f6.setContent(html_2b392a976e89dba3f553c9a8b474a5b2);
+            
+        
+
+        marker_8f3b57619d866b0395e20359ff6f3dd5.bindPopup(popup_29d8695b3da808da2e9e3f21c96d24f6)
+        ;
+
+        
+    
+    
+            marker_8f3b57619d866b0395e20359ff6f3dd5.bindTooltip(
+                `<div>
+                     1. SKID CONCEPT — FEIGNIES
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8f3b57619d866b0395e20359ff6f3dd5.setIcon(div_icon_051ae5695626e279afc48846a1b5341b);
+            
+    
+            var marker_aeabdf23186123fe802e903ce2b1c99b = L.marker(
+                [50.333, 3.5207],
+                {
+}
+            ).addTo(map_d78c9824f2dc999891018ad7387812c8);
+        
+    
+            var div_icon_284403400681ae1b834678bd882b1cef = L.divIcon({
+  "html": "\u003cdiv style=\"width:18px;height:18px;background:#2563eb;color:white;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:10px;border:2px solid white;transform:rotate(45deg);box-shadow:0 2px 5px rgba(0,0,0,.35);\"\u003e\u003cspan style=\"transform:rotate(-45deg)\"\u003e3\u003c/span\u003e\u003c/div\u003e",
+  "iconSize": [18, 18],
+  "iconAnchor": [9, 9],
+  "className": "empty",
+});
+        
+    
+        var popup_e4e12f74cd220c1fbdfa3705412ee9cd = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_38cdc7a0e82750778beb16c8be1a7ffd = $(`<div id="html_38cdc7a0e82750778beb16c8be1a7ffd" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:200px;"><div style="background:#2563eb;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">3. BILSING AUTOMATION FRANCE<span style="font-weight:normal;font-size:10px;"> (recommandé)</span></div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 FAMARS<br>🎯 Haute<br>📋 1.Leads<br>💡 Lead à qualifier • Priorité haute • à ~34 km<br>📞 +33 3 27 34 60 44<br><a href="https://brame-dev.odoo.com/odoo/crm?search=BILSING%20AUTOMATION" target="_blank" style="display:inline-block;margin-top:6px;padding:3px 8px;background:#0b1f3f;color:white;border-radius:3px;font-size:10px;text-decoration:none;font-weight:600;">🔍 Rechercher dans Odoo</a></div></div></div>`)[0];
+                popup_e4e12f74cd220c1fbdfa3705412ee9cd.setContent(html_38cdc7a0e82750778beb16c8be1a7ffd);
+            
+        
+
+        marker_aeabdf23186123fe802e903ce2b1c99b.bindPopup(popup_e4e12f74cd220c1fbdfa3705412ee9cd)
+        ;
+
+        
+    
+    
+            marker_aeabdf23186123fe802e903ce2b1c99b.bindTooltip(
+                `<div>
+                     3. BILSING AUTOMATION FRANCE — FAMARS
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_aeabdf23186123fe802e903ce2b1c99b.setIcon(div_icon_284403400681ae1b834678bd882b1cef);
+            
+    
+            var marker_a302c7d9c95981386f0020e091515e17 = L.marker(
+                [50.1993, 3.9451],
+                {
+}
+            ).addTo(map_d78c9824f2dc999891018ad7387812c8);
+        
+    
+            var div_icon_f0fbcbe37b6cd6f9970d0d9147dcd5f5 = L.divIcon({
+  "html": "\u003cdiv style=\"width:18px;height:18px;background:#94a3b8;color:white;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:10px;border:2px solid white;transform:rotate(45deg);box-shadow:0 2px 5px rgba(0,0,0,.35);\"\u003e\u003cspan style=\"transform:rotate(-45deg)\"\u003e4\u003c/span\u003e\u003c/div\u003e",
+  "iconSize": [18, 18],
+  "iconAnchor": [9, 9],
+  "className": "empty",
+});
+        
+    
+        var popup_97d12bc7f13cf135f2637e47d4bd050e = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_04f8cc8784185c0e31ce96105986a2fe = $(`<div id="html_04f8cc8784185c0e31ce96105986a2fe" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:200px;"><div style="background:#94a3b8;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">4. Milton ROY<span style="font-weight:normal;font-size:10px;"> (recommandé)</span></div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 Pont st pierre<br>🎯 Basse<br>📋 1.Leads<br>💡 Lead à qualifier • à ~10 km<br>📞 +33 2 32 68 30 00<br><a href="https://brame-dev.odoo.com/odoo/crm?search=Milton%20roy" target="_blank" style="display:inline-block;margin-top:6px;padding:3px 8px;background:#0b1f3f;color:white;border-radius:3px;font-size:10px;text-decoration:none;font-weight:600;">🔍 Rechercher dans Odoo</a></div></div></div>`)[0];
+                popup_97d12bc7f13cf135f2637e47d4bd050e.setContent(html_04f8cc8784185c0e31ce96105986a2fe);
+            
+        
+
+        marker_a302c7d9c95981386f0020e091515e17.bindPopup(popup_97d12bc7f13cf135f2637e47d4bd050e)
+        ;
+
+        
+    
+    
+            marker_a302c7d9c95981386f0020e091515e17.bindTooltip(
+                `<div>
+                     4. Milton ROY — Pont st pierre
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a302c7d9c95981386f0020e091515e17.setIcon(div_icon_f0fbcbe37b6cd6f9970d0d9147dcd5f5);
+            
+    
+            var marker_ac1c44a68411e93a54241f3ca73feced = L.marker(
+                [50.0632, 3.5754],
+                {
+}
+            ).addTo(map_d78c9824f2dc999891018ad7387812c8);
+        
+    
+            var div_icon_e41a2fd080f51205c3cd4bbd3163facd = L.divIcon({
+  "html": "\u003cdiv style=\"width:18px;height:18px;background:#94a3b8;color:white;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:10px;border:2px solid white;transform:rotate(45deg);box-shadow:0 2px 5px rgba(0,0,0,.35);\"\u003e\u003cspan style=\"transform:rotate(-45deg)\"\u003e5\u003c/span\u003e\u003c/div\u003e",
+  "iconSize": [18, 18],
+  "iconAnchor": [9, 9],
+  "className": "empty",
+});
+        
+    
+        var popup_8ce5f779962f7842f0d0dfbbd8f70e8c = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_3e41c77a1f7b5fecfefdc04ee1b1d0a6 = $(`<div id="html_3e41c77a1f7b5fecfefdc04ee1b1d0a6" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:200px;"><div style="background:#94a3b8;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">5. Zehnder group international ag<span style="font-weight:normal;font-size:10px;"> (recommandé)</span></div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 Vaux-andigny<br>🎯 Basse<br>📋 1.Leads<br>💡 Lead à qualifier • à ~39 km<br>📞 +33 810 00 71 70<br><a href="https://brame-dev.odoo.com/odoo/crm?search=Zehnder%20group%20international%20ag" target="_blank" style="display:inline-block;margin-top:6px;padding:3px 8px;background:#0b1f3f;color:white;border-radius:3px;font-size:10px;text-decoration:none;font-weight:600;">🔍 Rechercher dans Odoo</a></div></div></div>`)[0];
+                popup_8ce5f779962f7842f0d0dfbbd8f70e8c.setContent(html_3e41c77a1f7b5fecfefdc04ee1b1d0a6);
+            
+        
+
+        marker_ac1c44a68411e93a54241f3ca73feced.bindPopup(popup_8ce5f779962f7842f0d0dfbbd8f70e8c)
+        ;
+
+        
+    
+    
+            marker_ac1c44a68411e93a54241f3ca73feced.bindTooltip(
+                `<div>
+                     5. Zehnder group international ag — Vaux-andigny
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ac1c44a68411e93a54241f3ca73feced.setIcon(div_icon_e41a2fd080f51205c3cd4bbd3163facd);
+            
+</script>
+</html>
