@@ -17,7 +17,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_a3c5713a583371adf38d77d66aa7554c {
+                #map_b4007b8907ea820458610ce4594b3f9e {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -108,15 +108,15 @@
         tag:    { fontSize:'6px',  marginBottom:'3px' },
         sep:    { borderTopWidth:'1px', margin:'2px 0 1px' },
         section:{ fontSize:'6px', marginBottom:'1px' },
-        prioRow:{ gap:'3px', margin:'1px 0' },
-        prioDot:{ width:'7px',  height:'7px',  borderRadius:'1px' },
+        prioRow:{ display:'flex', alignItems:'center', gap:'3px', margin:'1px 0' },
+        prioDot:{ display:'inline-block', width:'7px', height:'7px', borderRadius:'1px', flexShrink:'0' },
         prioLbl:{ fontSize:'7px' },
         prioTtl:{ fontSize:'6px', marginBottom:'2px' },
         divSep: { borderTopWidth:'1px', margin:'4px 0 2px' },
       };
       var DESKTOP = {
         btn:    { padding:'8px 14px',   fontSize:'13px', borderRadius:'6px' },
-        panel:  { width:'260px', maxWidth:'none',
+        panel:  { width:'320px', maxWidth:'none',
                    maxHeight:'85vh', padding:'12px 16px', borderRadius:'8px' },
         badgeStop:  { width:'20px', height:'20px', fontSize:'11px', marginRight:'8px' },
         badgeCompl: { width:'18px', height:'18px', fontSize:'11px', marginRight:'9px', marginLeft:'1px' },
@@ -127,8 +127,8 @@
         tag:    { fontSize:'11px', marginBottom:'7px' },
         sep:    { borderTopWidth:'1px', margin:'6px 0 3px' },
         section:{ fontSize:'10px', marginBottom:'3px' },
-        prioRow:{ gap:'7px', margin:'3px 0' },
-        prioDot:{ width:'12px', height:'12px', borderRadius:'2px' },
+        prioRow:{ display:'flex', alignItems:'center', gap:'7px', margin:'3px 0' },
+        prioDot:{ display:'inline-block', width:'12px', height:'12px', borderRadius:'2px', flexShrink:'0' },
         prioLbl:{ fontSize:'12px' },
         prioTtl:{ fontSize:'10px', marginBottom:'4px' },
         divSep: { borderTopWidth:'1px', margin:'9px 0 5px' },
@@ -212,14 +212,14 @@
     })();
     </script>
     
-            <div class="folium-map" id="map_a3c5713a583371adf38d77d66aa7554c" ></div>
+            <div class="folium-map" id="map_b4007b8907ea820458610ce4594b3f9e" ></div>
         
 </body>
 <script>
     
     
-            var map_a3c5713a583371adf38d77d66aa7554c = L.map(
-                "map_a3c5713a583371adf38d77d66aa7554c",
+            var map_b4007b8907ea820458610ce4594b3f9e = L.map(
+                "map_b4007b8907ea820458610ce4594b3f9e",
                 {
                     center: [50.0, 3.0],
                     crs: L.CRS.EPSG3857,
@@ -231,13 +231,13 @@
 
                 }
             );
-            L.control.scale().addTo(map_a3c5713a583371adf38d77d66aa7554c);
+            L.control.scale().addTo(map_b4007b8907ea820458610ce4594b3f9e);
 
             
 
         
     
-            var tile_layer_dc1b2eb1382be58c37dc7d7ba3e43e93 = L.tileLayer(
+            var tile_layer_d8ae784477eb828090ac36b843489d2e = L.tileLayer(
                 "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
                 {
   "minZoom": 0,
@@ -254,7 +254,7 @@
             );
         
     
-            tile_layer_dc1b2eb1382be58c37dc7d7ba3e43e93.addTo(map_a3c5713a583371adf38d77d66aa7554c);
+            tile_layer_d8ae784477eb828090ac36b843489d2e.addTo(map_b4007b8907ea820458610ce4594b3f9e);
         
 </script>
 </html>
