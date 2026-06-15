@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_f03b2c6e7213f26f47f3f5032995c5d7 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+    <style>
+      #leg-btn {
+        position:fixed;top:16px;right:16px;z-index:1001;
+        background:#0b1f3f;color:white;border:none;border-radius:5px;
+        font-weight:700;font-family:Arial,sans-serif;
+        cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.25);white-space:nowrap;
+      }
+      #leg-panel {
+        position:fixed;top:44px;right:16px;z-index:1000;
+        background:white;box-shadow:0 2px 12px rgba(0,0,0,.18);
+        font-family:Arial,sans-serif;overflow-y:auto;display:none;
+      }
+      #leg-panel.ouvert { display:block; }
+    </style>
+
+    <button id="leg-btn"
+            onclick="(function(){
+              var p=document.getElementById('leg-panel');
+              var b=document.getElementById('leg-btn');
+              p.classList.toggle('ouvert');
+              b.textContent=p.classList.contains('ouvert')
+                ?'✕ Fermer':'☰ Julien · S25';
+            })()">
+      ☰ Julien · S25
+    </button>
+
+    <div id="leg-panel">
+      <div class="leg-header" style="font-weight:700;color:#0b1f3f;border-color:#1a3a6b;border-style:solid;">
+        Julien · S25 · Zone R
+      </div>
+      <div class="leg-tag" style="font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:#6b7280;">
+        Tournée — tag JU0025
+      </div>
+      <div style="display:flex;gap:10px;"><div style="flex:1;"><div class="leg-entry" style="display:flex;align-items:center;"><span class="leg-badge-stop" style="background:#94a3b8;color:white;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;border:1px solid white;flex-shrink:0;font-weight:700;">1</span><span class="leg-nom" style="color:#1a3a6b;font-weight:600;">Durussel montage industrie</span><span class="leg-ville" style="color:#64748b;white-space:nowrap;">Compiegne</span></div><div class="leg-sep"></div><div class="leg-section">Complémentaires</div><div class="leg-entry" style="display:flex;align-items:center;"><span class="leg-badge-compl" style="background:#2563eb;color:white;display:inline-flex;align-items:center;justify-content:center;font-weight:700;transform:rotate(45deg);border:1px solid white;flex-shrink:0;"><span style="transform:rotate(-45deg)">2</span></span><span class="leg-nom" style="color:#1a3a6b;font-weight:600;">Bic Rasoirs</span><span class="leg-ville" style="color:#64748b;white-space:nowrap;">Longueil-Sainte-Marie</span></div><div class="leg-entry" style="display:flex;align-items:center;"><span class="leg-badge-compl" style="background:#f59e0b;color:white;display:inline-flex;align-items:center;justify-content:center;font-weight:700;transform:rotate(45deg);border:1px solid white;flex-shrink:0;"><span style="transform:rotate(-45deg)">3</span></span><span class="leg-nom" style="color:#1a3a6b;font-weight:600;">SAFRAN AEROSYSTEMS DUCTS</span><span class="leg-ville" style="color:#64748b;white-space:nowrap;">COMPIEGNE</span></div><div class="leg-entry" style="display:flex;align-items:center;"><span class="leg-badge-compl" style="background:#f59e0b;color:white;display:inline-flex;align-items:center;justify-content:center;font-weight:700;transform:rotate(45deg);border:1px solid white;flex-shrink:0;"><span style="transform:rotate(-45deg)">4</span></span><span class="leg-nom" style="color:#1a3a6b;font-weight:600;">CIE COMPIEGNE</span><span class="leg-ville" style="color:#64748b;white-space:nowrap;">COMPIEGNE</span></div><div class="leg-entry" style="display:flex;align-items:center;"><span class="leg-badge-compl" style="background:#f59e0b;color:white;display:inline-flex;align-items:center;justify-content:center;font-weight:700;transform:rotate(45deg);border:1px solid white;flex-shrink:0;"><span style="transform:rotate(-45deg)">5</span></span><span class="leg-nom" style="color:#1a3a6b;font-weight:600;">COPEAUX & SALMON</span><span class="leg-ville" style="color:#64748b;white-space:nowrap;">LACROIX SAINT OUEN</span></div><div class="leg-entry" style="display:flex;align-items:center;"><span class="leg-badge-compl" style="background:#f59e0b;color:white;display:inline-flex;align-items:center;justify-content:center;font-weight:700;transform:rotate(45deg);border:1px solid white;flex-shrink:0;"><span style="transform:rotate(-45deg)">6</span></span><span class="leg-nom" style="color:#1a3a6b;font-weight:600;">ARCELORMITTAL ATLANTIQUE</span><span class="leg-ville" style="color:#64748b;white-space:nowrap;">Montataire</span></div></div><div style="flex:1;border-left:1px solid #f1f5f9;padding-left:10px;"><div class="leg-entry" style="display:flex;align-items:center;"><span class="leg-badge-compl" style="background:#f59e0b;color:white;display:inline-flex;align-items:center;justify-content:center;font-weight:700;transform:rotate(45deg);border:1px solid white;flex-shrink:0;"><span style="transform:rotate(-45deg)">7</span></span><span class="leg-nom" style="color:#1a3a6b;font-weight:600;">Societe automatique de pro</span><span class="leg-ville" style="color:#64748b;white-space:nowrap;">Bailleul-sur-therain</span></div><div class="leg-entry" style="display:flex;align-items:center;"><span class="leg-badge-compl" style="background:#f59e0b;color:white;display:inline-flex;align-items:center;justify-content:center;font-weight:700;transform:rotate(45deg);border:1px solid white;flex-shrink:0;"><span style="transform:rotate(-45deg)">8</span></span><span class="leg-nom" style="color:#1a3a6b;font-weight:600;">AXOTEQ</span><span class="leg-ville" style="color:#64748b;white-space:nowrap;">SOISSONS</span></div><div class="leg-entry" style="display:flex;align-items:center;"><span class="leg-badge-compl" style="background:#f59e0b;color:white;display:inline-flex;align-items:center;justify-content:center;font-weight:700;transform:rotate(45deg);border:1px solid white;flex-shrink:0;"><span style="transform:rotate(-45deg)">9</span></span><span class="leg-nom" style="color:#1a3a6b;font-weight:600;">Coredux France</span><span class="leg-ville" style="color:#64748b;white-space:nowrap;">EPAUX-BEZU</span></div><div class="leg-entry" style="display:flex;align-items:center;"><span class="leg-badge-compl" style="background:#94a3b8;color:white;display:inline-flex;align-items:center;justify-content:center;font-weight:700;transform:rotate(45deg);border:1px solid white;flex-shrink:0;"><span style="transform:rotate(-45deg)">10</span></span><span class="leg-nom" style="color:#1a3a6b;font-weight:600;">EUROFLACO COMPIEGNE</span><span class="leg-ville" style="color:#64748b;white-space:nowrap;">COMPIEGNE</span></div><div class="leg-entry" style="display:flex;align-items:center;"><span class="leg-badge-compl" style="background:#94a3b8;color:white;display:inline-flex;align-items:center;justify-content:center;font-weight:700;transform:rotate(45deg);border:1px solid white;flex-shrink:0;"><span style="transform:rotate(-45deg)">11</span></span><span class="leg-nom" style="color:#1a3a6b;font-weight:600;">COLGATE-PALMOLIVE INDUSTRI</span><span class="leg-ville" style="color:#64748b;white-space:nowrap;">Compiègne</span></div></div></div>
+      <div class="leg-div-sep" style="border-style:solid;border-color:#e5e7eb;"></div>
+      <div class="leg-prio-title" style="font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:#6b7280;"></div>
+      <div class="leg-prio-row" style="display:flex;align-items:center;"><span class="leg-prio-dot" style="background:#1a3a6b;display:inline-block;border-radius:2px;flex-shrink:0;"></span><span class="leg-prio-label" style="color:#374151;">Très élevée</span></div><div class="leg-prio-row" style="display:flex;align-items:center;"><span class="leg-prio-dot" style="background:#2563eb;display:inline-block;border-radius:2px;flex-shrink:0;"></span><span class="leg-prio-label" style="color:#374151;">Haute</span></div><div class="leg-prio-row" style="display:flex;align-items:center;"><span class="leg-prio-dot" style="background:#f59e0b;display:inline-block;border-radius:2px;flex-shrink:0;"></span><span class="leg-prio-label" style="color:#374151;">Moyenne</span></div><div class="leg-prio-row" style="display:flex;align-items:center;"><span class="leg-prio-dot" style="background:#94a3b8;display:inline-block;border-radius:2px;flex-shrink:0;"></span><span class="leg-prio-label" style="color:#374151;">Basse</span></div>
+    </div>
+
+    <script>
+    (function() {
+      var MOBILE  = {
+        btn:    { padding:'5px 9px',    fontSize:'10px', borderRadius:'5px' },
+        panel:  { width:'calc(100vw - 32px)', maxWidth:'300px',
+                   maxHeight:'65vh', padding:'6px 8px', borderRadius:'5px' },
+        badgeStop:  { width:'10px', height:'10px', fontSize:'6px', marginRight:'3px' },
+        badgeCompl: { width:'9px',  height:'9px',  fontSize:'6px', marginRight:'4px', marginLeft:'1px' },
+        entry:  { margin:'0', lineHeight:'1.3' },
+        nom:    { fontSize:'7px' },
+        ville:  { fontSize:'6px', marginLeft:'2px' },
+        header: { fontSize:'9px',  paddingBottom:'2px', marginBottom:'5px', borderBottomWidth:'1px' },
+        tag:    { fontSize:'6px',  marginBottom:'3px' },
+        sep:    { borderTopWidth:'1px', margin:'2px 0 1px' },
+        section:{ fontSize:'6px', marginBottom:'1px' },
+        prioRow:{ display:'flex', alignItems:'center', gap:'3px', margin:'1px 0' },
+        prioDot:{ display:'inline-block', width:'7px', height:'7px', borderRadius:'1px', flexShrink:'0' },
+        prioLbl:{ fontSize:'7px' },
+        prioTtl:{ fontSize:'6px', marginBottom:'2px' },
+        divSep: { borderTopWidth:'1px', margin:'4px 0 2px' },
+      };
+      var DESKTOP = {
+        btn:    { padding:'8px 14px',   fontSize:'13px', borderRadius:'6px' },
+        panel:  { width:'560px', maxWidth:'none',
+                   maxHeight:'85vh', padding:'12px 16px', borderRadius:'8px' },
+        badgeStop:  { width:'20px', height:'20px', fontSize:'11px', marginRight:'8px' },
+        badgeCompl: { width:'18px', height:'18px', fontSize:'11px', marginRight:'9px', marginLeft:'1px' },
+        entry:  { margin:'4px 0', lineHeight:'1.6' },
+        nom:    { fontSize:'13px' },
+        ville:  { fontSize:'11px', marginLeft:'6px' },
+        header: { fontSize:'15px', paddingBottom:'7px', marginBottom:'11px', borderBottomWidth:'2px' },
+        tag:    { fontSize:'11px', marginBottom:'7px' },
+        sep:    { borderTopWidth:'1px', margin:'6px 0 3px' },
+        section:{ fontSize:'10px', marginBottom:'3px' },
+        prioRow:{ display:'flex', alignItems:'center', gap:'7px', margin:'3px 0' },
+        prioDot:{ display:'inline-block', width:'12px', height:'12px', borderRadius:'2px', flexShrink:'0' },
+        prioLbl:{ fontSize:'12px' },
+        prioTtl:{ fontSize:'10px', marginBottom:'4px' },
+        divSep: { borderTopWidth:'1px', margin:'9px 0 5px' },
+      };
+
+      function applyAll() {
+        var S = window.innerWidth <= 768 ? MOBILE : DESKTOP;
+        var btn   = document.getElementById('leg-btn');
+        var panel = document.getElementById('leg-panel');
+        if (!btn || !panel) return;
+
+        // Bouton
+        Object.assign(btn.style, S.btn);
+
+        // Panneau
+        Object.assign(panel.style, S.panel);
+
+        // Badges stops
+        panel.querySelectorAll('.leg-badge-stop').forEach(function(el) {
+          Object.assign(el.style, S.badgeStop);
+        });
+
+        // Badges complémentaires
+        panel.querySelectorAll('.leg-badge-compl').forEach(function(el) {
+          Object.assign(el.style, S.badgeCompl);
+        });
+
+        // Entrées
+        panel.querySelectorAll('.leg-entry').forEach(function(el) {
+          Object.assign(el.style, S.entry);
+        });
+        panel.querySelectorAll('.leg-nom').forEach(function(el) {
+          Object.assign(el.style, S.nom);
+        });
+        panel.querySelectorAll('.leg-ville').forEach(function(el) {
+          Object.assign(el.style, S.ville);
+        });
+
+        // En-tête
+        var hdr = panel.querySelector('.leg-header');
+        if (hdr) Object.assign(hdr.style, S.header);
+
+        // Tag
+        var tag = panel.querySelector('.leg-tag');
+        if (tag) Object.assign(tag.style, S.tag);
+
+        // Séparateurs
+        panel.querySelectorAll('.leg-sep').forEach(function(el) {
+          Object.assign(el.style, S.sep);
+        });
+        panel.querySelectorAll('.leg-section').forEach(function(el) {
+          Object.assign(el.style, S.section);
+        });
+
+        // Priorité
+        panel.querySelectorAll('.leg-prio-row').forEach(function(el) {
+          Object.assign(el.style, S.prioRow);
+        });
+        panel.querySelectorAll('.leg-prio-dot').forEach(function(el) {
+          Object.assign(el.style, S.prioDot);
+        });
+        panel.querySelectorAll('.leg-prio-label').forEach(function(el) {
+          Object.assign(el.style, S.prioLbl);
+        });
+        var prioTtl = panel.querySelector('.leg-prio-title');
+        if (prioTtl) {
+          prioTtl.textContent = 'Priorité';
+          Object.assign(prioTtl.style, S.prioTtl);
+        }
+        var divSep = panel.querySelector('.leg-div-sep');
+        if (divSep) Object.assign(divSep.style, S.divSep);
+      }
+
+      // Appliquer au chargement et au resize
+      window.addEventListener('load', applyAll);
+      window.addEventListener('resize', applyAll);
+      // Appliquer aussi quand le panneau s'ouvre
+      document.addEventListener('click', function() {
+        setTimeout(applyAll, 10);
+      });
+    })();
+    </script>
+    
+            <div class="folium-map" id="map_f03b2c6e7213f26f47f3f5032995c5d7" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_f03b2c6e7213f26f47f3f5032995c5d7 = L.map(
+                "map_f03b2c6e7213f26f47f3f5032995c5d7",
+                {
+                    center: [49.3693, 2.829927272727273],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 10,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+            L.control.scale().addTo(map_f03b2c6e7213f26f47f3f5032995c5d7);
+
+            
+
+        
+    
+            var tile_layer_0b9938fda347e914fabc9e8c0f6bb941 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_0b9938fda347e914fabc9e8c0f6bb941.addTo(map_f03b2c6e7213f26f47f3f5032995c5d7);
+        
+    
+            var marker_3463194fde03cd5cfb84fdb2d01af331 = L.marker(
+                [49.4183, 2.8233],
+                {
+}
+            ).addTo(map_f03b2c6e7213f26f47f3f5032995c5d7);
+        
+    
+            var div_icon_404534ba4803c859b9477a120c51cb0d = L.divIcon({
+  "html": "\u003cdiv style=\"background:#94a3b8;color:white;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:11px;border:2px solid white;box-shadow:0 2px 5px rgba(0,0,0,.4);\"\u003e1\u003c/div\u003e",
+  "iconSize": [22, 22],
+  "iconAnchor": [11, 11],
+  "className": "empty",
+});
+        
+    
+        var popup_e84ba6ab6232e8a48f6a2aa8849c9b20 = L.popup({
+  "maxWidth": 240,
+});
+
+        
+            
+                var html_6953b12eb38977fe7683473cc59b50f7 = $(`<div id="html_6953b12eb38977fe7683473cc59b50f7" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:180px;"><div style="background:#94a3b8;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">1. Durussel montage industriel</div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 Compiegne<br>🎯 Basse<br>📋 3.Devis en cours<br>📞 +33 3 44 30 10 30<br><a href="https://brame-dev.odoo.com/odoo/crm?search=Durussel%20montage%20industriel" target="_blank" style="display:inline-block;margin-top:6px;padding:3px 8px;background:#0b1f3f;color:white;border-radius:3px;font-size:10px;text-decoration:none;font-weight:600;">🔍 Rechercher dans Odoo</a></div></div></div>`)[0];
+                popup_e84ba6ab6232e8a48f6a2aa8849c9b20.setContent(html_6953b12eb38977fe7683473cc59b50f7);
+            
+        
+
+        marker_3463194fde03cd5cfb84fdb2d01af331.bindPopup(popup_e84ba6ab6232e8a48f6a2aa8849c9b20)
+        ;
+
+        
+    
+    
+            marker_3463194fde03cd5cfb84fdb2d01af331.bindTooltip(
+                `<div>
+                     1. Durussel montage industriel — Compiegne
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3463194fde03cd5cfb84fdb2d01af331.setIcon(div_icon_404534ba4803c859b9477a120c51cb0d);
+            
+    
+            var marker_da95d4d96c74747d998985f75302e74e = L.marker(
+                [49.3803, 2.7881],
+                {
+}
+            ).addTo(map_f03b2c6e7213f26f47f3f5032995c5d7);
+        
+    
+            var div_icon_30de393cc84f870b57183d1b9da77f30 = L.divIcon({
+  "html": "\u003cdiv style=\"width:18px;height:18px;background:#2563eb;color:white;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:10px;border:2px solid white;transform:rotate(45deg);box-shadow:0 2px 5px rgba(0,0,0,.35);\"\u003e\u003cspan style=\"transform:rotate(-45deg)\"\u003e2\u003c/span\u003e\u003c/div\u003e",
+  "iconSize": [18, 18],
+  "iconAnchor": [9, 9],
+  "className": "empty",
+});
+        
+    
+        var popup_c425efa3dee7fda4ba9d88ec707f3c1b = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_a89cc0222bd71d53c56ff4f8d883d51c = $(`<div id="html_a89cc0222bd71d53c56ff4f8d883d51c" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:200px;"><div style="background:#2563eb;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">2. Bic Rasoirs<span style="font-weight:normal;font-size:10px;"> (recommandé)</span></div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 Longueil-Sainte-Marie<br>🎯 Haute<br>📋 2.Consomme / doit nous consulter<br>💡 Client existant • Priorité haute • à ~4 km<br>📞 -<br><a href="https://brame-dev.odoo.com/odoo/crm?search=Bic%20Rasoirs" target="_blank" style="display:inline-block;margin-top:6px;padding:3px 8px;background:#0b1f3f;color:white;border-radius:3px;font-size:10px;text-decoration:none;font-weight:600;">🔍 Rechercher dans Odoo</a></div></div></div>`)[0];
+                popup_c425efa3dee7fda4ba9d88ec707f3c1b.setContent(html_a89cc0222bd71d53c56ff4f8d883d51c);
+            
+        
+
+        marker_da95d4d96c74747d998985f75302e74e.bindPopup(popup_c425efa3dee7fda4ba9d88ec707f3c1b)
+        ;
+
+        
+    
+    
+            marker_da95d4d96c74747d998985f75302e74e.bindTooltip(
+                `<div>
+                     2. Bic Rasoirs — Longueil-Sainte-Marie
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_da95d4d96c74747d998985f75302e74e.setIcon(div_icon_30de393cc84f870b57183d1b9da77f30);
+            
+    
+            var marker_c0d27720221289d98e4338abcc7a167d = L.marker(
+                [49.4183, 2.8294488166448457],
+                {
+}
+            ).addTo(map_f03b2c6e7213f26f47f3f5032995c5d7);
+        
+    
+            var div_icon_4c0d6f47989f95692bd957327795e9ab = L.divIcon({
+  "html": "\u003cdiv style=\"width:18px;height:18px;background:#f59e0b;color:white;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:10px;border:2px solid white;transform:rotate(45deg);box-shadow:0 2px 5px rgba(0,0,0,.35);\"\u003e\u003cspan style=\"transform:rotate(-45deg)\"\u003e3\u003c/span\u003e\u003c/div\u003e",
+  "iconSize": [18, 18],
+  "iconAnchor": [9, 9],
+  "className": "empty",
+});
+        
+    
+        var popup_9899b6580d213562a2bc5ed405532dbb = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_f35fc3bc3ba249d19501e32534c36615 = $(`<div id="html_f35fc3bc3ba249d19501e32534c36615" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:200px;"><div style="background:#f59e0b;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">3. SAFRAN AEROSYSTEMS DUCTS<span style="font-weight:normal;font-size:10px;"> (recommandé)</span></div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 COMPIEGNE<br>🎯 Médium<br>📋 2.Consomme / doit nous consulter<br>💡 Client existant • à ~0 km<br>📞 -<br><a href="https://brame-dev.odoo.com/odoo/crm?search=Safran%20Aerospace%20Compi%C3%A8gne" target="_blank" style="display:inline-block;margin-top:6px;padding:3px 8px;background:#0b1f3f;color:white;border-radius:3px;font-size:10px;text-decoration:none;font-weight:600;">🔍 Rechercher dans Odoo</a></div></div></div>`)[0];
+                popup_9899b6580d213562a2bc5ed405532dbb.setContent(html_f35fc3bc3ba249d19501e32534c36615);
+            
+        
+
+        marker_c0d27720221289d98e4338abcc7a167d.bindPopup(popup_9899b6580d213562a2bc5ed405532dbb)
+        ;
+
+        
+    
+    
+            marker_c0d27720221289d98e4338abcc7a167d.bindTooltip(
+                `<div>
+                     3. SAFRAN AEROSYSTEMS DUCTS — COMPIEGNE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c0d27720221289d98e4338abcc7a167d.setIcon(div_icon_4c0d6f47989f95692bd957327795e9ab);
+            
+    
+            var marker_e9bb2ec26d2fd0293228c13de907b58b = L.marker(
+                [49.4223, 2.8233],
+                {
+}
+            ).addTo(map_f03b2c6e7213f26f47f3f5032995c5d7);
+        
+    
+            var div_icon_f613e75988cdfecab48be679b8b9266a = L.divIcon({
+  "html": "\u003cdiv style=\"width:18px;height:18px;background:#f59e0b;color:white;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:10px;border:2px solid white;transform:rotate(45deg);box-shadow:0 2px 5px rgba(0,0,0,.35);\"\u003e\u003cspan style=\"transform:rotate(-45deg)\"\u003e4\u003c/span\u003e\u003c/div\u003e",
+  "iconSize": [18, 18],
+  "iconAnchor": [9, 9],
+  "className": "empty",
+});
+        
+    
+        var popup_1ef5cbabff3368248878781d81e2afb0 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_697684a51a4de2c56f2688c93f73aec8 = $(`<div id="html_697684a51a4de2c56f2688c93f73aec8" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:200px;"><div style="background:#f59e0b;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">4. CIE COMPIEGNE<span style="font-weight:normal;font-size:10px;"> (recommandé)</span></div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 COMPIEGNE<br>🎯 Médium<br>📋 2.Consomme / doit nous consulter<br>💡 Client existant • à ~0 km<br>📞 +33 3 44 23 58 19<br><a href="https://brame-dev.odoo.com/odoo/crm?search=CIE%20COMPIEGNE" target="_blank" style="display:inline-block;margin-top:6px;padding:3px 8px;background:#0b1f3f;color:white;border-radius:3px;font-size:10px;text-decoration:none;font-weight:600;">🔍 Rechercher dans Odoo</a></div></div></div>`)[0];
+                popup_1ef5cbabff3368248878781d81e2afb0.setContent(html_697684a51a4de2c56f2688c93f73aec8);
+            
+        
+
+        marker_e9bb2ec26d2fd0293228c13de907b58b.bindPopup(popup_1ef5cbabff3368248878781d81e2afb0)
+        ;
+
+        
+    
+    
+            marker_e9bb2ec26d2fd0293228c13de907b58b.bindTooltip(
+                `<div>
+                     4. CIE COMPIEGNE — COMPIEGNE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e9bb2ec26d2fd0293228c13de907b58b.setIcon(div_icon_f613e75988cdfecab48be679b8b9266a);
+            
+    
+            var marker_fdf66a236e8aba257bba650b6d15bc4b = L.marker(
+                [49.4183, 2.8171511833551546],
+                {
+}
+            ).addTo(map_f03b2c6e7213f26f47f3f5032995c5d7);
+        
+    
+            var div_icon_0551dee46a1befb168c951632a7bdb72 = L.divIcon({
+  "html": "\u003cdiv style=\"width:18px;height:18px;background:#94a3b8;color:white;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:10px;border:2px solid white;transform:rotate(45deg);box-shadow:0 2px 5px rgba(0,0,0,.35);\"\u003e\u003cspan style=\"transform:rotate(-45deg)\"\u003e10\u003c/span\u003e\u003c/div\u003e",
+  "iconSize": [18, 18],
+  "iconAnchor": [9, 9],
+  "className": "empty",
+});
+        
+    
+        var popup_964f8caa06921dc46f45af40fad4a762 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_2426b18e8c236729f980ac199eb33133 = $(`<div id="html_2426b18e8c236729f980ac199eb33133" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:200px;"><div style="background:#94a3b8;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">10. EUROFLACO COMPIEGNE<span style="font-weight:normal;font-size:10px;"> (recommandé)</span></div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 COMPIEGNE<br>🎯 Basse<br>📋 1.Leads<br>💡 Lead à qualifier • à ~0 km<br>📞 -<br><a href="https://brame-dev.odoo.com/odoo/crm?search=EUROFLACO%20COMPIEGNE" target="_blank" style="display:inline-block;margin-top:6px;padding:3px 8px;background:#0b1f3f;color:white;border-radius:3px;font-size:10px;text-decoration:none;font-weight:600;">🔍 Rechercher dans Odoo</a></div></div></div>`)[0];
+                popup_964f8caa06921dc46f45af40fad4a762.setContent(html_2426b18e8c236729f980ac199eb33133);
+            
+        
+
+        marker_fdf66a236e8aba257bba650b6d15bc4b.bindPopup(popup_964f8caa06921dc46f45af40fad4a762)
+        ;
+
+        
+    
+    
+            marker_fdf66a236e8aba257bba650b6d15bc4b.bindTooltip(
+                `<div>
+                     10. EUROFLACO COMPIEGNE — COMPIEGNE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_fdf66a236e8aba257bba650b6d15bc4b.setIcon(div_icon_0551dee46a1befb168c951632a7bdb72);
+            
+    
+            var marker_fd9362641b45f908d56ff63d579bd3d5 = L.marker(
+                [49.414300000000004, 2.8233],
+                {
+}
+            ).addTo(map_f03b2c6e7213f26f47f3f5032995c5d7);
+        
+    
+            var div_icon_4f32969e83e9e5adb15c92324f7945b1 = L.divIcon({
+  "html": "\u003cdiv style=\"width:18px;height:18px;background:#94a3b8;color:white;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:10px;border:2px solid white;transform:rotate(45deg);box-shadow:0 2px 5px rgba(0,0,0,.35);\"\u003e\u003cspan style=\"transform:rotate(-45deg)\"\u003e11\u003c/span\u003e\u003c/div\u003e",
+  "iconSize": [18, 18],
+  "iconAnchor": [9, 9],
+  "className": "empty",
+});
+        
+    
+        var popup_d0d8c6748df5d574202c205f4ad60003 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_75bef3609f6411c1f4542a60e306d118 = $(`<div id="html_75bef3609f6411c1f4542a60e306d118" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:200px;"><div style="background:#94a3b8;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">11. COLGATE-PALMOLIVE INDUSTRIEL<span style="font-weight:normal;font-size:10px;"> (recommandé)</span></div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 Compiègne<br>🎯 Basse<br>📋 1.Leads<br>💡 Lead à qualifier • à ~0 km<br>📞 -<br><a href="https://brame-dev.odoo.com/odoo/crm?search=COLGATE%20PALMOLIVE" target="_blank" style="display:inline-block;margin-top:6px;padding:3px 8px;background:#0b1f3f;color:white;border-radius:3px;font-size:10px;text-decoration:none;font-weight:600;">🔍 Rechercher dans Odoo</a></div></div></div>`)[0];
+                popup_d0d8c6748df5d574202c205f4ad60003.setContent(html_75bef3609f6411c1f4542a60e306d118);
+            
+        
+
+        marker_fd9362641b45f908d56ff63d579bd3d5.bindPopup(popup_d0d8c6748df5d574202c205f4ad60003)
+        ;
+
+        
+    
+    
+            marker_fd9362641b45f908d56ff63d579bd3d5.bindTooltip(
+                `<div>
+                     11. COLGATE-PALMOLIVE INDUSTRIEL — Compiègne
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_fd9362641b45f908d56ff63d579bd3d5.setIcon(div_icon_4f32969e83e9e5adb15c92324f7945b1);
+            
+    
+            var marker_79b971e9d77a9d04f3e7c245496f5f33 = L.marker(
+                [49.355, 2.8433],
+                {
+}
+            ).addTo(map_f03b2c6e7213f26f47f3f5032995c5d7);
+        
+    
+            var div_icon_3ca8e5be178dbd032542cc4ff89918d8 = L.divIcon({
+  "html": "\u003cdiv style=\"width:18px;height:18px;background:#f59e0b;color:white;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:10px;border:2px solid white;transform:rotate(45deg);box-shadow:0 2px 5px rgba(0,0,0,.35);\"\u003e\u003cspan style=\"transform:rotate(-45deg)\"\u003e5\u003c/span\u003e\u003c/div\u003e",
+  "iconSize": [18, 18],
+  "iconAnchor": [9, 9],
+  "className": "empty",
+});
+        
+    
+        var popup_45a3faa50e95b3704f5b3ec95137cdd8 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_d393afbf037acdbb34bf2c3efeb019d1 = $(`<div id="html_d393afbf037acdbb34bf2c3efeb019d1" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:200px;"><div style="background:#f59e0b;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">5. COPEAUX & SALMON<span style="font-weight:normal;font-size:10px;"> (recommandé)</span></div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 LACROIX SAINT OUEN<br>🎯 Médium<br>📋 4.Prestation réalisée/ client à sécuriser<br>💡 Opportunité dans votre zone • à ~7 km<br>📞 +33 3 44 91 46 86<br><a href="https://brame-dev.odoo.com/odoo/crm?search=COPEAUX%20%26%20SALMON" target="_blank" style="display:inline-block;margin-top:6px;padding:3px 8px;background:#0b1f3f;color:white;border-radius:3px;font-size:10px;text-decoration:none;font-weight:600;">🔍 Rechercher dans Odoo</a></div></div></div>`)[0];
+                popup_45a3faa50e95b3704f5b3ec95137cdd8.setContent(html_d393afbf037acdbb34bf2c3efeb019d1);
+            
+        
+
+        marker_79b971e9d77a9d04f3e7c245496f5f33.bindPopup(popup_45a3faa50e95b3704f5b3ec95137cdd8)
+        ;
+
+        
+    
+    
+            marker_79b971e9d77a9d04f3e7c245496f5f33.bindTooltip(
+                `<div>
+                     5. COPEAUX & SALMON — LACROIX SAINT OUEN
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_79b971e9d77a9d04f3e7c245496f5f33.setIcon(div_icon_3ca8e5be178dbd032542cc4ff89918d8);
+            
+    
+            var marker_995d508077b33bac7156fb111d505f5c = L.marker(
+                [49.2608, 2.4397],
+                {
+}
+            ).addTo(map_f03b2c6e7213f26f47f3f5032995c5d7);
+        
+    
+            var div_icon_9b0c5115a259828f1029cb51a57acb12 = L.divIcon({
+  "html": "\u003cdiv style=\"width:18px;height:18px;background:#f59e0b;color:white;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:10px;border:2px solid white;transform:rotate(45deg);box-shadow:0 2px 5px rgba(0,0,0,.35);\"\u003e\u003cspan style=\"transform:rotate(-45deg)\"\u003e6\u003c/span\u003e\u003c/div\u003e",
+  "iconSize": [18, 18],
+  "iconAnchor": [9, 9],
+  "className": "empty",
+});
+        
+    
+        var popup_f4c64cfdce1b14f0a85f894f0ad96af0 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_1a2e1cf4b8ef2ff44ec537bc0c5ad349 = $(`<div id="html_1a2e1cf4b8ef2ff44ec537bc0c5ad349" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:200px;"><div style="background:#f59e0b;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">6. ARCELORMITTAL ATLANTIQUE<span style="font-weight:normal;font-size:10px;"> (recommandé)</span></div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 Montataire<br>🎯 Médium<br>📋 1.Leads<br>💡 Lead à qualifier • à ~32 km<br>📞 +32 478 40 77 83<br><a href="https://brame-dev.odoo.com/odoo/crm?search=ARCELORMITTAL%20ATLANTIQUE%20ET%20LORRAINE" target="_blank" style="display:inline-block;margin-top:6px;padding:3px 8px;background:#0b1f3f;color:white;border-radius:3px;font-size:10px;text-decoration:none;font-weight:600;">🔍 Rechercher dans Odoo</a></div></div></div>`)[0];
+                popup_f4c64cfdce1b14f0a85f894f0ad96af0.setContent(html_1a2e1cf4b8ef2ff44ec537bc0c5ad349);
+            
+        
+
+        marker_995d508077b33bac7156fb111d505f5c.bindPopup(popup_f4c64cfdce1b14f0a85f894f0ad96af0)
+        ;
+
+        
+    
+    
+            marker_995d508077b33bac7156fb111d505f5c.bindTooltip(
+                `<div>
+                     6. ARCELORMITTAL ATLANTIQUE — Montataire
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_995d508077b33bac7156fb111d505f5c.setIcon(div_icon_9b0c5115a259828f1029cb51a57acb12);
+            
+    
+            var marker_aa1b6e62f768718c520900595f61be5e = L.marker(
+                [49.3847, 2.3533],
+                {
+}
+            ).addTo(map_f03b2c6e7213f26f47f3f5032995c5d7);
+        
+    
+            var div_icon_d133f9b133521ffca42426f9a77e8098 = L.divIcon({
+  "html": "\u003cdiv style=\"width:18px;height:18px;background:#f59e0b;color:white;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:10px;border:2px solid white;transform:rotate(45deg);box-shadow:0 2px 5px rgba(0,0,0,.35);\"\u003e\u003cspan style=\"transform:rotate(-45deg)\"\u003e7\u003c/span\u003e\u003c/div\u003e",
+  "iconSize": [18, 18],
+  "iconAnchor": [9, 9],
+  "className": "empty",
+});
+        
+    
+        var popup_565c6475e5d635b960c8131a82455fe8 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_311b81d3c28181d5ff674c679b18eddf = $(`<div id="html_311b81d3c28181d5ff674c679b18eddf" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:200px;"><div style="background:#f59e0b;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">7. Societe automatique de profilage<span style="font-weight:normal;font-size:10px;"> (recommandé)</span></div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 Bailleul-sur-therain<br>🎯 Médium<br>📋 2.Consomme / doit nous consulter<br>💡 Client existant • à ~34 km<br>📞 +33 1 60 93 80 50<br><a href="https://brame-dev.odoo.com/odoo/crm?search=Profilafroid" target="_blank" style="display:inline-block;margin-top:6px;padding:3px 8px;background:#0b1f3f;color:white;border-radius:3px;font-size:10px;text-decoration:none;font-weight:600;">🔍 Rechercher dans Odoo</a></div></div></div>`)[0];
+                popup_565c6475e5d635b960c8131a82455fe8.setContent(html_311b81d3c28181d5ff674c679b18eddf);
+            
+        
+
+        marker_aa1b6e62f768718c520900595f61be5e.bindPopup(popup_565c6475e5d635b960c8131a82455fe8)
+        ;
+
+        
+    
+    
+            marker_aa1b6e62f768718c520900595f61be5e.bindTooltip(
+                `<div>
+                     7. Societe automatique de profilage — Bailleul-sur-therain
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_aa1b6e62f768718c520900595f61be5e.setIcon(div_icon_d133f9b133521ffca42426f9a77e8098);
+            
+    
+            var marker_915e99a314199446b38eba39a637cc10 = L.marker(
+                [49.3814, 3.3236],
+                {
+}
+            ).addTo(map_f03b2c6e7213f26f47f3f5032995c5d7);
+        
+    
+            var div_icon_bc0dc0bba5cc69f55166b5add954d77c = L.divIcon({
+  "html": "\u003cdiv style=\"width:18px;height:18px;background:#f59e0b;color:white;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:10px;border:2px solid white;transform:rotate(45deg);box-shadow:0 2px 5px rgba(0,0,0,.35);\"\u003e\u003cspan style=\"transform:rotate(-45deg)\"\u003e8\u003c/span\u003e\u003c/div\u003e",
+  "iconSize": [18, 18],
+  "iconAnchor": [9, 9],
+  "className": "empty",
+});
+        
+    
+        var popup_30394d2c9263133ace7a2be658acf907 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_1120879c48e04801f05fa703d7ec16d8 = $(`<div id="html_1120879c48e04801f05fa703d7ec16d8" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:200px;"><div style="background:#f59e0b;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">8. AXOTEQ<span style="font-weight:normal;font-size:10px;"> (recommandé)</span></div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 SOISSONS<br>🎯 Médium<br>📋 2.Consomme / doit nous consulter<br>💡 Client existant • à ~36 km<br>📞 +33 3 22 53 59 65<br><a href="https://brame-dev.odoo.com/odoo/crm?search=Axoteq" target="_blank" style="display:inline-block;margin-top:6px;padding:3px 8px;background:#0b1f3f;color:white;border-radius:3px;font-size:10px;text-decoration:none;font-weight:600;">🔍 Rechercher dans Odoo</a></div></div></div>`)[0];
+                popup_30394d2c9263133ace7a2be658acf907.setContent(html_1120879c48e04801f05fa703d7ec16d8);
+            
+        
+
+        marker_915e99a314199446b38eba39a637cc10.bindPopup(popup_30394d2c9263133ace7a2be658acf907)
+        ;
+
+        
+    
+    
+            marker_915e99a314199446b38eba39a637cc10.bindTooltip(
+                `<div>
+                     8. AXOTEQ — SOISSONS
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_915e99a314199446b38eba39a637cc10.setIcon(div_icon_bc0dc0bba5cc69f55166b5add954d77c);
+            
+    
+            var marker_c6fcbfb48938dea9bc4c85a66dabeb4c = L.marker(
+                [49.2086, 3.2647],
+                {
+}
+            ).addTo(map_f03b2c6e7213f26f47f3f5032995c5d7);
+        
+    
+            var div_icon_22ab3624c435059062e4573a3cb95916 = L.divIcon({
+  "html": "\u003cdiv style=\"width:18px;height:18px;background:#f59e0b;color:white;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:10px;border:2px solid white;transform:rotate(45deg);box-shadow:0 2px 5px rgba(0,0,0,.35);\"\u003e\u003cspan style=\"transform:rotate(-45deg)\"\u003e9\u003c/span\u003e\u003c/div\u003e",
+  "iconSize": [18, 18],
+  "iconAnchor": [9, 9],
+  "className": "empty",
+});
+        
+    
+        var popup_a418609c863abaea59c0e9ffa73828fe = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_6163b87dc55e67c19a500bd678148a8d = $(`<div id="html_6163b87dc55e67c19a500bd678148a8d" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:200px;"><div style="background:#f59e0b;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">9. Coredux France<span style="font-weight:normal;font-size:10px;"> (recommandé)</span></div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 EPAUX-BEZU<br>🎯 Médium<br>📋 2.Consomme / doit nous consulter<br>💡 Client existant • à ~39 km<br>📞 +33 3 23 83 80 31<br><a href="https://brame-dev.odoo.com/odoo/crm?search=COREDUX%20France" target="_blank" style="display:inline-block;margin-top:6px;padding:3px 8px;background:#0b1f3f;color:white;border-radius:3px;font-size:10px;text-decoration:none;font-weight:600;">🔍 Rechercher dans Odoo</a></div></div></div>`)[0];
+                popup_a418609c863abaea59c0e9ffa73828fe.setContent(html_6163b87dc55e67c19a500bd678148a8d);
+            
+        
+
+        marker_c6fcbfb48938dea9bc4c85a66dabeb4c.bindPopup(popup_a418609c863abaea59c0e9ffa73828fe)
+        ;
+
+        
+    
+    
+            marker_c6fcbfb48938dea9bc4c85a66dabeb4c.bindTooltip(
+                `<div>
+                     9. Coredux France — EPAUX-BEZU
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c6fcbfb48938dea9bc4c85a66dabeb4c.setIcon(div_icon_22ab3624c435059062e4573a3cb95916);
+            
+</script>
+</html>
