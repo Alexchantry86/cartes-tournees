@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_45408529070cf3e737fcc09e6bb83e4e {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+    <style>
+      #leg-btn {
+        position:fixed;top:16px;right:16px;z-index:1001;
+        background:#0b1f3f;color:white;border:none;border-radius:5px;
+        font-weight:700;font-family:Arial,sans-serif;
+        cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.25);white-space:nowrap;
+      }
+      #leg-panel {
+        position:fixed;top:44px;right:16px;z-index:1000;
+        background:white;box-shadow:0 2px 12px rgba(0,0,0,.18);
+        font-family:Arial,sans-serif;overflow-y:auto;display:none;
+      }
+      #leg-panel.ouvert { display:block; }
+    </style>
+
+    <button id="leg-btn"
+            onclick="(function(){
+              var p=document.getElementById('leg-panel');
+              var b=document.getElementById('leg-btn');
+              p.classList.toggle('ouvert');
+              b.textContent=p.classList.contains('ouvert')
+                ?'✕ Fermer':'☰ Louis · S28';
+            })()">
+      ☰ Louis · S28
+    </button>
+
+    <div id="leg-panel">
+      <div class="leg-header" style="font-weight:700;color:#0b1f3f;border-color:#1a3a6b;border-style:solid;">
+        Louis · S28 · Zone K
+      </div>
+      <div class="leg-tag" style="font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:#6b7280;">
+        Tournée — tag L028
+      </div>
+      <div class="leg-entry" style="display:flex;align-items:center;"><span class="leg-badge-stop" style="background:#1a3a6b;color:white;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;border:1px solid white;flex-shrink:0;font-weight:700;">1</span><span class="leg-nom" style="color:#1a3a6b;font-weight:600;">SAMP INDUSTRIE</span><span class="leg-ville" style="color:#64748b;white-space:nowrap;">COUTANCES</span></div><div class="leg-entry" style="display:flex;align-items:center;"><span class="leg-badge-stop" style="background:#1a3a6b;color:white;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;border:1px solid white;flex-shrink:0;font-weight:700;">2</span><span class="leg-nom" style="color:#1a3a6b;font-weight:600;">TEAM TURBO MACHINES</span><span class="leg-ville" style="color:#64748b;white-space:nowrap;">LA TRINITE-DE-THOUBERVILLE</span></div><div class="leg-entry" style="display:flex;align-items:center;"><span class="leg-badge-stop" style="background:#2563eb;color:white;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;border:1px solid white;flex-shrink:0;font-weight:700;">3</span><span class="leg-nom" style="color:#1a3a6b;font-weight:600;">Benning Conversion D Energ</span><span class="leg-ville" style="color:#64748b;white-space:nowrap;">Louviers</span></div><div class="leg-entry" style="opacity:0.5;display:flex;align-items:center;"><span class="leg-badge-stop" style="background:#94a3b8;color:white;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;border:1px solid white;flex-shrink:0;font-weight:700;">4</span><span class="leg-nom" style="color:#1a3a6b;font-weight:600;">SMC CHAUDRONNERIE</span><span class="leg-ville" style="color:#64748b;white-space:nowrap;">GRATOT</span></div><div class="leg-entry" style="display:flex;align-items:center;"><span class="leg-badge-stop" style="background:#94a3b8;color:white;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;border:1px solid white;flex-shrink:0;font-weight:700;">5</span><span class="leg-nom" style="color:#1a3a6b;font-weight:600;">MERSEN FRANCE AMIENS SAS</span><span class="leg-ville" style="color:#64748b;white-space:nowrap;">AMIENS</span></div><div class="leg-entry" style="display:flex;align-items:center;"><span class="leg-badge-stop" style="background:#94a3b8;color:white;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;border:1px solid white;flex-shrink:0;font-weight:700;">6</span><span class="leg-nom" style="color:#1a3a6b;font-weight:600;">SOCIETE D'ELECTROTECHNIQUE</span><span class="leg-ville" style="color:#64748b;white-space:nowrap;">AMIENS</span></div>
+      <div class="leg-div-sep" style="border-style:solid;border-color:#e5e7eb;"></div>
+      <div class="leg-prio-title" style="font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:#6b7280;"></div>
+      <div class="leg-prio-row" style="display:flex;align-items:center;"><span class="leg-prio-dot" style="background:#1a3a6b;display:inline-block;border-radius:2px;flex-shrink:0;"></span><span class="leg-prio-label" style="color:#374151;">Très élevée</span></div><div class="leg-prio-row" style="display:flex;align-items:center;"><span class="leg-prio-dot" style="background:#2563eb;display:inline-block;border-radius:2px;flex-shrink:0;"></span><span class="leg-prio-label" style="color:#374151;">Haute</span></div><div class="leg-prio-row" style="display:flex;align-items:center;"><span class="leg-prio-dot" style="background:#f59e0b;display:inline-block;border-radius:2px;flex-shrink:0;"></span><span class="leg-prio-label" style="color:#374151;">Moyenne</span></div><div class="leg-prio-row" style="display:flex;align-items:center;"><span class="leg-prio-dot" style="background:#94a3b8;display:inline-block;border-radius:2px;flex-shrink:0;"></span><span class="leg-prio-label" style="color:#374151;">Basse</span></div>
+    </div>
+
+    <script>
+    (function() {
+      var MOBILE  = {
+        btn:    { padding:'5px 9px',    fontSize:'10px', borderRadius:'5px' },
+        panel:  { width:'calc(100vw - 32px)', maxWidth:'300px',
+                   maxHeight:'65vh', padding:'6px 8px', borderRadius:'5px' },
+        badgeStop:  { width:'10px', height:'10px', fontSize:'6px', marginRight:'3px' },
+        badgeCompl: { width:'9px',  height:'9px',  fontSize:'6px', marginRight:'4px', marginLeft:'1px' },
+        entry:  { margin:'0', lineHeight:'1.3' },
+        nom:    { fontSize:'7px' },
+        ville:  { fontSize:'6px', marginLeft:'2px' },
+        header: { fontSize:'9px',  paddingBottom:'2px', marginBottom:'5px', borderBottomWidth:'1px' },
+        tag:    { fontSize:'6px',  marginBottom:'3px' },
+        sep:    { borderTopWidth:'1px', margin:'2px 0 1px' },
+        section:{ fontSize:'6px', marginBottom:'1px' },
+        prioRow:{ display:'flex', alignItems:'center', gap:'3px', margin:'1px 0' },
+        prioDot:{ display:'inline-block', width:'7px', height:'7px', borderRadius:'1px', flexShrink:'0' },
+        prioLbl:{ fontSize:'7px' },
+        prioTtl:{ fontSize:'6px', marginBottom:'2px' },
+        divSep: { borderTopWidth:'1px', margin:'4px 0 2px' },
+      };
+      var DESKTOP = {
+        btn:    { padding:'8px 14px',   fontSize:'13px', borderRadius:'6px' },
+        panel:  { width:'320px', maxWidth:'none',
+                   maxHeight:'85vh', padding:'12px 16px', borderRadius:'8px' },
+        badgeStop:  { width:'20px', height:'20px', fontSize:'11px', marginRight:'8px' },
+        badgeCompl: { width:'18px', height:'18px', fontSize:'11px', marginRight:'9px', marginLeft:'1px' },
+        entry:  { margin:'4px 0', lineHeight:'1.6' },
+        nom:    { fontSize:'13px' },
+        ville:  { fontSize:'11px', marginLeft:'6px' },
+        header: { fontSize:'15px', paddingBottom:'7px', marginBottom:'11px', borderBottomWidth:'2px' },
+        tag:    { fontSize:'11px', marginBottom:'7px' },
+        sep:    { borderTopWidth:'1px', margin:'6px 0 3px' },
+        section:{ fontSize:'10px', marginBottom:'3px' },
+        prioRow:{ display:'flex', alignItems:'center', gap:'7px', margin:'3px 0' },
+        prioDot:{ display:'inline-block', width:'12px', height:'12px', borderRadius:'2px', flexShrink:'0' },
+        prioLbl:{ fontSize:'12px' },
+        prioTtl:{ fontSize:'10px', marginBottom:'4px' },
+        divSep: { borderTopWidth:'1px', margin:'9px 0 5px' },
+      };
+
+      function applyAll() {
+        var S = window.innerWidth <= 768 ? MOBILE : DESKTOP;
+        var btn   = document.getElementById('leg-btn');
+        var panel = document.getElementById('leg-panel');
+        if (!btn || !panel) return;
+
+        // Bouton
+        Object.assign(btn.style, S.btn);
+
+        // Panneau
+        Object.assign(panel.style, S.panel);
+
+        // Badges stops
+        panel.querySelectorAll('.leg-badge-stop').forEach(function(el) {
+          Object.assign(el.style, S.badgeStop);
+        });
+
+        // Badges complémentaires
+        panel.querySelectorAll('.leg-badge-compl').forEach(function(el) {
+          Object.assign(el.style, S.badgeCompl);
+        });
+
+        // Entrées
+        panel.querySelectorAll('.leg-entry').forEach(function(el) {
+          Object.assign(el.style, S.entry);
+        });
+        panel.querySelectorAll('.leg-nom').forEach(function(el) {
+          Object.assign(el.style, S.nom);
+        });
+        panel.querySelectorAll('.leg-ville').forEach(function(el) {
+          Object.assign(el.style, S.ville);
+        });
+
+        // En-tête
+        var hdr = panel.querySelector('.leg-header');
+        if (hdr) Object.assign(hdr.style, S.header);
+
+        // Tag
+        var tag = panel.querySelector('.leg-tag');
+        if (tag) Object.assign(tag.style, S.tag);
+
+        // Séparateurs
+        panel.querySelectorAll('.leg-sep').forEach(function(el) {
+          Object.assign(el.style, S.sep);
+        });
+        panel.querySelectorAll('.leg-section').forEach(function(el) {
+          Object.assign(el.style, S.section);
+        });
+
+        // Priorité
+        panel.querySelectorAll('.leg-prio-row').forEach(function(el) {
+          Object.assign(el.style, S.prioRow);
+        });
+        panel.querySelectorAll('.leg-prio-dot').forEach(function(el) {
+          Object.assign(el.style, S.prioDot);
+        });
+        panel.querySelectorAll('.leg-prio-label').forEach(function(el) {
+          Object.assign(el.style, S.prioLbl);
+        });
+        var prioTtl = panel.querySelector('.leg-prio-title');
+        if (prioTtl) {
+          prioTtl.textContent = 'Priorité';
+          Object.assign(prioTtl.style, S.prioTtl);
+        }
+        var divSep = panel.querySelector('.leg-div-sep');
+        if (divSep) Object.assign(divSep.style, S.divSep);
+      }
+
+      // Appliquer au chargement et au resize
+      window.addEventListener('load', applyAll);
+      window.addEventListener('resize', applyAll);
+      // Appliquer aussi quand le panneau s'ouvre
+      document.addEventListener('click', function() {
+        setTimeout(applyAll, 10);
+      });
+    })();
+    </script>
+    
+            <div class="folium-map" id="map_45408529070cf3e737fcc09e6bb83e4e" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_45408529070cf3e737fcc09e6bb83e4e = L.map(
+                "map_45408529070cf3e737fcc09e6bb83e4e",
+                {
+                    center: [49.483, 1.04436],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 8,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+            L.control.scale().addTo(map_45408529070cf3e737fcc09e6bb83e4e);
+
+            
+
+        
+    
+            var tile_layer_aa13684b468b784b50773c0aac38caa8 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_aa13684b468b784b50773c0aac38caa8.addTo(map_45408529070cf3e737fcc09e6bb83e4e);
+        
+    
+            var marker_e0b5f344819fd891421eb536637068f6 = L.marker(
+                [49.0463, -1.4484],
+                {
+}
+            ).addTo(map_45408529070cf3e737fcc09e6bb83e4e);
+        
+    
+            var div_icon_a54ab9671c3f281582ac5b7184f04ac7 = L.divIcon({
+  "html": "\u003cdiv style=\"background:#1a3a6b;color:white;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:11px;border:2px solid white;box-shadow:0 2px 5px rgba(0,0,0,.4);\"\u003e1\u003c/div\u003e",
+  "iconSize": [22, 22],
+  "iconAnchor": [11, 11],
+  "className": "empty",
+});
+        
+    
+        var popup_bb5a7fc640db2db9f84d81c59ae47c42 = L.popup({
+  "maxWidth": 240,
+});
+
+        
+            
+                var html_1d5e2205ffc958b62760d2224a599051 = $(`<div id="html_1d5e2205ffc958b62760d2224a599051" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:180px;"><div style="background:#1a3a6b;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">1. SAMP INDUSTRIE</div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 COUTANCES<br>🎯 Très élevé<br>📋 2.Consomme / doit nous consulter<br>📞 +33 2 33 76 50 03<br><a href="https://brame-dev.odoo.com/web#id=19202&cids=6-1-2&menu_id=241&action=360&model=crm.lead&view_type=form" target="_blank" style="display:inline-block;margin-top:6px;padding:3px 8px;background:#0b1f3f;color:white;border-radius:3px;font-size:10px;text-decoration:none;font-weight:600;">🔗 Ouvrir dans Odoo</a></div></div></div>`)[0];
+                popup_bb5a7fc640db2db9f84d81c59ae47c42.setContent(html_1d5e2205ffc958b62760d2224a599051);
+            
+        
+
+        marker_e0b5f344819fd891421eb536637068f6.bindPopup(popup_bb5a7fc640db2db9f84d81c59ae47c42)
+        ;
+
+        
+    
+    
+            marker_e0b5f344819fd891421eb536637068f6.bindTooltip(
+                `<div>
+                     1. SAMP INDUSTRIE — COUTANCES
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e0b5f344819fd891421eb536637068f6.setIcon(div_icon_a54ab9671c3f281582ac5b7184f04ac7);
+            
+    
+            var marker_77972647801997b09c12ed2b8bbe8522 = L.marker(
+                [49.3639, 0.9119],
+                {
+}
+            ).addTo(map_45408529070cf3e737fcc09e6bb83e4e);
+        
+    
+            var div_icon_a0760695ed97554f823f8f2fcd8b5030 = L.divIcon({
+  "html": "\u003cdiv style=\"background:#1a3a6b;color:white;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:11px;border:2px solid white;box-shadow:0 2px 5px rgba(0,0,0,.4);\"\u003e2\u003c/div\u003e",
+  "iconSize": [22, 22],
+  "iconAnchor": [11, 11],
+  "className": "empty",
+});
+        
+    
+        var popup_fc1ecb2ce56c11e5e549943304b0c96a = L.popup({
+  "maxWidth": 240,
+});
+
+        
+            
+                var html_1fb5000d3c6601be463a8ff8ba6368ec = $(`<div id="html_1fb5000d3c6601be463a8ff8ba6368ec" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:180px;"><div style="background:#1a3a6b;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">2. TEAM TURBO MACHINES</div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 LA TRINITE-DE-THOUBERVILLE<br>🎯 Très élevé<br>📋 5. Clients stratégiques<br>📞 +33 2 32 20 85 72<br><a href="https://brame-dev.odoo.com/web#id=3091&cids=6-1-2&menu_id=241&action=360&model=crm.lead&view_type=form" target="_blank" style="display:inline-block;margin-top:6px;padding:3px 8px;background:#0b1f3f;color:white;border-radius:3px;font-size:10px;text-decoration:none;font-weight:600;">🔗 Ouvrir dans Odoo</a></div></div></div>`)[0];
+                popup_fc1ecb2ce56c11e5e549943304b0c96a.setContent(html_1fb5000d3c6601be463a8ff8ba6368ec);
+            
+        
+
+        marker_77972647801997b09c12ed2b8bbe8522.bindPopup(popup_fc1ecb2ce56c11e5e549943304b0c96a)
+        ;
+
+        
+    
+    
+            marker_77972647801997b09c12ed2b8bbe8522.bindTooltip(
+                `<div>
+                     2. TEAM TURBO MACHINES — LA TRINITE-DE-THOUBERVILLE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_77972647801997b09c12ed2b8bbe8522.setIcon(div_icon_a0760695ed97554f823f8f2fcd8b5030);
+            
+    
+            var marker_968f6ae4d44aeb26a998fe2dcd0de75a = L.marker(
+                [49.2164, 1.1667],
+                {
+}
+            ).addTo(map_45408529070cf3e737fcc09e6bb83e4e);
+        
+    
+            var div_icon_1f3589a37305993b70b9976ab72d469f = L.divIcon({
+  "html": "\u003cdiv style=\"background:#2563eb;color:white;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:11px;border:2px solid white;box-shadow:0 2px 5px rgba(0,0,0,.4);\"\u003e3\u003c/div\u003e",
+  "iconSize": [22, 22],
+  "iconAnchor": [11, 11],
+  "className": "empty",
+});
+        
+    
+        var popup_07097fd88a291e5c3cf062cc10f3a6e4 = L.popup({
+  "maxWidth": 240,
+});
+
+        
+            
+                var html_e917bef54d3c20f862a260d5a3372305 = $(`<div id="html_e917bef54d3c20f862a260d5a3372305" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:180px;"><div style="background:#2563eb;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">3. Benning Conversion D Energie</div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 Louviers<br>🎯 Haute<br>📋 2.Consomme  / doit nous consulter / plaquette envoyée<br>📞 +33 2 32 25 35 04<br><a href="https://brame-dev.odoo.com/web#id=14490&cids=6-1-2&menu_id=241&action=360&model=crm.lead&view_type=form" target="_blank" style="display:inline-block;margin-top:6px;padding:3px 8px;background:#0b1f3f;color:white;border-radius:3px;font-size:10px;text-decoration:none;font-weight:600;">🔗 Ouvrir dans Odoo</a></div></div></div>`)[0];
+                popup_07097fd88a291e5c3cf062cc10f3a6e4.setContent(html_e917bef54d3c20f862a260d5a3372305);
+            
+        
+
+        marker_968f6ae4d44aeb26a998fe2dcd0de75a.bindPopup(popup_07097fd88a291e5c3cf062cc10f3a6e4)
+        ;
+
+        
+    
+    
+            marker_968f6ae4d44aeb26a998fe2dcd0de75a.bindTooltip(
+                `<div>
+                     3. Benning Conversion D Energie — Louviers
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_968f6ae4d44aeb26a998fe2dcd0de75a.setIcon(div_icon_1f3589a37305993b70b9976ab72d469f);
+            
+    
+            var marker_33486ce1b85f09564607b48d7387e3be = L.marker(
+                [49.8942, 2.302009241580072],
+                {
+}
+            ).addTo(map_45408529070cf3e737fcc09e6bb83e4e);
+        
+    
+            var div_icon_3effd8df7fc13581f3368d5e26df956d = L.divIcon({
+  "html": "\u003cdiv style=\"background:#94a3b8;color:white;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:11px;border:2px solid white;box-shadow:0 2px 5px rgba(0,0,0,.4);\"\u003e5\u003c/div\u003e",
+  "iconSize": [22, 22],
+  "iconAnchor": [11, 11],
+  "className": "empty",
+});
+        
+    
+        var popup_9d9eff31d153b62e12c458bcb9c7e778 = L.popup({
+  "maxWidth": 240,
+});
+
+        
+            
+                var html_6e83469cd999d4a157806bdb7ac0a5f2 = $(`<div id="html_6e83469cd999d4a157806bdb7ac0a5f2" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:180px;"><div style="background:#94a3b8;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">5. MERSEN FRANCE AMIENS SAS</div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 AMIENS<br>🎯 Basse<br>📋 1.Leads<br>📞 +33 3 22 54 45 00<br><a href="https://brame-dev.odoo.com/web#id=20097&cids=6-1-2&menu_id=241&action=360&model=crm.lead&view_type=form" target="_blank" style="display:inline-block;margin-top:6px;padding:3px 8px;background:#0b1f3f;color:white;border-radius:3px;font-size:10px;text-decoration:none;font-weight:600;">🔗 Ouvrir dans Odoo</a></div></div></div>`)[0];
+                popup_9d9eff31d153b62e12c458bcb9c7e778.setContent(html_6e83469cd999d4a157806bdb7ac0a5f2);
+            
+        
+
+        marker_33486ce1b85f09564607b48d7387e3be.bindPopup(popup_9d9eff31d153b62e12c458bcb9c7e778)
+        ;
+
+        
+    
+    
+            marker_33486ce1b85f09564607b48d7387e3be.bindTooltip(
+                `<div>
+                     5. MERSEN FRANCE AMIENS SAS — AMIENS
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_33486ce1b85f09564607b48d7387e3be.setIcon(div_icon_3effd8df7fc13581f3368d5e26df956d);
+            
+    
+            var marker_a168295ba31b9f2443edbfc81b91fec7 = L.marker(
+                [49.8942, 2.2895907584199278],
+                {
+}
+            ).addTo(map_45408529070cf3e737fcc09e6bb83e4e);
+        
+    
+            var div_icon_f427fa8850a36f796c7385384644ea36 = L.divIcon({
+  "html": "\u003cdiv style=\"background:#94a3b8;color:white;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:11px;border:2px solid white;box-shadow:0 2px 5px rgba(0,0,0,.4);\"\u003e6\u003c/div\u003e",
+  "iconSize": [22, 22],
+  "iconAnchor": [11, 11],
+  "className": "empty",
+});
+        
+    
+        var popup_96e018ed37f1d6e6b026d0d35abdeaea = L.popup({
+  "maxWidth": 240,
+});
+
+        
+            
+                var html_42de354b8b4f47e0f6d261dfa093cfee = $(`<div id="html_42de354b8b4f47e0f6d261dfa093cfee" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:180px;"><div style="background:#94a3b8;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">6. SOCIETE D'ELECTROTECHNIQUE INDUSTRIELLE ET DE BOBINAGE</div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 AMIENS<br>🎯 Basse<br>📋 1.Leads<br>📞 -<br><a href="https://brame-dev.odoo.com/web#id=20096&cids=6-1-2&menu_id=241&action=360&model=crm.lead&view_type=form" target="_blank" style="display:inline-block;margin-top:6px;padding:3px 8px;background:#0b1f3f;color:white;border-radius:3px;font-size:10px;text-decoration:none;font-weight:600;">🔗 Ouvrir dans Odoo</a></div></div></div>`)[0];
+                popup_96e018ed37f1d6e6b026d0d35abdeaea.setContent(html_42de354b8b4f47e0f6d261dfa093cfee);
+            
+        
+
+        marker_a168295ba31b9f2443edbfc81b91fec7.bindPopup(popup_96e018ed37f1d6e6b026d0d35abdeaea)
+        ;
+
+        
+    
+    
+            marker_a168295ba31b9f2443edbfc81b91fec7.bindTooltip(
+                `<div>
+                     6. SOCIETE D'ELECTROTECHNIQUE INDUSTRIELLE ET DE BOBINAGE — AMIENS
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a168295ba31b9f2443edbfc81b91fec7.setIcon(div_icon_f427fa8850a36f796c7385384644ea36);
+            
+</script>
+</html>
