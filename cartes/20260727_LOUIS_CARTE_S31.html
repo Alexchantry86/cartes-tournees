@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_9647c534642cae1c821cd2128ff4d480 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+    <style>
+      #leg-btn {
+        position:fixed;top:16px;right:16px;z-index:1001;
+        background:#0b1f3f;color:white;border:none;border-radius:5px;
+        font-weight:700;font-family:Arial,sans-serif;
+        cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.25);white-space:nowrap;
+      }
+      #leg-panel {
+        position:fixed;top:44px;right:16px;z-index:1000;
+        background:white;box-shadow:0 2px 12px rgba(0,0,0,.18);
+        font-family:Arial,sans-serif;overflow-y:auto;display:none;
+      }
+      #leg-panel.ouvert { display:block; }
+    </style>
+
+    <button id="leg-btn"
+            onclick="(function(){
+              var p=document.getElementById('leg-panel');
+              var b=document.getElementById('leg-btn');
+              p.classList.toggle('ouvert');
+              b.textContent=p.classList.contains('ouvert')
+                ?'✕ Fermer':'☰ Louis · S31';
+            })()">
+      ☰ Louis · S31
+    </button>
+
+    <div id="leg-panel">
+      <div class="leg-header" style="font-weight:700;color:#0b1f3f;border-color:#1a3a6b;border-style:solid;">
+        Louis · S31 · Zone K
+      </div>
+      <div class="leg-tag" style="font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:#6b7280;">
+        Tournée — tag L031
+      </div>
+      <div style="display:flex;gap:10px;"><div style="flex:1;"><div class="leg-entry" style="display:flex;align-items:center;"><span class="leg-badge-stop" style="background:#1a3a6b;color:white;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;border:1px solid white;flex-shrink:0;font-weight:700;">1</span><span class="leg-nom" style="color:#1a3a6b;font-weight:600;">ARESIA-ST-SOUPPLETS</span><span class="leg-ville" style="color:#64748b;white-space:nowrap;">SAINT-SOUPPLETS</span></div><div class="leg-entry" style="display:flex;align-items:center;"><span class="leg-badge-stop" style="background:#1a3a6b;color:white;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;border:1px solid white;flex-shrink:0;font-weight:700;">2</span><span class="leg-nom" style="color:#1a3a6b;font-weight:600;">ATELIER LOUIS DEL BOCA</span><span class="leg-ville" style="color:#64748b;white-space:nowrap;">SURESNES</span></div><div class="leg-entry" style="display:flex;align-items:center;"><span class="leg-badge-stop" style="background:#1a3a6b;color:white;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;border:1px solid white;flex-shrink:0;font-weight:700;">3</span><span class="leg-nom" style="color:#1a3a6b;font-weight:600;">MARCEL LABBE</span><span class="leg-ville" style="color:#64748b;white-space:nowrap;">TOURNAN EN BRIE</span></div><div class="leg-entry" style="display:flex;align-items:center;"><span class="leg-badge-stop" style="background:#1a3a6b;color:white;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;border:1px solid white;flex-shrink:0;font-weight:700;">4</span><span class="leg-nom" style="color:#1a3a6b;font-weight:600;">POLIMIROIR</span><span class="leg-ville" style="color:#64748b;white-space:nowrap;">SAINT-SOUPPLETS</span></div><div class="leg-entry" style="display:flex;align-items:center;"><span class="leg-badge-stop" style="background:#1a3a6b;color:white;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;border:1px solid white;flex-shrink:0;font-weight:700;">5</span><span class="leg-nom" style="color:#1a3a6b;font-weight:600;">DUMOULIN ET CIE</span><span class="leg-ville" style="color:#64748b;white-space:nowrap;">TOURNAN-EN-BRIE</span></div><div class="leg-entry" style="display:flex;align-items:center;"><span class="leg-badge-stop" style="background:#2563eb;color:white;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;border:1px solid white;flex-shrink:0;font-weight:700;">6</span><span class="leg-nom" style="color:#1a3a6b;font-weight:600;">GALAM ROBOTICS</span><span class="leg-ville" style="color:#64748b;white-space:nowrap;">VILLENEUVE-LA-GARENNE</span></div><div class="leg-entry" style="display:flex;align-items:center;"><span class="leg-badge-stop" style="background:#2563eb;color:white;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;border:1px solid white;flex-shrink:0;font-weight:700;">7</span><span class="leg-nom" style="color:#1a3a6b;font-weight:600;">TRANSPORTS MARCHE</span><span class="leg-ville" style="color:#64748b;white-space:nowrap;">COMPANS</span></div><div class="leg-entry" style="display:flex;align-items:center;"><span class="leg-badge-stop" style="background:#2563eb;color:white;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;border:1px solid white;flex-shrink:0;font-weight:700;">8</span><span class="leg-nom" style="color:#1a3a6b;font-weight:600;">Media 6 production plv</span><span class="leg-ville" style="color:#64748b;white-space:nowrap;">La ferte-milon</span></div><div class="leg-entry" style="opacity:0.5;display:flex;align-items:center;"><span class="leg-badge-stop" style="background:#2563eb;color:white;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;border:1px solid white;flex-shrink:0;font-weight:700;">9</span><span class="leg-nom" style="color:#1a3a6b;font-weight:600;">France etuves</span><span class="leg-ville" style="color:#64748b;white-space:nowrap;">Chelles</span></div><div class="leg-entry" style="display:flex;align-items:center;"><span class="leg-badge-stop" style="background:#94a3b8;color:white;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;border:1px solid white;flex-shrink:0;font-weight:700;">10</span><span class="leg-nom" style="color:#1a3a6b;font-weight:600;">ACORIS SAS</span><span class="leg-ville" style="color:#64748b;white-space:nowrap;">CHENNEVIERES-SUR-MARNE</span></div><div class="leg-entry" style="display:flex;align-items:center;"><span class="leg-badge-stop" style="background:#94a3b8;color:white;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;border:1px solid white;flex-shrink:0;font-weight:700;">11</span><span class="leg-nom" style="color:#1a3a6b;font-weight:600;">C2L</span><span class="leg-ville" style="color:#64748b;white-space:nowrap;">TOURNAN-EN-BRIE</span></div><div class="leg-entry" style="display:flex;align-items:center;"><span class="leg-badge-stop" style="background:#94a3b8;color:white;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;border:1px solid white;flex-shrink:0;font-weight:700;">12</span><span class="leg-nom" style="color:#1a3a6b;font-weight:600;">EQUIMAT</span><span class="leg-ville" style="color:#64748b;white-space:nowrap;">Tournan-en-Brie</span></div></div><div style="flex:1;border-left:1px solid #f1f5f9;padding-left:10px;"><div class="leg-entry" style="opacity:0.5;display:flex;align-items:center;"><span class="leg-badge-stop" style="background:#94a3b8;color:white;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;border:1px solid white;flex-shrink:0;font-weight:700;">13</span><span class="leg-nom" style="color:#1a3a6b;font-weight:600;">AIRBUS HELICOPTERS</span><span class="leg-ville" style="color:#64748b;white-space:nowrap;">DUGNY</span></div><div class="leg-entry" style="display:flex;align-items:center;"><span class="leg-badge-stop" style="background:#94a3b8;color:white;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;border:1px solid white;flex-shrink:0;font-weight:700;">14</span><span class="leg-nom" style="color:#1a3a6b;font-weight:600;">LOGIPROX</span><span class="leg-ville" style="color:#64748b;white-space:nowrap;">CHENNEVIERES SUR MARNE</span></div><div class="leg-sep"></div><div class="leg-section">Complémentaires</div><div class="leg-entry" style="display:flex;align-items:center;"><span class="leg-badge-compl" style="background:#2563eb;color:white;display:inline-flex;align-items:center;justify-content:center;font-weight:700;transform:rotate(45deg);border:1px solid white;flex-shrink:0;"><span style="transform:rotate(-45deg)">15</span></span><span class="leg-nom" style="color:#1a3a6b;font-weight:600;">M.I.S. beauvais</span><span class="leg-ville" style="color:#64748b;white-space:nowrap;">Beauvais</span></div><div class="leg-entry" style="display:flex;align-items:center;"><span class="leg-badge-compl" style="background:#2563eb;color:white;display:inline-flex;align-items:center;justify-content:center;font-weight:700;transform:rotate(45deg);border:1px solid white;flex-shrink:0;"><span style="transform:rotate(-45deg)">16</span></span><span class="leg-nom" style="color:#1a3a6b;font-weight:600;">Agco</span><span class="leg-ville" style="color:#64748b;white-space:nowrap;">Beauvais</span></div><div class="leg-entry" style="display:flex;align-items:center;"><span class="leg-badge-compl" style="background:#2563eb;color:white;display:inline-flex;align-items:center;justify-content:center;font-weight:700;transform:rotate(45deg);border:1px solid white;flex-shrink:0;"><span style="transform:rotate(-45deg)">17</span></span><span class="leg-nom" style="color:#1a3a6b;font-weight:600;">Ares technologies</span><span class="leg-ville" style="color:#64748b;white-space:nowrap;">Beauvais</span></div><div class="leg-entry" style="display:flex;align-items:center;"><span class="leg-badge-compl" style="background:#f59e0b;color:white;display:inline-flex;align-items:center;justify-content:center;font-weight:700;transform:rotate(45deg);border:1px solid white;flex-shrink:0;"><span style="transform:rotate(-45deg)">18</span></span><span class="leg-nom" style="color:#1a3a6b;font-weight:600;">ARCELORMITTAL ATLANTIQUE</span><span class="leg-ville" style="color:#64748b;white-space:nowrap;">Montataire</span></div><div class="leg-entry" style="display:flex;align-items:center;"><span class="leg-badge-compl" style="background:#f59e0b;color:white;display:inline-flex;align-items:center;justify-content:center;font-weight:700;transform:rotate(45deg);border:1px solid white;flex-shrink:0;"><span style="transform:rotate(-45deg)">19</span></span><span class="leg-nom" style="color:#1a3a6b;font-weight:600;">BERGERAT MONNOYEUR</span><span class="leg-ville" style="color:#64748b;white-space:nowrap;">Amblainville</span></div><div class="leg-entry" style="display:flex;align-items:center;"><span class="leg-badge-compl" style="background:#f59e0b;color:white;display:inline-flex;align-items:center;justify-content:center;font-weight:700;transform:rotate(45deg);border:1px solid white;flex-shrink:0;"><span style="transform:rotate(-45deg)">20</span></span><span class="leg-nom" style="color:#1a3a6b;font-weight:600;">Vygon</span><span class="leg-ville" style="color:#64748b;white-space:nowrap;">Ivry-Le-Temple</span></div><div class="leg-entry" style="display:flex;align-items:center;"><span class="leg-badge-compl" style="background:#f59e0b;color:white;display:inline-flex;align-items:center;justify-content:center;font-weight:700;transform:rotate(45deg);border:1px solid white;flex-shrink:0;"><span style="transform:rotate(-45deg)">21</span></span><span class="leg-nom" style="color:#1a3a6b;font-weight:600;">Societe automatique de pro</span><span class="leg-ville" style="color:#64748b;white-space:nowrap;">Bailleul-sur-therain</span></div><div class="leg-entry" style="display:flex;align-items:center;"><span class="leg-badge-compl" style="background:#f59e0b;color:white;display:inline-flex;align-items:center;justify-content:center;font-weight:700;transform:rotate(45deg);border:1px solid white;flex-shrink:0;"><span style="transform:rotate(-45deg)">22</span></span><span class="leg-nom" style="color:#1a3a6b;font-weight:600;">ACMO Précision</span><span class="leg-ville" style="color:#64748b;white-space:nowrap;">BEAUVAIS</span></div><div class="leg-entry" style="display:flex;align-items:center;"><span class="leg-badge-compl" style="background:#f59e0b;color:white;display:inline-flex;align-items:center;justify-content:center;font-weight:700;transform:rotate(45deg);border:1px solid white;flex-shrink:0;"><span style="transform:rotate(-45deg)">23</span></span><span class="leg-nom" style="color:#1a3a6b;font-weight:600;">AK2S</span><span class="leg-ville" style="color:#64748b;white-space:nowrap;">BEAUVAIS</span></div><div class="leg-entry" style="display:flex;align-items:center;"><span class="leg-badge-compl" style="background:#94a3b8;color:white;display:inline-flex;align-items:center;justify-content:center;font-weight:700;transform:rotate(45deg);border:1px solid white;flex-shrink:0;"><span style="transform:rotate(-45deg)">24</span></span><span class="leg-nom" style="color:#1a3a6b;font-weight:600;">Societe des extincteurs an</span><span class="leg-ville" style="color:#64748b;white-space:nowrap;">Meru</span></div></div></div>
+      <div class="leg-div-sep" style="border-style:solid;border-color:#e5e7eb;"></div>
+      <div class="leg-prio-title" style="font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:#6b7280;"></div>
+      <div class="leg-prio-row" style="display:flex;align-items:center;"><span class="leg-prio-dot" style="background:#1a3a6b;display:inline-block;border-radius:2px;flex-shrink:0;"></span><span class="leg-prio-label" style="color:#374151;">Très élevée</span></div><div class="leg-prio-row" style="display:flex;align-items:center;"><span class="leg-prio-dot" style="background:#2563eb;display:inline-block;border-radius:2px;flex-shrink:0;"></span><span class="leg-prio-label" style="color:#374151;">Haute</span></div><div class="leg-prio-row" style="display:flex;align-items:center;"><span class="leg-prio-dot" style="background:#f59e0b;display:inline-block;border-radius:2px;flex-shrink:0;"></span><span class="leg-prio-label" style="color:#374151;">Moyenne</span></div><div class="leg-prio-row" style="display:flex;align-items:center;"><span class="leg-prio-dot" style="background:#94a3b8;display:inline-block;border-radius:2px;flex-shrink:0;"></span><span class="leg-prio-label" style="color:#374151;">Basse</span></div>
+    </div>
+
+    <script>
+    (function() {
+      var MOBILE  = {
+        btn:    { padding:'5px 9px',    fontSize:'10px', borderRadius:'5px' },
+        panel:  { width:'calc(100vw - 32px)', maxWidth:'300px',
+                   maxHeight:'65vh', padding:'6px 8px', borderRadius:'5px' },
+        badgeStop:  { width:'10px', height:'10px', fontSize:'6px', marginRight:'3px' },
+        badgeCompl: { width:'9px',  height:'9px',  fontSize:'6px', marginRight:'4px', marginLeft:'1px' },
+        entry:  { margin:'0', lineHeight:'1.3' },
+        nom:    { fontSize:'7px' },
+        ville:  { fontSize:'6px', marginLeft:'2px' },
+        header: { fontSize:'9px',  paddingBottom:'2px', marginBottom:'5px', borderBottomWidth:'1px' },
+        tag:    { fontSize:'6px',  marginBottom:'3px' },
+        sep:    { borderTopWidth:'1px', margin:'2px 0 1px' },
+        section:{ fontSize:'6px', marginBottom:'1px' },
+        prioRow:{ display:'flex', alignItems:'center', gap:'3px', margin:'1px 0' },
+        prioDot:{ display:'inline-block', width:'7px', height:'7px', borderRadius:'1px', flexShrink:'0' },
+        prioLbl:{ fontSize:'7px' },
+        prioTtl:{ fontSize:'6px', marginBottom:'2px' },
+        divSep: { borderTopWidth:'1px', margin:'4px 0 2px' },
+      };
+      var DESKTOP = {
+        btn:    { padding:'8px 14px',   fontSize:'13px', borderRadius:'6px' },
+        panel:  { width:'560px', maxWidth:'none',
+                   maxHeight:'85vh', padding:'12px 16px', borderRadius:'8px' },
+        badgeStop:  { width:'20px', height:'20px', fontSize:'11px', marginRight:'8px' },
+        badgeCompl: { width:'18px', height:'18px', fontSize:'11px', marginRight:'9px', marginLeft:'1px' },
+        entry:  { margin:'4px 0', lineHeight:'1.6' },
+        nom:    { fontSize:'13px' },
+        ville:  { fontSize:'11px', marginLeft:'6px' },
+        header: { fontSize:'15px', paddingBottom:'7px', marginBottom:'11px', borderBottomWidth:'2px' },
+        tag:    { fontSize:'11px', marginBottom:'7px' },
+        sep:    { borderTopWidth:'1px', margin:'6px 0 3px' },
+        section:{ fontSize:'10px', marginBottom:'3px' },
+        prioRow:{ display:'flex', alignItems:'center', gap:'7px', margin:'3px 0' },
+        prioDot:{ display:'inline-block', width:'12px', height:'12px', borderRadius:'2px', flexShrink:'0' },
+        prioLbl:{ fontSize:'12px' },
+        prioTtl:{ fontSize:'10px', marginBottom:'4px' },
+        divSep: { borderTopWidth:'1px', margin:'9px 0 5px' },
+      };
+
+      function applyAll() {
+        var S = window.innerWidth <= 768 ? MOBILE : DESKTOP;
+        var btn   = document.getElementById('leg-btn');
+        var panel = document.getElementById('leg-panel');
+        if (!btn || !panel) return;
+
+        // Bouton
+        Object.assign(btn.style, S.btn);
+
+        // Panneau
+        Object.assign(panel.style, S.panel);
+
+        // Badges stops
+        panel.querySelectorAll('.leg-badge-stop').forEach(function(el) {
+          Object.assign(el.style, S.badgeStop);
+        });
+
+        // Badges complémentaires
+        panel.querySelectorAll('.leg-badge-compl').forEach(function(el) {
+          Object.assign(el.style, S.badgeCompl);
+        });
+
+        // Entrées
+        panel.querySelectorAll('.leg-entry').forEach(function(el) {
+          Object.assign(el.style, S.entry);
+        });
+        panel.querySelectorAll('.leg-nom').forEach(function(el) {
+          Object.assign(el.style, S.nom);
+        });
+        panel.querySelectorAll('.leg-ville').forEach(function(el) {
+          Object.assign(el.style, S.ville);
+        });
+
+        // En-tête
+        var hdr = panel.querySelector('.leg-header');
+        if (hdr) Object.assign(hdr.style, S.header);
+
+        // Tag
+        var tag = panel.querySelector('.leg-tag');
+        if (tag) Object.assign(tag.style, S.tag);
+
+        // Séparateurs
+        panel.querySelectorAll('.leg-sep').forEach(function(el) {
+          Object.assign(el.style, S.sep);
+        });
+        panel.querySelectorAll('.leg-section').forEach(function(el) {
+          Object.assign(el.style, S.section);
+        });
+
+        // Priorité
+        panel.querySelectorAll('.leg-prio-row').forEach(function(el) {
+          Object.assign(el.style, S.prioRow);
+        });
+        panel.querySelectorAll('.leg-prio-dot').forEach(function(el) {
+          Object.assign(el.style, S.prioDot);
+        });
+        panel.querySelectorAll('.leg-prio-label').forEach(function(el) {
+          Object.assign(el.style, S.prioLbl);
+        });
+        var prioTtl = panel.querySelector('.leg-prio-title');
+        if (prioTtl) {
+          prioTtl.textContent = 'Priorité';
+          Object.assign(prioTtl.style, S.prioTtl);
+        }
+        var divSep = panel.querySelector('.leg-div-sep');
+        if (divSep) Object.assign(divSep.style, S.divSep);
+      }
+
+      // Appliquer au chargement et au resize
+      window.addEventListener('load', applyAll);
+      window.addEventListener('resize', applyAll);
+      // Appliquer aussi quand le panneau s'ouvre
+      document.addEventListener('click', function() {
+        setTimeout(applyAll, 10);
+      });
+    })();
+    </script>
+    
+            <div class="folium-map" id="map_9647c534642cae1c821cd2128ff4d480" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_9647c534642cae1c821cd2128ff4d480 = L.map(
+                "map_9647c534642cae1c821cd2128ff4d480",
+                {
+                    center: [49.09795, 2.4319],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 9,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+            L.control.scale().addTo(map_9647c534642cae1c821cd2128ff4d480);
+
+            
+
+        
+    
+            var tile_layer_b3312bc361d77e585d76dc7474035c98 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_b3312bc361d77e585d76dc7474035c98.addTo(map_9647c534642cae1c821cd2128ff4d480);
+        
+    
+            var marker_cc69ff14c1453be66fa0a6eef544db62 = L.marker(
+                [49.0478, 2.755002871486281],
+                {
+}
+            ).addTo(map_9647c534642cae1c821cd2128ff4d480);
+        
+    
+            var div_icon_8ab9355e8c978b0d22704d6db718cbaf = L.divIcon({
+  "html": "\u003cdiv style=\"background:#1a3a6b;color:white;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:11px;border:2px solid white;box-shadow:0 2px 5px rgba(0,0,0,.4);\"\u003e1\u003c/div\u003e",
+  "iconSize": [22, 22],
+  "iconAnchor": [11, 11],
+  "className": "empty",
+});
+        
+    
+        var popup_670d26f1064fb14bce8dca696cd20821 = L.popup({
+  "maxWidth": 240,
+});
+
+        
+            
+                var html_ae0f9f77406a516ebcbe05e9baea78c5 = $(`<div id="html_ae0f9f77406a516ebcbe05e9baea78c5" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:180px;"><div style="background:#1a3a6b;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">1. ARESIA-ST-SOUPPLETS</div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 SAINT-SOUPPLETS<br>🎯 Très élevé<br>📋 2.Consomme  / doit nous consulter / plaquette envoyée<br>📞 +33 1 60 01 53 72<br><a href="https://brame-dev.odoo.com/web#id=20190&cids=6-1-2&menu_id=241&action=360&model=crm.lead&view_type=form" target="_blank" style="display:inline-block;margin-top:6px;padding:3px 8px;background:#0b1f3f;color:white;border-radius:3px;font-size:10px;text-decoration:none;font-weight:600;">🔗 Ouvrir dans Odoo</a></div></div></div>`)[0];
+                popup_670d26f1064fb14bce8dca696cd20821.setContent(html_ae0f9f77406a516ebcbe05e9baea78c5);
+            
+        
+
+        marker_cc69ff14c1453be66fa0a6eef544db62.bindPopup(popup_670d26f1064fb14bce8dca696cd20821)
+        ;
+
+        
+    
+    
+            marker_cc69ff14c1453be66fa0a6eef544db62.bindTooltip(
+                `<div>
+                     1. ARESIA-ST-SOUPPLETS — SAINT-SOUPPLETS
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_cc69ff14c1453be66fa0a6eef544db62.setIcon(div_icon_8ab9355e8c978b0d22704d6db718cbaf);
+            
+    
+            var marker_e53e337c4b032894c08ca7a2aae645ed = L.marker(
+                [49.0478, 2.7427971285137187],
+                {
+}
+            ).addTo(map_9647c534642cae1c821cd2128ff4d480);
+        
+    
+            var div_icon_fc5a21470d3cb573aea93b40b1e2e80a = L.divIcon({
+  "html": "\u003cdiv style=\"background:#1a3a6b;color:white;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:11px;border:2px solid white;box-shadow:0 2px 5px rgba(0,0,0,.4);\"\u003e4\u003c/div\u003e",
+  "iconSize": [22, 22],
+  "iconAnchor": [11, 11],
+  "className": "empty",
+});
+        
+    
+        var popup_bb44207612dc3c3452d697630e454817 = L.popup({
+  "maxWidth": 240,
+});
+
+        
+            
+                var html_e8f2f3627b3549107cf0ce4dc7c84e52 = $(`<div id="html_e8f2f3627b3549107cf0ce4dc7c84e52" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:180px;"><div style="background:#1a3a6b;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">4. POLIMIROIR</div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 SAINT-SOUPPLETS<br>🎯 Très élevé<br>📋 2.Consomme / doit nous consulter<br>📞 +33 1 60 01 01 01<br><a href="https://brame-dev.odoo.com/web#id=2168&cids=6-1-2&menu_id=241&action=360&model=crm.lead&view_type=form" target="_blank" style="display:inline-block;margin-top:6px;padding:3px 8px;background:#0b1f3f;color:white;border-radius:3px;font-size:10px;text-decoration:none;font-weight:600;">🔗 Ouvrir dans Odoo</a></div></div></div>`)[0];
+                popup_bb44207612dc3c3452d697630e454817.setContent(html_e8f2f3627b3549107cf0ce4dc7c84e52);
+            
+        
+
+        marker_e53e337c4b032894c08ca7a2aae645ed.bindPopup(popup_bb44207612dc3c3452d697630e454817)
+        ;
+
+        
+    
+    
+            marker_e53e337c4b032894c08ca7a2aae645ed.bindTooltip(
+                `<div>
+                     4. POLIMIROIR — SAINT-SOUPPLETS
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e53e337c4b032894c08ca7a2aae645ed.setIcon(div_icon_fc5a21470d3cb573aea93b40b1e2e80a);
+            
+    
+            var marker_992460d5ecf086f4f91b176476217d79 = L.marker(
+                [48.8716, 2.2272],
+                {
+}
+            ).addTo(map_9647c534642cae1c821cd2128ff4d480);
+        
+    
+            var div_icon_1abe7da83a3be5c58a2fe974009ee9e1 = L.divIcon({
+  "html": "\u003cdiv style=\"background:#1a3a6b;color:white;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:11px;border:2px solid white;box-shadow:0 2px 5px rgba(0,0,0,.4);\"\u003e2\u003c/div\u003e",
+  "iconSize": [22, 22],
+  "iconAnchor": [11, 11],
+  "className": "empty",
+});
+        
+    
+        var popup_d64a83be9ba2bb44c0edd5baa6e0c434 = L.popup({
+  "maxWidth": 240,
+});
+
+        
+            
+                var html_c023fa7c94cac0c92448506958290262 = $(`<div id="html_c023fa7c94cac0c92448506958290262" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:180px;"><div style="background:#1a3a6b;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">2. ATELIER LOUIS DEL BOCA</div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 SURESNES<br>🎯 Très élevé<br>📋 6.Client(s) perdus - à reconquérir<br>📞 +33 1 41 38 17 17<br><a href="https://brame-dev.odoo.com/web#id=3178&cids=6-1-2&menu_id=241&action=360&model=crm.lead&view_type=form" target="_blank" style="display:inline-block;margin-top:6px;padding:3px 8px;background:#0b1f3f;color:white;border-radius:3px;font-size:10px;text-decoration:none;font-weight:600;">🔗 Ouvrir dans Odoo</a></div></div></div>`)[0];
+                popup_d64a83be9ba2bb44c0edd5baa6e0c434.setContent(html_c023fa7c94cac0c92448506958290262);
+            
+        
+
+        marker_992460d5ecf086f4f91b176476217d79.bindPopup(popup_d64a83be9ba2bb44c0edd5baa6e0c434)
+        ;
+
+        
+    
+    
+            marker_992460d5ecf086f4f91b176476217d79.bindTooltip(
+                `<div>
+                     2. ATELIER LOUIS DEL BOCA — SURESNES
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_992460d5ecf086f4f91b176476217d79.setIcon(div_icon_1abe7da83a3be5c58a2fe974009ee9e1);
+            
+    
+            var marker_97011efac97eed4cb9921125c77d0f06 = L.marker(
+                [48.7469, 2.774366244979222],
+                {
+}
+            ).addTo(map_9647c534642cae1c821cd2128ff4d480);
+        
+    
+            var div_icon_28b66d9c85607360df487f6907bd74d1 = L.divIcon({
+  "html": "\u003cdiv style=\"background:#1a3a6b;color:white;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:11px;border:2px solid white;box-shadow:0 2px 5px rgba(0,0,0,.4);\"\u003e3\u003c/div\u003e",
+  "iconSize": [22, 22],
+  "iconAnchor": [11, 11],
+  "className": "empty",
+});
+        
+    
+        var popup_d231d87ad5d210ba9367245555137b55 = L.popup({
+  "maxWidth": 240,
+});
+
+        
+            
+                var html_f97df9d8dbee9a854ae8f34657bf03ce = $(`<div id="html_f97df9d8dbee9a854ae8f34657bf03ce" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:180px;"><div style="background:#1a3a6b;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">3. MARCEL LABBE</div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 TOURNAN EN BRIE<br>🎯 Très élevé<br>📋 2.Consomme / doit nous consulter<br>📞 +33 1 64 42 53 58<br><a href="https://brame-dev.odoo.com/web#id=2970&cids=6-1-2&menu_id=241&action=360&model=crm.lead&view_type=form" target="_blank" style="display:inline-block;margin-top:6px;padding:3px 8px;background:#0b1f3f;color:white;border-radius:3px;font-size:10px;text-decoration:none;font-weight:600;">🔗 Ouvrir dans Odoo</a></div></div></div>`)[0];
+                popup_d231d87ad5d210ba9367245555137b55.setContent(html_f97df9d8dbee9a854ae8f34657bf03ce);
+            
+        
+
+        marker_97011efac97eed4cb9921125c77d0f06.bindPopup(popup_d231d87ad5d210ba9367245555137b55)
+        ;
+
+        
+    
+    
+            marker_97011efac97eed4cb9921125c77d0f06.bindTooltip(
+                `<div>
+                     3. MARCEL LABBE — TOURNAN EN BRIE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_97011efac97eed4cb9921125c77d0f06.setIcon(div_icon_28b66d9c85607360df487f6907bd74d1);
+            
+    
+            var marker_b6dc2b954497793fecc125bb0e619421 = L.marker(
+                [48.750899999999994, 2.7683],
+                {
+}
+            ).addTo(map_9647c534642cae1c821cd2128ff4d480);
+        
+    
+            var div_icon_22d24efdb6745220e64d400b8339ae63 = L.divIcon({
+  "html": "\u003cdiv style=\"background:#1a3a6b;color:white;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:11px;border:2px solid white;box-shadow:0 2px 5px rgba(0,0,0,.4);\"\u003e5\u003c/div\u003e",
+  "iconSize": [22, 22],
+  "iconAnchor": [11, 11],
+  "className": "empty",
+});
+        
+    
+        var popup_88c5a48cc81a498988ab16b5dbd64869 = L.popup({
+  "maxWidth": 240,
+});
+
+        
+            
+                var html_de7aa060744648fb37f9de954f5cc40b = $(`<div id="html_de7aa060744648fb37f9de954f5cc40b" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:180px;"><div style="background:#1a3a6b;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">5. DUMOULIN ET CIE</div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 TOURNAN-EN-BRIE<br>🎯 Très élevé<br>📋 2.Consomme / doit nous consulter<br>📞 +33 1 64 84 50 00<br><a href="https://brame-dev.odoo.com/web#id=2064&cids=6-1-2&menu_id=241&action=360&model=crm.lead&view_type=form" target="_blank" style="display:inline-block;margin-top:6px;padding:3px 8px;background:#0b1f3f;color:white;border-radius:3px;font-size:10px;text-decoration:none;font-weight:600;">🔗 Ouvrir dans Odoo</a></div></div></div>`)[0];
+                popup_88c5a48cc81a498988ab16b5dbd64869.setContent(html_de7aa060744648fb37f9de954f5cc40b);
+            
+        
+
+        marker_b6dc2b954497793fecc125bb0e619421.bindPopup(popup_88c5a48cc81a498988ab16b5dbd64869)
+        ;
+
+        
+    
+    
+            marker_b6dc2b954497793fecc125bb0e619421.bindTooltip(
+                `<div>
+                     5. DUMOULIN ET CIE — TOURNAN-EN-BRIE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b6dc2b954497793fecc125bb0e619421.setIcon(div_icon_22d24efdb6745220e64d400b8339ae63);
+            
+    
+            var marker_70ef1dd97dc872a65aaa6ea99c6c98f2 = L.marker(
+                [48.7469, 2.762233755020778],
+                {
+}
+            ).addTo(map_9647c534642cae1c821cd2128ff4d480);
+        
+    
+            var div_icon_174f1e144699972aee8e1b4de4b49dbe = L.divIcon({
+  "html": "\u003cdiv style=\"background:#94a3b8;color:white;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:11px;border:2px solid white;box-shadow:0 2px 5px rgba(0,0,0,.4);\"\u003e11\u003c/div\u003e",
+  "iconSize": [22, 22],
+  "iconAnchor": [11, 11],
+  "className": "empty",
+});
+        
+    
+        var popup_fd78cec70ae91aeb5718efba418248be = L.popup({
+  "maxWidth": 240,
+});
+
+        
+            
+                var html_022a5f777f11a834c42f53938117bf32 = $(`<div id="html_022a5f777f11a834c42f53938117bf32" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:180px;"><div style="background:#94a3b8;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">11. C2L</div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 TOURNAN-EN-BRIE<br>🎯 Basse<br>📋 1.Leads<br>📞 +33 1 64 42 53 60<br><a href="https://brame-dev.odoo.com/web#id=20172&cids=6-1-2&menu_id=241&action=360&model=crm.lead&view_type=form" target="_blank" style="display:inline-block;margin-top:6px;padding:3px 8px;background:#0b1f3f;color:white;border-radius:3px;font-size:10px;text-decoration:none;font-weight:600;">🔗 Ouvrir dans Odoo</a></div></div></div>`)[0];
+                popup_fd78cec70ae91aeb5718efba418248be.setContent(html_022a5f777f11a834c42f53938117bf32);
+            
+        
+
+        marker_70ef1dd97dc872a65aaa6ea99c6c98f2.bindPopup(popup_fd78cec70ae91aeb5718efba418248be)
+        ;
+
+        
+    
+    
+            marker_70ef1dd97dc872a65aaa6ea99c6c98f2.bindTooltip(
+                `<div>
+                     11. C2L — TOURNAN-EN-BRIE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_70ef1dd97dc872a65aaa6ea99c6c98f2.setIcon(div_icon_174f1e144699972aee8e1b4de4b49dbe);
+            
+    
+            var marker_157cd6428d0ca3540b367d21633e2bb4 = L.marker(
+                [48.7429, 2.7683],
+                {
+}
+            ).addTo(map_9647c534642cae1c821cd2128ff4d480);
+        
+    
+            var div_icon_a7c24917a578ba89a39cea73a161bcf3 = L.divIcon({
+  "html": "\u003cdiv style=\"background:#94a3b8;color:white;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:11px;border:2px solid white;box-shadow:0 2px 5px rgba(0,0,0,.4);\"\u003e12\u003c/div\u003e",
+  "iconSize": [22, 22],
+  "iconAnchor": [11, 11],
+  "className": "empty",
+});
+        
+    
+        var popup_2afce22670b424e4e8cdbf2fdeca8bc3 = L.popup({
+  "maxWidth": 240,
+});
+
+        
+            
+                var html_5c0e2c3c069fb2a31720dadb91be7a87 = $(`<div id="html_5c0e2c3c069fb2a31720dadb91be7a87" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:180px;"><div style="background:#94a3b8;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">12. EQUIMAT</div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 Tournan-en-Brie<br>🎯 Basse<br>📋 1.Leads<br>📞 +33 1 64 84 59 59<br><a href="https://brame-dev.odoo.com/web#id=20171&cids=6-1-2&menu_id=241&action=360&model=crm.lead&view_type=form" target="_blank" style="display:inline-block;margin-top:6px;padding:3px 8px;background:#0b1f3f;color:white;border-radius:3px;font-size:10px;text-decoration:none;font-weight:600;">🔗 Ouvrir dans Odoo</a></div></div></div>`)[0];
+                popup_2afce22670b424e4e8cdbf2fdeca8bc3.setContent(html_5c0e2c3c069fb2a31720dadb91be7a87);
+            
+        
+
+        marker_157cd6428d0ca3540b367d21633e2bb4.bindPopup(popup_2afce22670b424e4e8cdbf2fdeca8bc3)
+        ;
+
+        
+    
+    
+            marker_157cd6428d0ca3540b367d21633e2bb4.bindTooltip(
+                `<div>
+                     12. EQUIMAT — Tournan-en-Brie
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_157cd6428d0ca3540b367d21633e2bb4.setIcon(div_icon_a7c24917a578ba89a39cea73a161bcf3);
+            
+    
+            var marker_8b9d4043644534afce53a4b00c1e70cf = L.marker(
+                [48.9325, 2.3308],
+                {
+}
+            ).addTo(map_9647c534642cae1c821cd2128ff4d480);
+        
+    
+            var div_icon_54396f9129a155ddb1004f84b0245fa6 = L.divIcon({
+  "html": "\u003cdiv style=\"background:#2563eb;color:white;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:11px;border:2px solid white;box-shadow:0 2px 5px rgba(0,0,0,.4);\"\u003e6\u003c/div\u003e",
+  "iconSize": [22, 22],
+  "iconAnchor": [11, 11],
+  "className": "empty",
+});
+        
+    
+        var popup_5adf447b240e7bcf1341be30d8e834e1 = L.popup({
+  "maxWidth": 240,
+});
+
+        
+            
+                var html_78001a71c7794692d575b11d025fe65f = $(`<div id="html_78001a71c7794692d575b11d025fe65f" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:180px;"><div style="background:#2563eb;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">6. GALAM ROBOTICS</div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 VILLENEUVE-LA-GARENNE<br>🎯 Haute<br>📋 1.Leads<br>📞 -<br><a href="https://brame-dev.odoo.com/web#id=19829&cids=6-1-2&menu_id=241&action=360&model=crm.lead&view_type=form" target="_blank" style="display:inline-block;margin-top:6px;padding:3px 8px;background:#0b1f3f;color:white;border-radius:3px;font-size:10px;text-decoration:none;font-weight:600;">🔗 Ouvrir dans Odoo</a></div></div></div>`)[0];
+                popup_5adf447b240e7bcf1341be30d8e834e1.setContent(html_78001a71c7794692d575b11d025fe65f);
+            
+        
+
+        marker_8b9d4043644534afce53a4b00c1e70cf.bindPopup(popup_5adf447b240e7bcf1341be30d8e834e1)
+        ;
+
+        
+    
+    
+            marker_8b9d4043644534afce53a4b00c1e70cf.bindTooltip(
+                `<div>
+                     6. GALAM ROBOTICS — VILLENEUVE-LA-GARENNE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8b9d4043644534afce53a4b00c1e70cf.setIcon(div_icon_54396f9129a155ddb1004f84b0245fa6);
+            
+    
+            var marker_4fd4676146870b6cfa57e2e7f57c665f = L.marker(
+                [48.99, 2.6194],
+                {
+}
+            ).addTo(map_9647c534642cae1c821cd2128ff4d480);
+        
+    
+            var div_icon_eb61cac944b0079ed0c5d6812e65a353 = L.divIcon({
+  "html": "\u003cdiv style=\"background:#2563eb;color:white;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:11px;border:2px solid white;box-shadow:0 2px 5px rgba(0,0,0,.4);\"\u003e7\u003c/div\u003e",
+  "iconSize": [22, 22],
+  "iconAnchor": [11, 11],
+  "className": "empty",
+});
+        
+    
+        var popup_46895a3d3759a8463a3cf4a103b3ab8e = L.popup({
+  "maxWidth": 240,
+});
+
+        
+            
+                var html_d7c6de0381a81c6fd9b9cddea2b28d59 = $(`<div id="html_d7c6de0381a81c6fd9b9cddea2b28d59" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:180px;"><div style="background:#2563eb;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">7. TRANSPORTS MARCHE</div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 COMPANS<br>🎯 Haute<br>📋 2.Consomme / doit nous consulter<br>📞 +33 7 70 00 41 99<br><a href="https://brame-dev.odoo.com/web#id=19730&cids=6-1-2&menu_id=241&action=360&model=crm.lead&view_type=form" target="_blank" style="display:inline-block;margin-top:6px;padding:3px 8px;background:#0b1f3f;color:white;border-radius:3px;font-size:10px;text-decoration:none;font-weight:600;">🔗 Ouvrir dans Odoo</a></div></div></div>`)[0];
+                popup_46895a3d3759a8463a3cf4a103b3ab8e.setContent(html_d7c6de0381a81c6fd9b9cddea2b28d59);
+            
+        
+
+        marker_4fd4676146870b6cfa57e2e7f57c665f.bindPopup(popup_46895a3d3759a8463a3cf4a103b3ab8e)
+        ;
+
+        
+    
+    
+            marker_4fd4676146870b6cfa57e2e7f57c665f.bindTooltip(
+                `<div>
+                     7. TRANSPORTS MARCHE — COMPANS
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4fd4676146870b6cfa57e2e7f57c665f.setIcon(div_icon_eb61cac944b0079ed0c5d6812e65a353);
+            
+    
+            var marker_a2409ae4554ecb2c9147196150f32172 = L.marker(
+                [49.1769, 3.1336],
+                {
+}
+            ).addTo(map_9647c534642cae1c821cd2128ff4d480);
+        
+    
+            var div_icon_97bf18a71fd760281d798a0219939fde = L.divIcon({
+  "html": "\u003cdiv style=\"background:#2563eb;color:white;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:11px;border:2px solid white;box-shadow:0 2px 5px rgba(0,0,0,.4);\"\u003e8\u003c/div\u003e",
+  "iconSize": [22, 22],
+  "iconAnchor": [11, 11],
+  "className": "empty",
+});
+        
+    
+        var popup_f3088f204e8a217738e8837361d018fd = L.popup({
+  "maxWidth": 240,
+});
+
+        
+            
+                var html_5824f5105e6fdc56026e4f4f3458529e = $(`<div id="html_5824f5105e6fdc56026e4f4f3458529e" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:180px;"><div style="background:#2563eb;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">8. Media 6 production plv</div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 La ferte-milon<br>🎯 Haute<br>📋 2.Consomme / doit nous consulter<br>📞 +33 1 78 78 31 51<br><a href="https://brame-dev.odoo.com/web#id=18782&cids=6-1-2&menu_id=241&action=360&model=crm.lead&view_type=form" target="_blank" style="display:inline-block;margin-top:6px;padding:3px 8px;background:#0b1f3f;color:white;border-radius:3px;font-size:10px;text-decoration:none;font-weight:600;">🔗 Ouvrir dans Odoo</a></div></div></div>`)[0];
+                popup_f3088f204e8a217738e8837361d018fd.setContent(html_5824f5105e6fdc56026e4f4f3458529e);
+            
+        
+
+        marker_a2409ae4554ecb2c9147196150f32172.bindPopup(popup_f3088f204e8a217738e8837361d018fd)
+        ;
+
+        
+    
+    
+            marker_a2409ae4554ecb2c9147196150f32172.bindTooltip(
+                `<div>
+                     8. Media 6 production plv — La ferte-milon
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a2409ae4554ecb2c9147196150f32172.setIcon(div_icon_97bf18a71fd760281d798a0219939fde);
+            
+    
+            var marker_84dda0b7c0aede11cc8df63dfbd2f13e = L.marker(
+                [48.7983, 2.5466724585388594],
+                {
+}
+            ).addTo(map_9647c534642cae1c821cd2128ff4d480);
+        
+    
+            var div_icon_48d5164b54d4cab669a313a64f6ebba6 = L.divIcon({
+  "html": "\u003cdiv style=\"background:#94a3b8;color:white;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:11px;border:2px solid white;box-shadow:0 2px 5px rgba(0,0,0,.4);\"\u003e10\u003c/div\u003e",
+  "iconSize": [22, 22],
+  "iconAnchor": [11, 11],
+  "className": "empty",
+});
+        
+    
+        var popup_608aaee5125545e767d8f1ccda9ffe70 = L.popup({
+  "maxWidth": 240,
+});
+
+        
+            
+                var html_3858b175eb0f882a893ca922f4b1d480 = $(`<div id="html_3858b175eb0f882a893ca922f4b1d480" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:180px;"><div style="background:#94a3b8;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">10. ACORIS SAS</div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 CHENNEVIERES-SUR-MARNE<br>🎯 Basse<br>📋 1.Leads<br>📞 -<br><a href="https://brame-dev.odoo.com/web#id=20209&cids=6-1-2&menu_id=241&action=360&model=crm.lead&view_type=form" target="_blank" style="display:inline-block;margin-top:6px;padding:3px 8px;background:#0b1f3f;color:white;border-radius:3px;font-size:10px;text-decoration:none;font-weight:600;">🔗 Ouvrir dans Odoo</a></div></div></div>`)[0];
+                popup_608aaee5125545e767d8f1ccda9ffe70.setContent(html_3858b175eb0f882a893ca922f4b1d480);
+            
+        
+
+        marker_84dda0b7c0aede11cc8df63dfbd2f13e.bindPopup(popup_608aaee5125545e767d8f1ccda9ffe70)
+        ;
+
+        
+    
+    
+            marker_84dda0b7c0aede11cc8df63dfbd2f13e.bindTooltip(
+                `<div>
+                     10. ACORIS SAS — CHENNEVIERES-SUR-MARNE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_84dda0b7c0aede11cc8df63dfbd2f13e.setIcon(div_icon_48d5164b54d4cab669a313a64f6ebba6);
+            
+    
+            var marker_bed2f073bb46fcfb43527ab861a1a175 = L.marker(
+                [48.7983, 2.5345275414611406],
+                {
+}
+            ).addTo(map_9647c534642cae1c821cd2128ff4d480);
+        
+    
+            var div_icon_4d5f582c6ec085607f30dc301b91c182 = L.divIcon({
+  "html": "\u003cdiv style=\"background:#94a3b8;color:white;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:11px;border:2px solid white;box-shadow:0 2px 5px rgba(0,0,0,.4);\"\u003e14\u003c/div\u003e",
+  "iconSize": [22, 22],
+  "iconAnchor": [11, 11],
+  "className": "empty",
+});
+        
+    
+        var popup_edb0092616215839cb338b5116b83c31 = L.popup({
+  "maxWidth": 240,
+});
+
+        
+            
+                var html_4c4a2a666f6d697574d673ce064021c7 = $(`<div id="html_4c4a2a666f6d697574d673ce064021c7" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:180px;"><div style="background:#94a3b8;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">14. LOGIPROX</div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 CHENNEVIERES SUR MARNE<br>🎯 Basse<br>📋 3.Devis en cours<br>📞 -<br><a href="https://brame-dev.odoo.com/web#id=14889&cids=6-1-2&menu_id=241&action=360&model=crm.lead&view_type=form" target="_blank" style="display:inline-block;margin-top:6px;padding:3px 8px;background:#0b1f3f;color:white;border-radius:3px;font-size:10px;text-decoration:none;font-weight:600;">🔗 Ouvrir dans Odoo</a></div></div></div>`)[0];
+                popup_edb0092616215839cb338b5116b83c31.setContent(html_4c4a2a666f6d697574d673ce064021c7);
+            
+        
+
+        marker_bed2f073bb46fcfb43527ab861a1a175.bindPopup(popup_edb0092616215839cb338b5116b83c31)
+        ;
+
+        
+    
+    
+            marker_bed2f073bb46fcfb43527ab861a1a175.bindTooltip(
+                `<div>
+                     14. LOGIPROX — CHENNEVIERES SUR MARNE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_bed2f073bb46fcfb43527ab861a1a175.setIcon(div_icon_4d5f582c6ec085607f30dc301b91c182);
+            
+    
+            var marker_e2aed2d83fc4fe7c20f0e5aba8468a01 = L.marker(
+                [49.4297, 2.088350245404107],
+                {
+}
+            ).addTo(map_9647c534642cae1c821cd2128ff4d480);
+        
+    
+            var div_icon_5e2ec0c8698ad1dd4c15db0b0c2819fa = L.divIcon({
+  "html": "\u003cdiv style=\"width:18px;height:18px;background:#2563eb;color:white;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:10px;border:2px solid white;transform:rotate(45deg);box-shadow:0 2px 5px rgba(0,0,0,.35);\"\u003e\u003cspan style=\"transform:rotate(-45deg)\"\u003e15\u003c/span\u003e\u003c/div\u003e",
+  "iconSize": [18, 18],
+  "iconAnchor": [9, 9],
+  "className": "empty",
+});
+        
+    
+        var popup_c947d213a412b59d9e067fa5ca1a7b2e = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_d2e89f234305ca634f332593bfff404d = $(`<div id="html_d2e89f234305ca634f332593bfff404d" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:200px;"><div style="background:#2563eb;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">15. M.I.S. beauvais<span style="font-weight:normal;font-size:10px;"> (recommandé)</span></div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 Beauvais<br>🎯 Haute<br>📋 2.Consomme / doit nous consulter<br>💡 Client existant • Priorité haute • à ~58 km<br>📞 +33 3 44 02 12 04<br><a href="https://brame-dev.odoo.com/web#id=19505&cids=6-1-2&menu_id=241&action=360&model=crm.lead&view_type=form" target="_blank" style="display:inline-block;margin-top:6px;padding:3px 8px;background:#0b1f3f;color:white;border-radius:3px;font-size:10px;text-decoration:none;font-weight:600;">🔗 Ouvrir dans Odoo</a></div></div></div>`)[0];
+                popup_c947d213a412b59d9e067fa5ca1a7b2e.setContent(html_d2e89f234305ca634f332593bfff404d);
+            
+        
+
+        marker_e2aed2d83fc4fe7c20f0e5aba8468a01.bindPopup(popup_c947d213a412b59d9e067fa5ca1a7b2e)
+        ;
+
+        
+    
+    
+            marker_e2aed2d83fc4fe7c20f0e5aba8468a01.bindTooltip(
+                `<div>
+                     15. M.I.S. beauvais — Beauvais
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e2aed2d83fc4fe7c20f0e5aba8468a01.setIcon(div_icon_5e2ec0c8698ad1dd4c15db0b0c2819fa);
+            
+    
+            var marker_fa277c64e0253b7a60c2eb59e1b76365 = L.marker(
+                [49.433164101615134, 2.079124877297946],
+                {
+}
+            ).addTo(map_9647c534642cae1c821cd2128ff4d480);
+        
+    
+            var div_icon_678c5432edef793be529a60b65ba2776 = L.divIcon({
+  "html": "\u003cdiv style=\"width:18px;height:18px;background:#2563eb;color:white;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:10px;border:2px solid white;transform:rotate(45deg);box-shadow:0 2px 5px rgba(0,0,0,.35);\"\u003e\u003cspan style=\"transform:rotate(-45deg)\"\u003e16\u003c/span\u003e\u003c/div\u003e",
+  "iconSize": [18, 18],
+  "iconAnchor": [9, 9],
+  "className": "empty",
+});
+        
+    
+        var popup_3039ded49621ec2f39dbb135c6cf47ab = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_0c08542098aac0a3e9809d72b75d5e53 = $(`<div id="html_0c08542098aac0a3e9809d72b75d5e53" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:200px;"><div style="background:#2563eb;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">16. Agco<span style="font-weight:normal;font-size:10px;"> (recommandé)</span></div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 Beauvais<br>🎯 Haute<br>📋 1.Leads<br>💡 Lead à qualifier • Priorité haute • à ~58 km<br>📞 +33 3 00 96 25 68<br><a href="https://brame-dev.odoo.com/web#id=19016&cids=6-1-2&menu_id=241&action=360&model=crm.lead&view_type=form" target="_blank" style="display:inline-block;margin-top:6px;padding:3px 8px;background:#0b1f3f;color:white;border-radius:3px;font-size:10px;text-decoration:none;font-weight:600;">🔗 Ouvrir dans Odoo</a></div></div></div>`)[0];
+                popup_3039ded49621ec2f39dbb135c6cf47ab.setContent(html_0c08542098aac0a3e9809d72b75d5e53);
+            
+        
+
+        marker_fa277c64e0253b7a60c2eb59e1b76365.bindPopup(popup_3039ded49621ec2f39dbb135c6cf47ab)
+        ;
+
+        
+    
+    
+            marker_fa277c64e0253b7a60c2eb59e1b76365.bindTooltip(
+                `<div>
+                     16. Agco — Beauvais
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_fa277c64e0253b7a60c2eb59e1b76365.setIcon(div_icon_678c5432edef793be529a60b65ba2776);
+            
+    
+            var marker_700e323695dd506a2eaf5b9ee4b6c3ad = L.marker(
+                [49.42623589838486, 2.079124877297946],
+                {
+}
+            ).addTo(map_9647c534642cae1c821cd2128ff4d480);
+        
+    
+            var div_icon_9d5c2b6cb378585a0e735ed464ad561e = L.divIcon({
+  "html": "\u003cdiv style=\"width:18px;height:18px;background:#2563eb;color:white;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:10px;border:2px solid white;transform:rotate(45deg);box-shadow:0 2px 5px rgba(0,0,0,.35);\"\u003e\u003cspan style=\"transform:rotate(-45deg)\"\u003e17\u003c/span\u003e\u003c/div\u003e",
+  "iconSize": [18, 18],
+  "iconAnchor": [9, 9],
+  "className": "empty",
+});
+        
+    
+        var popup_e652b0508a4b93103bcc8d7edd41141d = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_25648062f7eefd1a66b6c89de285725f = $(`<div id="html_25648062f7eefd1a66b6c89de285725f" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:200px;"><div style="background:#2563eb;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">17. Ares technologies<span style="font-weight:normal;font-size:10px;"> (recommandé)</span></div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 Beauvais<br>🎯 Haute<br>📋 2.Consomme  / doit nous consulter / plaquette envoyée<br>💡 Client existant • Priorité haute • à ~58 km<br>📞 +33 3 44 02 81 75<br><a href="https://brame-dev.odoo.com/web#id=14968&cids=6-1-2&menu_id=241&action=360&model=crm.lead&view_type=form" target="_blank" style="display:inline-block;margin-top:6px;padding:3px 8px;background:#0b1f3f;color:white;border-radius:3px;font-size:10px;text-decoration:none;font-weight:600;">🔗 Ouvrir dans Odoo</a></div></div></div>`)[0];
+                popup_e652b0508a4b93103bcc8d7edd41141d.setContent(html_25648062f7eefd1a66b6c89de285725f);
+            
+        
+
+        marker_700e323695dd506a2eaf5b9ee4b6c3ad.bindPopup(popup_e652b0508a4b93103bcc8d7edd41141d)
+        ;
+
+        
+    
+    
+            marker_700e323695dd506a2eaf5b9ee4b6c3ad.bindTooltip(
+                `<div>
+                     17. Ares technologies — Beauvais
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_700e323695dd506a2eaf5b9ee4b6c3ad.setIcon(div_icon_9d5c2b6cb378585a0e735ed464ad561e);
+            
+    
+            var marker_1c8542de35bf54db7af91c5a11bfaf21 = L.marker(
+                [49.2608, 2.4397],
+                {
+}
+            ).addTo(map_9647c534642cae1c821cd2128ff4d480);
+        
+    
+            var div_icon_f77a219dd5e0fadf2485c4fc04499c88 = L.divIcon({
+  "html": "\u003cdiv style=\"width:18px;height:18px;background:#f59e0b;color:white;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:10px;border:2px solid white;transform:rotate(45deg);box-shadow:0 2px 5px rgba(0,0,0,.35);\"\u003e\u003cspan style=\"transform:rotate(-45deg)\"\u003e18\u003c/span\u003e\u003c/div\u003e",
+  "iconSize": [18, 18],
+  "iconAnchor": [9, 9],
+  "className": "empty",
+});
+        
+    
+        var popup_a0a052736730a3d41d7dc27cf2158572 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_6db7155cd26baa2c5fc8455b7b9e30c3 = $(`<div id="html_6db7155cd26baa2c5fc8455b7b9e30c3" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:200px;"><div style="background:#f59e0b;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">18. ARCELORMITTAL ATLANTIQUE<span style="font-weight:normal;font-size:10px;"> (recommandé)</span></div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 Montataire<br>🎯 Médium<br>📋 1.Leads<br>💡 Lead à qualifier • à ~32 km<br>📞 +32 478 40 77 83<br><a href="https://brame-dev.odoo.com/web#id=19535&cids=6-1-2&menu_id=241&action=360&model=crm.lead&view_type=form" target="_blank" style="display:inline-block;margin-top:6px;padding:3px 8px;background:#0b1f3f;color:white;border-radius:3px;font-size:10px;text-decoration:none;font-weight:600;">🔗 Ouvrir dans Odoo</a></div></div></div>`)[0];
+                popup_a0a052736730a3d41d7dc27cf2158572.setContent(html_6db7155cd26baa2c5fc8455b7b9e30c3);
+            
+        
+
+        marker_1c8542de35bf54db7af91c5a11bfaf21.bindPopup(popup_a0a052736730a3d41d7dc27cf2158572)
+        ;
+
+        
+    
+    
+            marker_1c8542de35bf54db7af91c5a11bfaf21.bindTooltip(
+                `<div>
+                     18. ARCELORMITTAL ATLANTIQUE — Montataire
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1c8542de35bf54db7af91c5a11bfaf21.setIcon(div_icon_f77a219dd5e0fadf2485c4fc04499c88);
+            
+    
+            var marker_99248269b61561c8568628737cd9b2d5 = L.marker(
+                [49.2456, 2.1717],
+                {
+}
+            ).addTo(map_9647c534642cae1c821cd2128ff4d480);
+        
+    
+            var div_icon_2109260332f0e09cad72cbc67a1cb0b1 = L.divIcon({
+  "html": "\u003cdiv style=\"width:18px;height:18px;background:#f59e0b;color:white;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:10px;border:2px solid white;transform:rotate(45deg);box-shadow:0 2px 5px rgba(0,0,0,.35);\"\u003e\u003cspan style=\"transform:rotate(-45deg)\"\u003e19\u003c/span\u003e\u003c/div\u003e",
+  "iconSize": [18, 18],
+  "iconAnchor": [9, 9],
+  "className": "empty",
+});
+        
+    
+        var popup_9569c975b8e0dbf590671d9ac165535e = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_0005242b767b2a0b462401c67e292b98 = $(`<div id="html_0005242b767b2a0b462401c67e292b98" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:200px;"><div style="background:#f59e0b;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">19. BERGERAT MONNOYEUR<span style="font-weight:normal;font-size:10px;"> (recommandé)</span></div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 Amblainville<br>🎯 Médium<br>📋 4.Prestation réalisée/ client à sécuriser<br>💡 Opportunité dans votre zone • à ~36 km<br>📞 -<br><a href="https://brame-dev.odoo.com/web#id=3201&cids=6-1-2&menu_id=241&action=360&model=crm.lead&view_type=form" target="_blank" style="display:inline-block;margin-top:6px;padding:3px 8px;background:#0b1f3f;color:white;border-radius:3px;font-size:10px;text-decoration:none;font-weight:600;">🔗 Ouvrir dans Odoo</a></div></div></div>`)[0];
+                popup_9569c975b8e0dbf590671d9ac165535e.setContent(html_0005242b767b2a0b462401c67e292b98);
+            
+        
+
+        marker_99248269b61561c8568628737cd9b2d5.bindPopup(popup_9569c975b8e0dbf590671d9ac165535e)
+        ;
+
+        
+    
+    
+            marker_99248269b61561c8568628737cd9b2d5.bindTooltip(
+                `<div>
+                     19. BERGERAT MONNOYEUR — Amblainville
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_99248269b61561c8568628737cd9b2d5.setIcon(div_icon_2109260332f0e09cad72cbc67a1cb0b1);
+            
+    
+            var marker_3ddddc83a1866ba7618f92097fbc4a56 = L.marker(
+                [49.2272, 2.0189],
+                {
+}
+            ).addTo(map_9647c534642cae1c821cd2128ff4d480);
+        
+    
+            var div_icon_f93e62eb1e3db3ef4678847e5b102556 = L.divIcon({
+  "html": "\u003cdiv style=\"width:18px;height:18px;background:#f59e0b;color:white;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:10px;border:2px solid white;transform:rotate(45deg);box-shadow:0 2px 5px rgba(0,0,0,.35);\"\u003e\u003cspan style=\"transform:rotate(-45deg)\"\u003e20\u003c/span\u003e\u003c/div\u003e",
+  "iconSize": [18, 18],
+  "iconAnchor": [9, 9],
+  "className": "empty",
+});
+        
+    
+        var popup_65e8bc68ad73918e25792114414c63ea = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_b47705dc37c5716d6b000953c008760f = $(`<div id="html_b47705dc37c5716d6b000953c008760f" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:200px;"><div style="background:#f59e0b;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">20. Vygon<span style="font-weight:normal;font-size:10px;"> (recommandé)</span></div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 Ivry-Le-Temple<br>🎯 Médium<br>📋 4.Prestation réalisée/ client à sécuriser<br>💡 Opportunité dans votre zone • à ~39 km<br>📞 +33 3 44 08 17 23<br><a href="https://brame-dev.odoo.com/web#id=3183&cids=6-1-2&menu_id=241&action=360&model=crm.lead&view_type=form" target="_blank" style="display:inline-block;margin-top:6px;padding:3px 8px;background:#0b1f3f;color:white;border-radius:3px;font-size:10px;text-decoration:none;font-weight:600;">🔗 Ouvrir dans Odoo</a></div></div></div>`)[0];
+                popup_65e8bc68ad73918e25792114414c63ea.setContent(html_b47705dc37c5716d6b000953c008760f);
+            
+        
+
+        marker_3ddddc83a1866ba7618f92097fbc4a56.bindPopup(popup_65e8bc68ad73918e25792114414c63ea)
+        ;
+
+        
+    
+    
+            marker_3ddddc83a1866ba7618f92097fbc4a56.bindTooltip(
+                `<div>
+                     20. Vygon — Ivry-Le-Temple
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3ddddc83a1866ba7618f92097fbc4a56.setIcon(div_icon_f93e62eb1e3db3ef4678847e5b102556);
+            
+    
+            var marker_e610c979622eb51398a814ec30eeb1ff = L.marker(
+                [49.3847, 2.3533],
+                {
+}
+            ).addTo(map_9647c534642cae1c821cd2128ff4d480);
+        
+    
+            var div_icon_356d7c06a9236dd2647dd95456795c41 = L.divIcon({
+  "html": "\u003cdiv style=\"width:18px;height:18px;background:#f59e0b;color:white;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:10px;border:2px solid white;transform:rotate(45deg);box-shadow:0 2px 5px rgba(0,0,0,.35);\"\u003e\u003cspan style=\"transform:rotate(-45deg)\"\u003e21\u003c/span\u003e\u003c/div\u003e",
+  "iconSize": [18, 18],
+  "iconAnchor": [9, 9],
+  "className": "empty",
+});
+        
+    
+        var popup_68eb44f533ff0254cff566cf476506d9 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_e56f83fa4b0743d47e094f2acd4b53c8 = $(`<div id="html_e56f83fa4b0743d47e094f2acd4b53c8" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:200px;"><div style="background:#f59e0b;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">21. Societe automatique de profilage<span style="font-weight:normal;font-size:10px;"> (recommandé)</span></div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 Bailleul-sur-therain<br>🎯 Médium<br>📋 2.Consomme / doit nous consulter<br>💡 Client existant • à ~47 km<br>📞 +33 1 60 93 80 50<br><a href="https://brame-dev.odoo.com/web#id=19154&cids=6-1-2&menu_id=241&action=360&model=crm.lead&view_type=form" target="_blank" style="display:inline-block;margin-top:6px;padding:3px 8px;background:#0b1f3f;color:white;border-radius:3px;font-size:10px;text-decoration:none;font-weight:600;">🔗 Ouvrir dans Odoo</a></div></div></div>`)[0];
+                popup_68eb44f533ff0254cff566cf476506d9.setContent(html_e56f83fa4b0743d47e094f2acd4b53c8);
+            
+        
+
+        marker_e610c979622eb51398a814ec30eeb1ff.bindPopup(popup_68eb44f533ff0254cff566cf476506d9)
+        ;
+
+        
+    
+    
+            marker_e610c979622eb51398a814ec30eeb1ff.bindTooltip(
+                `<div>
+                     21. Societe automatique de profilage — Bailleul-sur-therain
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e610c979622eb51398a814ec30eeb1ff.setIcon(div_icon_356d7c06a9236dd2647dd95456795c41);
+            
+    
+            var marker_2f8d5efd3307ad7f50789fe10db3d04c = L.marker(
+                [49.4299, 2.0914502704781595],
+                {
+}
+            ).addTo(map_9647c534642cae1c821cd2128ff4d480);
+        
+    
+            var div_icon_fc092aab97c02f8a2727cf6da5e198f2 = L.divIcon({
+  "html": "\u003cdiv style=\"width:18px;height:18px;background:#f59e0b;color:white;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:10px;border:2px solid white;transform:rotate(45deg);box-shadow:0 2px 5px rgba(0,0,0,.35);\"\u003e\u003cspan style=\"transform:rotate(-45deg)\"\u003e22\u003c/span\u003e\u003c/div\u003e",
+  "iconSize": [18, 18],
+  "iconAnchor": [9, 9],
+  "className": "empty",
+});
+        
+    
+        var popup_1d130e60062c735599b5db5b7db9037d = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_8896b7719d8a19dbb618ff7dc5b034f0 = $(`<div id="html_8896b7719d8a19dbb618ff7dc5b034f0" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:200px;"><div style="background:#f59e0b;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">22. ACMO Précision<span style="font-weight:normal;font-size:10px;"> (recommandé)</span></div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 BEAUVAIS<br>🎯 Médium<br>📋 2.Consomme / doit nous consulter<br>💡 Client existant • à ~58 km<br>📞 +33 3 44 07 78 71<br><a href="https://brame-dev.odoo.com/web#id=19467&cids=6-1-2&menu_id=241&action=360&model=crm.lead&view_type=form" target="_blank" style="display:inline-block;margin-top:6px;padding:3px 8px;background:#0b1f3f;color:white;border-radius:3px;font-size:10px;text-decoration:none;font-weight:600;">🔗 Ouvrir dans Odoo</a></div></div></div>`)[0];
+                popup_1d130e60062c735599b5db5b7db9037d.setContent(html_8896b7719d8a19dbb618ff7dc5b034f0);
+            
+        
+
+        marker_2f8d5efd3307ad7f50789fe10db3d04c.bindPopup(popup_1d130e60062c735599b5db5b7db9037d)
+        ;
+
+        
+    
+    
+            marker_2f8d5efd3307ad7f50789fe10db3d04c.bindTooltip(
+                `<div>
+                     22. ACMO Précision — BEAUVAIS
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2f8d5efd3307ad7f50789fe10db3d04c.setIcon(div_icon_fc092aab97c02f8a2727cf6da5e198f2);
+            
+    
+            var marker_f89818161a69944a76956df0cd18d85d = L.marker(
+                [49.4299, 2.079149729521841],
+                {
+}
+            ).addTo(map_9647c534642cae1c821cd2128ff4d480);
+        
+    
+            var div_icon_b330e5f261d04d309ef7f7e96250f19b = L.divIcon({
+  "html": "\u003cdiv style=\"width:18px;height:18px;background:#f59e0b;color:white;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:10px;border:2px solid white;transform:rotate(45deg);box-shadow:0 2px 5px rgba(0,0,0,.35);\"\u003e\u003cspan style=\"transform:rotate(-45deg)\"\u003e23\u003c/span\u003e\u003c/div\u003e",
+  "iconSize": [18, 18],
+  "iconAnchor": [9, 9],
+  "className": "empty",
+});
+        
+    
+        var popup_1860b206972727bc8c730713da31af0e = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_ceabd839a140954702ee46afcb46fbab = $(`<div id="html_ceabd839a140954702ee46afcb46fbab" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:200px;"><div style="background:#f59e0b;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">23. AK2S<span style="font-weight:normal;font-size:10px;"> (recommandé)</span></div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 BEAUVAIS<br>🎯 Médium<br>📋 2.Consomme / doit nous consulter<br>💡 Client existant • à ~58 km<br>📞 +33 3 44 15 07 80<br><a href="https://brame-dev.odoo.com/web#id=19464&cids=6-1-2&menu_id=241&action=360&model=crm.lead&view_type=form" target="_blank" style="display:inline-block;margin-top:6px;padding:3px 8px;background:#0b1f3f;color:white;border-radius:3px;font-size:10px;text-decoration:none;font-weight:600;">🔗 Ouvrir dans Odoo</a></div></div></div>`)[0];
+                popup_1860b206972727bc8c730713da31af0e.setContent(html_ceabd839a140954702ee46afcb46fbab);
+            
+        
+
+        marker_f89818161a69944a76956df0cd18d85d.bindPopup(popup_1860b206972727bc8c730713da31af0e)
+        ;
+
+        
+    
+    
+            marker_f89818161a69944a76956df0cd18d85d.bindTooltip(
+                `<div>
+                     23. AK2S — BEAUVAIS
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f89818161a69944a76956df0cd18d85d.setIcon(div_icon_b330e5f261d04d309ef7f7e96250f19b);
+            
+    
+            var marker_1f4701c3d7f13efcad772e2eb68bc857 = L.marker(
+                [49.2369, 2.1378],
+                {
+}
+            ).addTo(map_9647c534642cae1c821cd2128ff4d480);
+        
+    
+            var div_icon_8f78d9d5172cf579a1a1c03e507b4699 = L.divIcon({
+  "html": "\u003cdiv style=\"width:18px;height:18px;background:#94a3b8;color:white;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:10px;border:2px solid white;transform:rotate(45deg);box-shadow:0 2px 5px rgba(0,0,0,.35);\"\u003e\u003cspan style=\"transform:rotate(-45deg)\"\u003e24\u003c/span\u003e\u003c/div\u003e",
+  "iconSize": [18, 18],
+  "iconAnchor": [9, 9],
+  "className": "empty",
+});
+        
+    
+        var popup_1a8262b444a804836637ed5653f9452f = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_ee0349237accaa35615edce727457204 = $(`<div id="html_ee0349237accaa35615edce727457204" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;min-width:200px;"><div style="background:#94a3b8;color:white;padding:7px 10px;border-radius:4px 4px 0 0;font-weight:bold;">24. Societe des extincteurs andrieu<span style="font-weight:normal;font-size:10px;"> (recommandé)</span></div><div style="padding:8px 10px;border:1px solid #e5e7eb;font-size:12px;">📍 Meru<br>🎯 Basse<br>📋 1.Leads<br>💡 Lead à qualifier • à ~36 km<br>📞 +33 3 44 22 44 22<br><a href="https://brame-dev.odoo.com/web#id=19017&cids=6-1-2&menu_id=241&action=360&model=crm.lead&view_type=form" target="_blank" style="display:inline-block;margin-top:6px;padding:3px 8px;background:#0b1f3f;color:white;border-radius:3px;font-size:10px;text-decoration:none;font-weight:600;">🔗 Ouvrir dans Odoo</a></div></div></div>`)[0];
+                popup_1a8262b444a804836637ed5653f9452f.setContent(html_ee0349237accaa35615edce727457204);
+            
+        
+
+        marker_1f4701c3d7f13efcad772e2eb68bc857.bindPopup(popup_1a8262b444a804836637ed5653f9452f)
+        ;
+
+        
+    
+    
+            marker_1f4701c3d7f13efcad772e2eb68bc857.bindTooltip(
+                `<div>
+                     24. Societe des extincteurs andrieu — Meru
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1f4701c3d7f13efcad772e2eb68bc857.setIcon(div_icon_8f78d9d5172cf579a1a1c03e507b4699);
+            
+</script>
+</html>
