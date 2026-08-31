@@ -237,24 +237,34 @@
 
         
     
-            var tile_layer_790080dce7b2c3bf2a9c2d3d3a57090b = L.tileLayer(
-                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+            var tile_layer_860731d8878ff1f87a257cc915af475e = L.tileLayer(
+                "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
                 {
   "minZoom": 0,
   "maxZoom": 20,
-  "maxNativeZoom": 20,
+  "maxNativeZoom": 16,
   "noWrap": false,
-  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
-  "subdomains": "abcd",
+  "attribution": "Tiles \u0026copy; Esri \u2014 Esri, DeLorme, NAVTEQ",
   "detectRetina": false,
   "tms": false,
   "opacity": 1,
 }
-
             );
-        
-    
-            tile_layer_790080dce7b2c3bf2a9c2d3d3a57090b.addTo(map_335e3773e22916021f9bd7d2e5349e18);
+            tile_layer_860731d8878ff1f87a257cc915af475e.addTo(map_335e3773e22916021f9bd7d2e5349e18);
+            var tile_layer_708ef758e91e1df8f0e0b5a29fb16773 = L.tileLayer(
+                "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 16,
+  "noWrap": false,
+  "attribution": "Tiles \u0026copy; Esri",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+            );
+            tile_layer_708ef758e91e1df8f0e0b5a29fb16773.addTo(map_335e3773e22916021f9bd7d2e5349e18);
         
 </script>
 </html>
