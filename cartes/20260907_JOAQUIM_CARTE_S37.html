@@ -17,7 +17,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_f1025a16ff924f3b3c4c91446dc92780 {
+                #map_e75a239086ec582d253557fcd2f16ac9 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -82,7 +82,7 @@
 
     <div id="leg-panel">
       <div class="leg-header" style="font-weight:700;color:#0b1f3f;border-color:#1a3a6b;border-style:solid;">
-        Joaquim · S37 · Zone Q
+        Joaquim · S37 · Zone ?
       </div>
       <div class="leg-tag" style="font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:#6b7280;">
         Tournée — tag JO0037
@@ -212,14 +212,14 @@
     })();
     </script>
     
-            <div class="folium-map" id="map_f1025a16ff924f3b3c4c91446dc92780" ></div>
+            <div class="folium-map" id="map_e75a239086ec582d253557fcd2f16ac9" ></div>
         
 </body>
 <script>
     
     
-            var map_f1025a16ff924f3b3c4c91446dc92780 = L.map(
-                "map_f1025a16ff924f3b3c4c91446dc92780",
+            var map_e75a239086ec582d253557fcd2f16ac9 = L.map(
+                "map_e75a239086ec582d253557fcd2f16ac9",
                 {
                     center: [50.0, 3.0],
                     crs: L.CRS.EPSG3857,
@@ -231,21 +231,21 @@
 
                 }
             );
-            L.control.scale().addTo(map_f1025a16ff924f3b3c4c91446dc92780);
+            L.control.scale().addTo(map_e75a239086ec582d253557fcd2f16ac9);
 
             
 
         
     
-            var tile_layer_d9a551f01b5ae1480cad781cc5902946 = L.tileLayer(
-                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+            var tile_layer_bf586667b45e59bcae27a1675efef889 = L.tileLayer(
+                "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
                 {
   "minZoom": 0,
-  "maxZoom": 20,
-  "maxNativeZoom": 20,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
   "noWrap": false,
-  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
-  "subdomains": "abcd",
+  "attribution": "Tiles \u0026copy; Esri \u0026mdash; Esri, DeLorme, NAVTEQ",
+  "subdomains": "abc",
   "detectRetina": false,
   "tms": false,
   "opacity": 1,
@@ -254,7 +254,27 @@
             );
         
     
-            tile_layer_d9a551f01b5ae1480cad781cc5902946.addTo(map_f1025a16ff924f3b3c4c91446dc92780);
+            tile_layer_bf586667b45e59bcae27a1675efef889.addTo(map_e75a239086ec582d253557fcd2f16ac9);
+        
+    
+            var tile_layer_99d2e108326d6f0d575c04311c04a61f = L.tileLayer(
+                "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Tiles \u0026copy; Esri",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_99d2e108326d6f0d575c04311c04a61f.addTo(map_e75a239086ec582d253557fcd2f16ac9);
         
 </script>
 </html>
