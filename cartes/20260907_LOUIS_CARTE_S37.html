@@ -17,7 +17,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_4507f4a2891724df0a070bdd31fd2c61 {
+                #map_0c40a310df9cfa977be4b350ce51f6f6 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -212,14 +212,14 @@
     })();
     </script>
     
-            <div class="folium-map" id="map_4507f4a2891724df0a070bdd31fd2c61" ></div>
+            <div class="folium-map" id="map_0c40a310df9cfa977be4b350ce51f6f6" ></div>
         
 </body>
 <script>
     
     
-            var map_4507f4a2891724df0a070bdd31fd2c61 = L.map(
-                "map_4507f4a2891724df0a070bdd31fd2c61",
+            var map_0c40a310df9cfa977be4b350ce51f6f6 = L.map(
+                "map_0c40a310df9cfa977be4b350ce51f6f6",
                 {
                     center: [50.0, 3.0],
                     crs: L.CRS.EPSG3857,
@@ -231,21 +231,21 @@
 
                 }
             );
-            L.control.scale().addTo(map_4507f4a2891724df0a070bdd31fd2c61);
+            L.control.scale().addTo(map_0c40a310df9cfa977be4b350ce51f6f6);
 
             
 
         
     
-            var tile_layer_efb59d8f5560018f0fd9af74cc07882a = L.tileLayer(
-                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+            var tile_layer_6baa43a68944623189c28d5e153fb422 = L.tileLayer(
+                "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
                 {
   "minZoom": 0,
-  "maxZoom": 20,
-  "maxNativeZoom": 20,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
   "noWrap": false,
-  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
-  "subdomains": "abcd",
+  "attribution": "Tiles \u0026copy; Esri \u0026mdash; Esri, DeLorme, NAVTEQ",
+  "subdomains": "abc",
   "detectRetina": false,
   "tms": false,
   "opacity": 1,
@@ -254,7 +254,27 @@
             );
         
     
-            tile_layer_efb59d8f5560018f0fd9af74cc07882a.addTo(map_4507f4a2891724df0a070bdd31fd2c61);
+            tile_layer_6baa43a68944623189c28d5e153fb422.addTo(map_0c40a310df9cfa977be4b350ce51f6f6);
+        
+    
+            var tile_layer_1c5b1066babdde81aa9b15503d3a8d75 = L.tileLayer(
+                "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Tiles \u0026copy; Esri",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_1c5b1066babdde81aa9b15503d3a8d75.addTo(map_0c40a310df9cfa977be4b350ce51f6f6);
         
 </script>
 </html>
