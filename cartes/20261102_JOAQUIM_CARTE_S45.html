@@ -17,7 +17,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_27a79d41e840da390f206cc022f5a0ad {
+                #map_c593e2ea7419d887ad160146f1eabd9c {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -80,6 +80,7 @@
       ☰ Joaquim · S45
     </button>
 
+    <div style="position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:1002;background:#ffffff;border:2px solid #c0392b;border-radius:5px;padding:10px 16px;font-family:Arial,sans-serif;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.2);max-width:calc(100vw - 140px);"><div style="color:#c0392b;font-weight:700;font-size:14px;">⚠ Aucune visite prévue cette semaine</div><div style="color:#374151;font-size:11px;margin-top:3px;">Tag JO0045 non posé dans Odoo — S45</div></div>
     <div id="leg-panel">
       <div class="leg-header" style="font-weight:700;color:#0b1f3f;border-color:#1a3a6b;border-style:solid;">
         Joaquim · S45 · Zone Q
@@ -87,7 +88,7 @@
       <div class="leg-tag" style="font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:#6b7280;">
         Tournée — tag JO0045
       </div>
-      
+      <div style="color:#c0392b;font-weight:700;padding:4px 0;">Aucune visite prévue cette semaine</div>
       <div class="leg-div-sep" style="border-style:solid;border-color:#e5e7eb;"></div>
       <div class="leg-prio-title" style="font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:#6b7280;"></div>
       <div class="leg-prio-row" style="display:flex;align-items:center;"><span class="leg-prio-dot" style="background:#1a3a6b;display:inline-block;border-radius:2px;flex-shrink:0;"></span><span class="leg-prio-label" style="color:#374151;">Très élevée</span></div><div class="leg-prio-row" style="display:flex;align-items:center;"><span class="leg-prio-dot" style="background:#2563eb;display:inline-block;border-radius:2px;flex-shrink:0;"></span><span class="leg-prio-label" style="color:#374151;">Haute</span></div><div class="leg-prio-row" style="display:flex;align-items:center;"><span class="leg-prio-dot" style="background:#f59e0b;display:inline-block;border-radius:2px;flex-shrink:0;"></span><span class="leg-prio-label" style="color:#374151;">Moyenne</span></div><div class="leg-prio-row" style="display:flex;align-items:center;"><span class="leg-prio-dot" style="background:#94a3b8;display:inline-block;border-radius:2px;flex-shrink:0;"></span><span class="leg-prio-label" style="color:#374151;">Basse</span></div>
@@ -212,16 +213,16 @@
     })();
     </script>
     
-            <div class="folium-map" id="map_27a79d41e840da390f206cc022f5a0ad" ></div>
+            <div class="folium-map" id="map_c593e2ea7419d887ad160146f1eabd9c" ></div>
         
 </body>
 <script>
     
     
-            var map_27a79d41e840da390f206cc022f5a0ad = L.map(
-                "map_27a79d41e840da390f206cc022f5a0ad",
+            var map_c593e2ea7419d887ad160146f1eabd9c = L.map(
+                "map_c593e2ea7419d887ad160146f1eabd9c",
                 {
-                    center: [50.0, 3.0],
+                    center: [49.05, 2.11],
                     crs: L.CRS.EPSG3857,
                     ...{
   "zoom": 9,
@@ -231,13 +232,13 @@
 
                 }
             );
-            L.control.scale().addTo(map_27a79d41e840da390f206cc022f5a0ad);
+            L.control.scale().addTo(map_c593e2ea7419d887ad160146f1eabd9c);
 
             
 
         
     
-            var tile_layer_46394df0ca28bf8c515804966832a4a6 = L.tileLayer(
+            var tile_layer_2129f0f74b19aef5b84f361926b93d19 = L.tileLayer(
                 "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
                 {
   "minZoom": 0,
@@ -254,10 +255,10 @@
             );
         
     
-            tile_layer_46394df0ca28bf8c515804966832a4a6.addTo(map_27a79d41e840da390f206cc022f5a0ad);
+            tile_layer_2129f0f74b19aef5b84f361926b93d19.addTo(map_c593e2ea7419d887ad160146f1eabd9c);
         
     
-            var tile_layer_91ab2f6eb5ae52a4ebfc605ac7876555 = L.tileLayer(
+            var tile_layer_8712c8826b1b6539eee88a1bb03adb54 = L.tileLayer(
                 "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}",
                 {
   "minZoom": 0,
@@ -274,7 +275,7 @@
             );
         
     
-            tile_layer_91ab2f6eb5ae52a4ebfc605ac7876555.addTo(map_27a79d41e840da390f206cc022f5a0ad);
+            tile_layer_8712c8826b1b6539eee88a1bb03adb54.addTo(map_c593e2ea7419d887ad160146f1eabd9c);
         
 </script>
 </html>
